@@ -97,13 +97,15 @@ public class HomeActivity extends Activity implements OnClickListener {
  
         switch (item.getItemId()) 
         {
-        case R.id.action_settings:
+        case R.id.item_prefs:
             // Single menu item is selected do something
             // Ex: launching new activity/screen or show alert message
-            Toast.makeText(HomeActivity.this, "Bookmark is Selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Bookmark is Selected item_prefs", Toast.LENGTH_SHORT).show();
             return true;
-          
-        default:
+        case R.id.action_settings:
+          	startActivity(new Intent(this, PrefsActivity.class));//start the PrefsActivity.java
+          	return true;
+		default:
             return super.onOptionsItemSelected(item);
         }
     }    
