@@ -70,6 +70,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.gov.mef.informamef.HomeActivity" />
         </activity>
+        <activity
+            android:name="it.gov.mef.informamef.UserSettingActivity"
+            android:label="@string/title_activity_user_setting" >
+        </activity>
+        <activity
+            android:name="it.gov.mef.informamef.PrefsActivity"
+            android:label="@string/title_activity_prefs" >
+        </activity>
     </application>
 
 </manifest>
