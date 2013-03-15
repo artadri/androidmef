@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RSSDetailActivity" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/action_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp" 
+        android:paddingTop="10sp">
+
+        <TextView
+            android:id="@+id/rssDetailTitolo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web|email"
+            android:text="@string/rssDetailTitolo"
+            android:textIsSelectable="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/hrLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/rssDetailData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingRight="5sp"
+            android:textSize="10sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/rssDetailDescrizione"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:autoLink="web|email"
+            android:padding="10dp"
+            android:text="@string/rssDetailDescrizione"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

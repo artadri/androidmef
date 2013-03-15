@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageButton
+        android:id="@+id/homeImageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/homeImageButton1"
+        android:src="@drawable/home_imagebutton1" />
+
+    <ImageButton
+        android:id="@+id/homeImageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/homeImageButton2"
+        android:src="@drawable/home_imagebutton2"
+         />
+
+    <ImageButton
+        android:id="@+id/homeImageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/homeImageButton3"
+        android:src="@drawable/home_imagebutton3" />
+
+    <ImageButton
+        android:id="@+id/homeImageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/homeImageButton4"
+        android:src="@drawable/home_imagebutton4" />
+    
+        <ImageButton
+        android:id="@+id/homeImageButtonContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/homeImageButtonContact"
+        android:src="@drawable/home_image_button_contact" />
+
+</LinearLayout>

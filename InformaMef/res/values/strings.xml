@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InformaMef</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_rss_list">RssListActivity</string>
+    <string name="title_activity_rsslist">RSSList</string>
+    <string name="title_activity_rssdetail">Dettaglio</string>
+    <string name="rssDetailTitolo">rssDetailTitolo</string>
+    <string name="rssDetailDescrizione">rssDetailDescrizione</string>
+
+    <string name="listRSSTitle">Lista RSS</string>
+
+    <!-- Titoli pagina dettaglio rss -->
+    <string name="title_activity_rssdetail_ico1">Associata al pulsante 1</string>
+    <string name="title_activity_rssdetail_ico2">Associata al pulsante 2</string>
+    <string name="title_activity_rssdetail_ico3">Associata al pulsante 3</string>
+    <string name="title_activity_rssdetail_ico4">Associata al pulsante 4</string>
+
+    <!-- Titoli pagina lista rss -->
+    <string name="title_activity_rsslist_ico1">Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico2">Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico3">Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico4">Associata al pulsante 4</string>
+
+    <!-- Bottoni -->
+    <string name="homeImageButton1">Titolo icona da cambiare</string>
+    <string name="homeImageButton2">Titolo icona da cambiare</string>
+    <string name="homeImageButton3">Titolo icona da cambiare</string>
+    <string name="homeImageButton4">Titolo icona da cambiare</string>
+    <string name="homeImageButtonContact">Titolo icona da cambiare</string>
+    
+    <!-- Activity contattaci -->
+    <string name="title_activity_contact">ContactActivity</string>
+    <string name="actionBarTitle">Contattaci</string>
+    
+    <!-- Activity RSS Detail -->
+    <string name="detailRSSTitle">Dettaglio elem RSS</string>
+    
+    
+    
+    
+
+</resources>
