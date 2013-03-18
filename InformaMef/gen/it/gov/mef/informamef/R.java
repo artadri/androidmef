@@ -9,8 +9,10 @@ package it.gov.mef.informamef;
 
 public final class R {
     public static final class array {
-        public static final int syncFrequency=0x7f050000;
-        public static final int syncFrequencyValues=0x7f050001;
+        public static final int syncFrequency=0x7f050002;
+        public static final int syncFrequencyValues=0x7f050003;
+        public static final int userLanguage=0x7f050000;
+        public static final int userLanguageValues=0x7f050001;
     }
     public static final class attr {
     }
@@ -26,19 +28,23 @@ public final class R {
     }
     public static final class drawable {
         public static final int home_image_button_contact=0x7f020000;
-        public static final int home_imagebutton1=0x7f020001;
-        public static final int home_imagebutton2=0x7f020002;
-        public static final int home_imagebutton3=0x7f020003;
-        public static final int home_imagebutton4=0x7f020004;
-        public static final int ic_home=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int ic_refresh=0x7f020007;
-        public static final int splash=0x7f020008;
+        public static final int home_image_button_podcast=0x7f020001;
+        public static final int home_imagebutton1=0x7f020002;
+        public static final int home_imagebutton2=0x7f020003;
+        public static final int home_imagebutton3=0x7f020004;
+        public static final int home_imagebutton4=0x7f020005;
+        public static final int ic_home=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int ic_refresh=0x7f020008;
+        public static final int ic_stat_name=0x7f020009;
+        public static final int splash=0x7f02000a;
     }
     public static final class id {
         public static final int actionBarTitle=0x7f0a0001;
-        public static final int action_settings=0x7f0a0017;
+        public static final int action_settings=0x7f0a001c;
+        public static final int btnCancelNotification=0x7f0a000f;
         public static final int btnOK=0x7f0a0007;
+        public static final int btnSendSimpleNotification=0x7f0a000e;
         public static final int etMessage=0x7f0a0006;
         public static final int etSubject=0x7f0a0005;
         public static final int etTo=0x7f0a0004;
@@ -47,83 +53,100 @@ public final class R {
         public static final int homeImageButton3=0x7f0a000a;
         public static final int homeImageButton4=0x7f0a000b;
         public static final int homeImageButtonContact=0x7f0a000c;
-        public static final int hrLine=0x7f0a0010;
+        public static final int homeImageButtonPodcast=0x7f0a000d;
+        public static final int hrLine=0x7f0a0015;
         public static final int imageBack=0x7f0a0003;
         public static final int imageHome=0x7f0a0000;
         public static final int imageRefresh=0x7f0a0002;
-        public static final int item_prefs=0x7f0a0018;
-        public static final int menu_settings=0x7f0a0019;
-        public static final int rssDetailData=0x7f0a0011;
-        public static final int rssDetailDescrizione=0x7f0a0012;
-        public static final int rssDetailTitolo=0x7f0a000f;
-        public static final int rssItemView=0x7f0a000e;
-        public static final int rssListAdapterData=0x7f0a0015;
-        public static final int rssListAdapterTitolo=0x7f0a0016;
-        public static final int rssListView=0x7f0a000d;
-        public static final int rss_list=0x7f0a0013;
-        public static final int splash_bar=0x7f0a0014;
+        public static final int item_prefs=0x7f0a001d;
+        public static final int menu_settings=0x7f0a001e;
+        public static final int prog=0x7f0a0011;
+        public static final int rssDetailData=0x7f0a0016;
+        public static final int rssDetailDescrizione=0x7f0a0017;
+        public static final int rssDetailTitolo=0x7f0a0014;
+        public static final int rssItemView=0x7f0a0013;
+        public static final int rssListAdapterData=0x7f0a001a;
+        public static final int rssListAdapterTitolo=0x7f0a001b;
+        public static final int rssListView=0x7f0a0012;
+        public static final int rss_list=0x7f0a0018;
+        public static final int splash_bar=0x7f0a0019;
+        public static final int video=0x7f0a0010;
     }
     public static final class layout {
         public static final int action_bar=0x7f030000;
         public static final int activity_contact=0x7f030001;
         public static final int activity_home=0x7f030002;
         public static final int activity_main=0x7f030003;
-        public static final int activity_rss_list=0x7f030004;
-        public static final int activity_rssdetail=0x7f030005;
-        public static final int activity_rsslist=0x7f030006;
-        public static final int activity_splash_screen=0x7f030007;
-        public static final int list_item=0x7f030008;
-        public static final int rss_list_adapter=0x7f030009;
+        public static final int activity_notification=0x7f030004;
+        public static final int activity_podcast=0x7f030005;
+        public static final int activity_rss_list=0x7f030006;
+        public static final int activity_rssdetail=0x7f030007;
+        public static final int activity_rsslist=0x7f030008;
+        public static final int activity_splash_screen=0x7f030009;
+        public static final int list_item=0x7f03000a;
+        public static final int rss_list_adapter=0x7f03000b;
     }
     public static final class menu {
         public static final int contact=0x7f090000;
         public static final int home=0x7f090001;
         public static final int main=0x7f090002;
         public static final int menu=0x7f090003;
-        public static final int prefs=0x7f090004;
-        public static final int rss_list=0x7f090005;
-        public static final int rssdetail=0x7f090006;
-        public static final int rsslist=0x7f090007;
-        public static final int splash_screen=0x7f090008;
+        public static final int notification=0x7f090004;
+        public static final int podcast=0x7f090005;
+        public static final int prefs=0x7f090006;
+        public static final int rss_list=0x7f090007;
+        public static final int rssdetail=0x7f090008;
+        public static final int rsslist=0x7f090009;
+        public static final int splash_screen=0x7f09000a;
     }
     public static final class string {
-        public static final int actionBarTitle=0x7f070019;
-        public static final int action_settings=0x7f070025;
+        public static final int actionBarTitle=0x7f07001a;
+        public static final int action_settings=0x7f070028;
         public static final int app_name=0x7f070000;
         /**  Activity RSS Detail 
+ Activity RSS Detail 
          */
-        public static final int detailRSSTitle=0x7f07001a;
+        public static final int detailRSSTitle=0x7f07001b;
         public static final int hello_world=0x7f070002;
         /**  Bottoni 
+ Bottoni 
          */
         public static final int homeImageButton1=0x7f070013;
         public static final int homeImageButton2=0x7f070014;
         public static final int homeImageButton3=0x7f070015;
         public static final int homeImageButton4=0x7f070016;
         public static final int homeImageButtonContact=0x7f070017;
+        public static final int homeImageButtonPodcast=0x7f070018;
         public static final int listRSSTitle=0x7f07000a;
-        public static final int menu_settings=0x7f070026;
-        public static final int pref_send_report=0x7f070022;
-        public static final int pref_send_report_summary=0x7f070021;
-        public static final int pref_sync_frequency=0x7f070024;
-        public static final int pref_sync_frequency_summary=0x7f070023;
-        public static final int pref_update_setting=0x7f070020;
-        public static final int pref_user_name=0x7f07001f;
-        public static final int pref_user_name_summary=0x7f07001e;
+        public static final int menu_settings=0x7f070029;
+        public static final int pref_send_report=0x7f070025;
+        public static final int pref_send_report_summary=0x7f070024;
+        public static final int pref_sync_frequency=0x7f070027;
+        public static final int pref_sync_frequency_summary=0x7f070026;
+        public static final int pref_update_setting=0x7f070023;
+        public static final int pref_user_language=0x7f070022;
+        public static final int pref_user_language_summary=0x7f070021;
+        public static final int pref_user_name=0x7f070020;
+        public static final int pref_user_name_summary=0x7f07001f;
         /**  Preference 
+ Preference 
          */
-        public static final int pref_user_profile=0x7f07001d;
+        public static final int pref_user_profile=0x7f07001e;
         public static final int rssDetailDescrizione=0x7f070009;
         public static final int rssDetailTitolo=0x7f070008;
         /**  Activity contattaci 
+ Activity contattaci 
          */
-        public static final int title_activity_contact=0x7f070018;
+        public static final int title_activity_contact=0x7f070019;
         public static final int title_activity_home=0x7f070003;
         public static final int title_activity_main=0x7f070004;
-        public static final int title_activity_prefs=0x7f07001c;
+        public static final int title_activity_notification=0x7f07002b;
+        public static final int title_activity_podcast=0x7f07002a;
+        public static final int title_activity_prefs=0x7f07001d;
         public static final int title_activity_rss_list=0x7f070005;
         public static final int title_activity_rssdetail=0x7f070007;
         /**  Titoli pagina dettaglio rss 
+ Titoli pagina dettaglio rss 
          */
         public static final int title_activity_rssdetail_ico1=0x7f07000b;
         public static final int title_activity_rssdetail_ico2=0x7f07000c;
@@ -131,13 +154,14 @@ public final class R {
         public static final int title_activity_rssdetail_ico4=0x7f07000e;
         public static final int title_activity_rsslist=0x7f070006;
         /**  Titoli pagina lista rss 
+ Titoli pagina lista rss 
          */
         public static final int title_activity_rsslist_ico1=0x7f07000f;
         public static final int title_activity_rsslist_ico2=0x7f070010;
         public static final int title_activity_rsslist_ico3=0x7f070011;
         public static final int title_activity_rsslist_ico4=0x7f070012;
         public static final int title_activity_splash_screen=0x7f070001;
-        public static final int title_activity_user_setting=0x7f07001b;
+        public static final int title_activity_user_setting=0x7f07001c;
     }
     public static final class style {
         public static final int ActionBar=0x7f080003;

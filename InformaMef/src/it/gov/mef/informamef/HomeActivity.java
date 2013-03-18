@@ -1,8 +1,13 @@
 package it.gov.mef.informamef;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +24,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 	ImageButton imageButton3;
 	ImageButton imageButton4;
 	ImageButton imageButtonContact;
+	ImageButton imageButtonPodcast;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,11 @@ public class HomeActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_home);
 		// Associo i listener ai bottoni
 
+		// // visualizzazione messaggio
+				 Toast.makeText(this, "" + this.getResources().getConfiguration().locale.getDisplayName() ,
+				 Toast.LENGTH_SHORT)
+				 .show();
+				
 		imageButton1 = (ImageButton) findViewById(R.id.homeImageButton1);
 		imageButton1.setOnClickListener(this);
 
@@ -40,7 +51,10 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 		imageButtonContact = (ImageButton) findViewById(R.id.homeImageButtonContact);
 		imageButtonContact.setOnClickListener(this);
-
+		
+		imageButtonPodcast = (ImageButton) findViewById(R.id.homeImageButtonPodcast);
+		imageButtonPodcast.setOnClickListener(this);
+	
 	}
 
 	@Override
@@ -114,16 +128,17 @@ public class HomeActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 
-		// // visualizzazione messaggio
-		// Toast.makeText(this, "ID pulsante selezionato" + v.getId() ,
-		// Toast.LENGTH_SHORT)
-		// .show();
-		//
+		
 		Intent intent ;
 		switch (v.getId()) {
 		case R.id.homeImageButtonContact:
 
 			intent = new Intent(this, ContactActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.homeImageButtonPodcast:
+
+			intent = new Intent(this, PodcastActivity.class);
 			startActivity(intent);
 			break;
 

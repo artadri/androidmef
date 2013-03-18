@@ -1,0 +1,15 @@
+<resources>
+
+    <string name="actionBarTitle">Contact</string>
+    <string name="action_settings">Setting</string>
+    <string name="pref_send_report">vvvvv</string>
+    <string name="pref_send_report_summary">vvvvv</string>
+    <string name="pref_sync_frequency">vvvvv</string>
+    <string name="pref_sync_frequency_summary">vvvv</string>
+    <string name="pref_update_setting">vvvv</string>
+    <string name="pref_user_language">vvv</string>
+    <string name="pref_user_language_summary">vvvvv</string>
+    <string name="pref_user_name">vvvvv</string>
+    <string name="pref_user_name_summary">vvv</string>
+
+</resources>
