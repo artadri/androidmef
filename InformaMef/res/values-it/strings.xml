@@ -41,6 +41,7 @@
     <string name="detailRSSTitle">Dettaglio elem RSS</string>
     <string name="title_activity_user_setting">UserSettingActivity</string>
     <string name="title_activity_prefs">PrefsActivity</string>
+    <string name="condividi_con">Condividi con</string>
 
     <!-- Preference -->
     <string name="pref_user_profile">pref_user_profile</string>
