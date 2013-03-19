@@ -10,6 +10,21 @@
         android:layout_height="wrap_content"
         layout="@layout/action_bar" />
 
+      <ImageButton
+        android:id="@+id/detailRSSImageShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/detailRSSImageShare"
+        android:src="@drawable/ico_share" />
+    <ImageButton
+        android:id="@+id/detailRSSImageInternet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/detailRSSImageInternet"
+        android:src="@drawable/ico_share" 
+        />
+    
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,6 +33,7 @@
         android:paddingRight="10sp" 
         android:paddingTop="10sp">
 
+        
         <TextView
             android:id="@+id/rssDetailTitolo"
             android:layout_width="fill_parent"
