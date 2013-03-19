@@ -33,10 +33,11 @@ public class HomeActivity extends Activity implements OnClickListener {
 		// Associo i listener ai bottoni
 
 		// // visualizzazione messaggio
-				 Toast.makeText(this, "" + this.getResources().getConfiguration().locale.getDisplayName() ,
-				 Toast.LENGTH_SHORT)
-				 .show();
-				
+//				 Toast.makeText(this, "" + this.getResources().getConfiguration().locale.getDisplayName() ,
+//				 Toast.LENGTH_SHORT)
+//				 .show();
+//		startActivity(new Intent(this, NotificationActivity.class));
+		
 		imageButton1 = (ImageButton) findViewById(R.id.homeImageButton1);
 		imageButton1.setOnClickListener(this);
 
@@ -60,37 +61,37 @@ public class HomeActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		Log.d("", "onStart");
+		Log.d("MEFHomeActivity", "onStart");
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Log.d("", "onResume");
+		Log.d("MEFHomeActivity", "onResume");
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.d("", "onPause");
+		Log.d("MEFHomeActivity", "onPause");
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		Log.d("", "onStop");
+		Log.d("MEFHomeActivity", "onStop");
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		Log.d("", "onRestart");
+		Log.d("MEFHomeActivity", "onRestart");
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Log.d("", "onDestroy");
+		Log.d("MEFHomeActivity", "onDestroy");
 	}
 
 	@Override
