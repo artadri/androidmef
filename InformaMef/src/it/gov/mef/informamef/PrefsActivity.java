@@ -7,9 +7,13 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 
 public class PrefsActivity extends PreferenceActivity {
@@ -17,10 +21,12 @@ public class PrefsActivity extends PreferenceActivity {
 	SharedPreferences prefs;
 	OnSharedPreferenceChangeListener listener;
 	Context ctx;
+	Locale myLocale;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		ctx = this;
+		
 
 		prefs = PreferenceManager
 				.getDefaultSharedPreferences(PrefsActivity.this);
@@ -31,13 +37,8 @@ public class PrefsActivity extends PreferenceActivity {
 				int flag = 1;
 
 				String language = prefs.getString("userLanguageValues", "it");
-				Locale locale = new Locale(language);
-				Locale.setDefault(locale);
-				Configuration conf = new Configuration();
-				conf.locale = locale;
-//				ctx.getResources().updateConfiguration(conf, null);
-				getBaseContext().getResources().updateConfiguration(conf, null);
-				ctx.getResources().updateConfiguration(conf, null);
+				setLocale(language);
+				
 
 			}
 		};
@@ -48,5 +49,58 @@ public class PrefsActivity extends PreferenceActivity {
 		addPreferencesFromResource(R.xml.prefs);// instead of setContentView()
 
 	}
+	
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Log.d("MEFPrefsActivity", "onStart");
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d("MEFPrefsActivity", "onResume");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.d("MEFPrefsActivity", "onPause");
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Log.d("MEFPrefsActivity", "onStop");
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		Log.d("MEFPrefsActivity", "onRestart");
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Log.d("MEFPrefsActivity", "onDestroy");
+	}
+	
+	
+	
+	public void setLocale(String lang) {
+		 
+        myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, PrefsActivity.class);
+        startActivity(refresh);
+    }
+	
+	
 
 }
