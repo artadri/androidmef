@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="it.gov.mef.informamef.RSSListActivity"
+            android:name="it.gov.mef.informamef.TestDBActivity"
             android:label="@string/title_activity_rss_list"
             android:parentActivityName="it.gov.mef.informamef.HomeActivity" >
             <meta-data
