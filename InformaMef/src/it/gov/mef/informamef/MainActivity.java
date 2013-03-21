@@ -1,7 +1,10 @@
 package it.gov.mef.informamef;
 
+import it.gov.mef.util.MefDaoFactory;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +34,32 @@ public class MainActivity extends Activity {
 
 		_this = this;
 
+		
+		Intent intentdb = new Intent(this, TestDBActivity.class);
+		startActivity(intentdb);
+		
+//		Creo il db
+//		MefDaoFactory mdb = new MefDaoFactory(this); //.getWritableDatabase();
+//		
+//		mdb.insert(table, nullColumnHack, values)
+//		mdb.openDataBase(true);
+
+		
+//		Cursor cursor = mdb.fetchRSS();
+////		cursor.moveToFirst(); cursor.
+//		
+//		while(cursor.moveToNext())
+//			{
+//			Log.d("url", cursor.getString(cursor.getColumnIndex("url")));
+//			
+//			}
+//		
+//		cursor.close();
+//		mdb.closeDataBase();
+			  
+		
+		
+		
 		mHandler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
