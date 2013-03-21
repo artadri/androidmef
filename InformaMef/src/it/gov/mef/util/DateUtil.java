@@ -149,4 +149,88 @@ public class DateUtil {
 //      cal.get(Calendar.SECOND)+" GMT";
     //Tue%2C+27+Mar+2007+22%3A55%3A48+GMT
   }
+  
+  public static Date parseDateToDb(String dateString) {
+      Date pubDate = null;
+      try {
+          // Split date string to values
+          // 0 = week day
+          // 1 = day of month
+          // 2 = month
+          // 3 = year (could be with either 4 or 2 digits)
+          // 4 = time
+          // 5 = GMT
+          int weekDayIndex = 0;
+          int dayOfMonthIndex = 2;
+          int monthIndex = 1;
+          int yearIndex = 5;
+          int timeIndex = 3;
+          int gmtIndex = 4;
+
+          String[] values = dateString.split(" ");
+//          int columnCount = values.length;
+//          // Wed Aug 29 20:14:27 +0000 2007
+//
+//          if( columnCount==5 ) {
+//              // Expected format:
+//              // 09 Nov 2006 23:18:49 EST
+//              dayOfMonthIndex = 0;
+//              monthIndex = 1;
+//              yearIndex = 2;
+//              timeIndex = 3;
+//              gmtIndex = 4;
+//          } else if( columnCount==6 ) {
+//              // Expected format:
+//              // Thu, 19 Jul  2007 00:00:00 N
+//          	
+//          	dayOfMonthIndex = 1;
+//          	monthIndex = 2;
+//          	yearIndex = 3;
+//              timeIndex = 4;
+//              gmtIndex = 5;
+//          } else if( columnCount<5 || columnCount>6 ) {
+//              throw new Exception("Invalid date format: " + dateString);
+//          }
+
+          // Day of month
+          int dayOfMonth = Integer.parseInt( values[ dayOfMonthIndex ] );
+
+          // Month
+          String[] months =  {
+              "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+          String monthString = values[ monthIndex ];
+          int month=0;
+          for(int monthEnumIndex=0; monthEnumIndex<12; monthEnumIndex++) {
+              if( monthString.equals( months[ monthEnumIndex ] )) {
+                  month = monthEnumIndex;
+                  break;
+              }
+          }
+
+          // Year
+          int year = Integer.parseInt(values[ yearIndex ]);
+          if(year<100) {
+              year += 2000;
+          }
+
+          // Time
+          String[] timeValues = values[ timeIndex ].split(":");
+          int hours = Integer.parseInt( timeValues[0] );
+          int minutes = Integer.parseInt( timeValues[1] );
+          int seconds = Integer.parseInt( timeValues[2] );
+
+          pubDate = getCal(dayOfMonth, month, year, hours, minutes, seconds, values[ gmtIndex ]);
+
+      } catch(Exception ex) {
+          // TODO: Add exception handling code
+          System.err.println("parseRssDate error while converting date string to object: " +
+                  dateString + "," + ex.toString());
+      } catch(Throwable t) {
+          // TODO: Add exception handling code
+          System.err.println("parseRssDate error while converting date string to object: " +
+                  dateString + "," + t.toString());
+      }
+      return pubDate;
+  }
 }

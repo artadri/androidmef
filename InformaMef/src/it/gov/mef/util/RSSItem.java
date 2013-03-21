@@ -19,16 +19,44 @@ import android.text.Html;
 
 public class RSSItem {
 
-	 private String title;
+	 	private String title;
 	    private String description;
 	    private Date date;
 	    private String link;
+	    private String id_item;
+	    private String guid;
+	    private String category; 
+	    private int idUrl;
+        
 	     
-	    public RSSItem(String title, String description, Date pubDate, String link) {
-	        this.title          = title;
-	        this.description = description;
-	        this.date           = pubDate;
-	        this.link         = link;
+	    
+	    public RSSItem(String title, String description, Date date,
+				String link, String id_item, String guid, String category, int idUrl) {
+			
+			this.title = title;
+			this.description = description;
+			this.date = date;
+			this.link = link;
+			this.id_item = id_item;
+			this.guid = guid;
+			this.category = category;
+			this.idUrl = idUrl;
+		}
+	    
+	    
+
+		public RSSItem(String title, String description, Date date, String link) {
+			
+			
+			this.title = title;
+			this.description = description;
+			this.date = date;
+			this.link = link;
+			this.id_item = "";
+			this.guid = "";
+			this.category = "";
+			this.idUrl = 0;
+		
 	    }
 	     
 	    public String getTitle() {
@@ -130,4 +158,40 @@ public class RSSItem {
 	         
 	        return rssItems;
 	    }
+
+		public String getId_item() {
+			return id_item;
+		}
+
+		public void setId_item(String id_item) {
+			this.id_item = id_item;
+		}
+
+		public String getGuid() {
+			return guid;
+		}
+
+		public void setGuid(String guid) {
+			this.guid = guid;
+		}
+
+		public String getCategory() {
+			return category;
+		}
+
+		public void setCategory(String category) {
+			this.category = category;
+		}
+
+
+
+		public int getIdUrl() {
+			return idUrl;
+		}
+
+
+
+		public void setIdUrl(int idUrl) {
+			this.idUrl = idUrl;
+		}
 }
