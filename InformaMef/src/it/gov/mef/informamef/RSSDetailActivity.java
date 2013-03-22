@@ -1,9 +1,12 @@
 package it.gov.mef.informamef;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.MefDaoFactory;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
@@ -21,11 +24,15 @@ import android.widget.Toast;
 
 public class RSSDetailActivity extends Activity {
 
-	private int idPulsante;
+//	private int idPulsante;
 	private String titolo;
 	private String descrizione;
 	private String link;
 	private String data;
+	private String idItem ;
+	private int idUrl ;
+	private String guid  ;
+	private String category ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +43,14 @@ public class RSSDetailActivity extends Activity {
 		descrizione = getIntent().getStringExtra("descrizione");
 		link = getIntent().getStringExtra("link");
 		data = getIntent().getStringExtra("data");
-		idPulsante = getIntent().getIntExtra("idPulsante", 0);
+//		idPulsante = getIntent().getIntExtra("idPulsante", 0);
+		
+		
+		 idItem = getIntent().getStringExtra("data");
+		 idUrl = getIntent().getIntExtra("idUrl",0); ;
+		 guid  = getIntent().getStringExtra("guid");
+		 category = getIntent().getStringExtra("data");
+		
 
 		FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,
 				R.id.imageBack, R.string.detailRSSTitle, true);
@@ -70,6 +84,7 @@ public class RSSDetailActivity extends Activity {
 
 		TextView txtDescrizione = (TextView) findViewById(R.id.rssDetailDescrizione);
 		txtDescrizione.setText(Html.fromHtml(descrizione));
+		
 
 	}
 
@@ -77,7 +92,7 @@ public class RSSDetailActivity extends Activity {
 	public void onBackPressed() {
 
 		Intent intent = new Intent(this, RSSList.class);
-		intent.putExtra("idPulsante", idPulsante);
+		intent.putExtra("idPulsante", idUrl);
 		startActivity(intent);
 
 	}
