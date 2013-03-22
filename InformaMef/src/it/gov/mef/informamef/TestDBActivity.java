@@ -53,8 +53,8 @@ public class TestDBActivity extends Activity {
 //		listRSS = parseRSS.parseUrlRSS(feed, R.id.homeImageButton4);
 //		db.insertRSSItem(listRSS);
 		
-		List<RSSItem> listRSS1 = db.getRSSList(R.id.homeImageButton1);
-		List<RSSItem> listRSS2 = db.getRSSList(R.id.homeImageButton2);
+//		List<RSSItem> listRSS1 = db.getRSSList(R.id.homeImageButton1);
+//		List<RSSItem> listRSS2 = db.getRSSList(R.id.homeImageButton2);
 		
 		
 		

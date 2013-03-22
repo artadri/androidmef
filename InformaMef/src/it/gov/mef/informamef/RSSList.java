@@ -2,6 +2,7 @@ package it.gov.mef.informamef;
 
 import it.gov.mef.util.DateUtil;
 import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.MefDaoFactory;
 import it.gov.mef.util.RSSItem;
 
 import java.io.InputStream;
@@ -91,12 +92,20 @@ public class RSSList extends Activity {
 			URL url;
 			HttpURLConnection conn = null;
 			refreshList = idPulsante;
+			
+			
+			
+			MefDaoFactory db = new MefDaoFactory(this);
+			db.openDataBase(false);
+			
+			
 			// seleziono la URL da caricare
 			switch (idPulsante) {
 			case R.id.homeImageButton1:
 				setTitle( getResources().getString(R.string.title_activity_rsslist_ico1)	);
 				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico1, false );
 				feedUrl = "http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002";
+				
 				break;
 			case R.id.homeImageButton2:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico2));
@@ -124,60 +133,71 @@ public class RSSList extends Activity {
 				conn = (HttpURLConnection) url.openConnection();
 			}
 
-			if (conn != null
-					&& conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-				InputStream is = conn.getInputStream();
+//			Spostato su ParsingRSS
+//			if (conn != null
+//					&& conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+//				InputStream is = conn.getInputStream();
+//
+//				DocumentBuilderFactory dbf = DocumentBuilderFactory
+//						.newInstance();
+//				DocumentBuilder db = dbf.newDocumentBuilder();
+//
+//				Document document = db.parse(is);
+//				Element element = document.getDocumentElement();
+//
+//				NodeList nodeList = element.getElementsByTagName("item");
+//
+//				if (nodeList.getLength() > 0) {
+//					for (int i = 0; i < nodeList.getLength(); i++) {
+//
+//						Element entry = (Element) nodeList.item(i);
+//						Element _titleE = (Element) entry.getElementsByTagName(
+//								"title").item(0);
+//						Element _descriptionE = (Element) entry
+//								.getElementsByTagName("description").item(0);
+//						Element _pubDateE = (Element) entry
+//								.getElementsByTagName("pubDate").item(0);
+//						Element _linkE = (Element) entry.getElementsByTagName(
+//								"link").item(0);
+//						String _title = _titleE.getFirstChild().getNodeValue();
+//						String _description = ((_descriptionE!=null && _descriptionE.getFirstChild() != null) ? _descriptionE.getFirstChild()
+//								.getNodeValue() : "");
+//
+//						Date _pubDate = null;
+//
+//						try {
+//							_pubDate = DateUtil.parseDate(_pubDateE
+//									.getFirstChild().getNodeValue());
+//						} catch (Exception e) {
+//							_pubDate = new Date();
+//
+//						}
+//
+//						String _link = _linkE.getFirstChild().getNodeValue();
+//						listRSS.add(new RSSItem(_title, _description, _pubDate,
+//								_link));
+//
+//					}
+//				}
+//
+//			}
 
-				DocumentBuilderFactory dbf = DocumentBuilderFactory
-						.newInstance();
-				DocumentBuilder db = dbf.newDocumentBuilder();
-
-				Document document = db.parse(is);
-				Element element = document.getDocumentElement();
-
-				NodeList nodeList = element.getElementsByTagName("item");
-
-				if (nodeList.getLength() > 0) {
-					for (int i = 0; i < nodeList.getLength(); i++) {
-
-						Element entry = (Element) nodeList.item(i);
-						Element _titleE = (Element) entry.getElementsByTagName(
-								"title").item(0);
-						Element _descriptionE = (Element) entry
-								.getElementsByTagName("description").item(0);
-						Element _pubDateE = (Element) entry
-								.getElementsByTagName("pubDate").item(0);
-						Element _linkE = (Element) entry.getElementsByTagName(
-								"link").item(0);
-						String _title = _titleE.getFirstChild().getNodeValue();
-						String _description = ((_descriptionE!=null && _descriptionE.getFirstChild() != null) ? _descriptionE.getFirstChild()
-								.getNodeValue() : "");
-
-						Date _pubDate = null;
-
-						try {
-							_pubDate = DateUtil.parseDate(_pubDateE
-									.getFirstChild().getNodeValue());
-						} catch (Exception e) {
-							_pubDate = new Date();
-
-						}
-
-						String _link = _linkE.getFirstChild().getNodeValue();
-						listRSS.add(new RSSItem(_title, _description, _pubDate,
-								_link));
-
-					}
-				}
-
-			}
-
+			
+			listRSS = db.getRSSList(idPulsante);
+			db.updateRSS(idPulsante, (new Date()).toString());
+			
+			db.closeDataBase();
 		} catch (Exception e) {
 
 			e.printStackTrace();
 
 		}
 
+		
+
+		
+		
+		
 		listViewRSS = (ListView) findViewById(R.id.rss_list);
 		listViewRSS.setAdapter(new RSSListAdapter(ctx, R.layout.rss_list_adapter, listRSS));
 
@@ -195,6 +215,10 @@ public class RSSList extends Activity {
 				String descrizione = item.getDescription();
 				String link = item.getLink();
 				Date data = item.getPubDate();
+				int idItem = item.getId_item();
+				int idUrl = item.getIdUrl() ;
+				String guid = item.getGuid() ;
+				String category = item.getCategory();
 				
 
 				// v.getResources()
@@ -204,7 +228,12 @@ public class RSSList extends Activity {
 				detailRSS.putExtra("descrizione", descrizione);
 				detailRSS.putExtra("link", link);
 				detailRSS.putExtra("data", DateUtil.formatHTTPDate(data));
-				detailRSS.putExtra("idPulsante", refreshList);
+//				detailRSS.putExtra("idPulsante", refreshList);
+				detailRSS.putExtra("idItem", idItem);
+				detailRSS.putExtra("idUrl", idUrl );
+				detailRSS.putExtra("guid", guid);
+				detailRSS.putExtra("category", category);
+				
 
 				startActivity(detailRSS);
 
