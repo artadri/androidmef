@@ -1,5 +1,6 @@
 package it.gov.mef.informamef;
 
+import it.gov.mef.util.MefDaoFactory;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,9 +12,11 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeActivity extends Activity implements OnClickListener {
@@ -38,14 +41,48 @@ public class HomeActivity extends Activity implements OnClickListener {
 //				 .show();
 //		startActivity(new Intent(this, NotificationActivity.class));
 		
+
+		MefDaoFactory db = new MefDaoFactory(this);
+		db.openDataBase(false);
+		
+		
+		TextView txt1 = (TextView)findViewById(R.id.homeTextNumElem1);
+		String txtReplace = txt1.getText().toString();
+		txtReplace = txtReplace.replace("$read", "0");
+		txtReplace = txtReplace.replace("$tot", Integer.toString(db.getTotRSS(R.id.homeImageButton1)));
+		txt1.setText(txtReplace);
+		
 		imageButton1 = (ImageButton) findViewById(R.id.homeImageButton1);
 		imageButton1.setOnClickListener(this);
+		
+		
+		TextView txt2 = (TextView)findViewById(R.id.homeTextNumElem2);
+		String txtReplace2 = txt2.getText().toString();
+		txtReplace2 = txtReplace2.replace("$read", "0");
+		txtReplace2 = txtReplace2.replace("$tot", Integer.toString(db.getTotRSS(R.id.homeImageButton2)));
+		txt2.setText(txtReplace2);
+
 
 		imageButton2 = (ImageButton) findViewById(R.id.homeImageButton2);
 		imageButton2.setOnClickListener(this);
+		
+		
+		TextView txt3 = (TextView)findViewById(R.id.homeTextNumElem3);
+		String txtReplace3 = txt3.getText().toString();
+		txtReplace3 = txtReplace3.replace("$read", "0");
+		txtReplace3 = txtReplace3.replace("$tot", Integer.toString(db.getTotRSS(R.id.homeImageButton3)));
+		txt3.setText(txtReplace3);
+
 
 		imageButton3 = (ImageButton) findViewById(R.id.homeImageButton3);
 		imageButton3.setOnClickListener(this);
+		
+		TextView txt4 = (TextView)findViewById(R.id.homeTextNumElem4);
+		String txtReplace4 = txt4.getText().toString();
+		txtReplace4 = txtReplace4.replace("$read", "0");
+		txtReplace4 = txtReplace4.replace("$tot", Integer.toString(db.getTotRSS(R.id.homeImageButton4)));
+		txt4.setText(txtReplace4);
+
 
 		imageButton4 = (ImageButton) findViewById(R.id.homeImageButton4);
 		imageButton4.setOnClickListener(this);
@@ -55,6 +92,8 @@ public class HomeActivity extends Activity implements OnClickListener {
 		
 		imageButtonPodcast = (ImageButton) findViewById(R.id.homeImageButtonPodcast);
 		imageButtonPodcast.setOnClickListener(this);
+		
+		db.closeDataBase();
 	
 	}
 
