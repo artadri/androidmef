@@ -3,48 +3,144 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <ImageButton
-        android:id="@+id/homeImageButton1"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/homeImageButton1"
-        android:src="@drawable/home_imagebutton1" />
+        android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/homeImageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/homeImageButton2"
-        android:src="@drawable/home_imagebutton2" />
+        <ImageButton
+            android:id="@+id/homeImageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton1"
+            android:src="@drawable/home_imagebutton1" />
 
-    <ImageButton
-        android:id="@+id/homeImageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/homeImageButton3"
-        android:src="@drawable/home_imagebutton3" />
+        <TextView
+            android:id="@+id/homeTextImage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/homeImageButton1"
+            android:text="@string/title_activity_rsslist_ico1" />
 
-    <ImageButton
-        android:id="@+id/homeImageButton4"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/homeTextNumElem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:text="[$read - $tot]" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/homeImageButton4"
-        android:src="@drawable/home_imagebutton4" />
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/homeImageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton2"
+            android:src="@drawable/home_imagebutton2" />
+        
+          <TextView
+            android:id="@+id/homeTextImage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/homeImageButton2"
+            android:text="@string/title_activity_rsslist_ico2" />
+
+        <TextView
+            android:id="@+id/homeTextNumElem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:text="[$read - $tot]" />
+        
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/homeImageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton3"
+            android:src="@drawable/home_imagebutton3" />
+        
+          <TextView
+            android:id="@+id/homeTextImage3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/homeImageButton3"
+            android:text="@string/title_activity_rsslist_ico3" />
+
+        <TextView
+            android:id="@+id/homeTextNumElem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:text="[$read - $tot]" />
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/homeImageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton4"
+            android:src="@drawable/home_imagebutton4" />
+        
+        
+          <TextView
+            android:id="@+id/homeTextImage4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/homeImageButton4"
+            android:text="@string/title_activity_rsslist_ico1" />
+
+        <TextView
+            android:id="@+id/homeTextNumElem4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:text="[$read - $tot]" />
+    </RelativeLayout>
 
     <ImageButton
         android:id="@+id/homeImageButtonContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/homeImageButtonContact"
-        android:src="@drawable/home_image_button_contact" />
+        android:src="@drawable/home_image_button_contact"
+        android:visibility="invisible" />
 
     <ImageButton
         android:id="@+id/homeImageButtonPodcast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/homeImageButtonPodcast"
-        android:src="@drawable/home_image_button_podcast" 
-        android:visibility="invisible"
-        />
+        android:src="@drawable/home_image_button_podcast"
+        android:visibility="invisible" />
 
 </LinearLayout>
