@@ -23,15 +23,33 @@ public class RSSItem {
 	    private String description;
 	    private Date date;
 	    private String link;
-	    private String id_item;
+	    private int id_item;
 	    private String guid;
 	    private String category; 
 	    private int idUrl;
+	    private Date date_update;
+	    private Date date_read;
         
-	     
+	    
 	    
 	    public RSSItem(String title, String description, Date date,
-				String link, String id_item, String guid, String category, int idUrl) {
+				String link, int id_item, String guid, String category, int idUrl, Date date_read, Date date_updateDate ) {
+			
+			this.title = title;
+			this.description = description;
+			this.date = date;
+			this.link = link;
+			this.id_item = id_item;
+			this.guid = guid;
+			this.category = category;
+			this.idUrl = idUrl;
+			this.date_read = date_read;
+			this.date_update = date_updateDate;
+		}
+	    
+	    
+	    public RSSItem(String title, String description, Date date,
+				String link, int id_item, String guid, String category, int idUrl) {
 			
 			this.title = title;
 			this.description = description;
@@ -52,14 +70,54 @@ public class RSSItem {
 			this.description = description;
 			this.date = date;
 			this.link = link;
-			this.id_item = "";
+			this.id_item = 0;
 			this.guid = "";
 			this.category = "";
 			this.idUrl = 0;
 		
 	    }
 	     
-	    public String getTitle() {
+		
+		
+		
+		
+	    public Date getDate() {
+			return date;
+		}
+
+
+
+		public void setDate(Date date) {
+			this.date = date;
+		}
+
+
+
+		public Date getDate_update() {
+			return date_update;
+		}
+
+
+
+		public void setDate_update(Date date_update) {
+			this.date_update = date_update;
+		}
+
+
+
+		public Date getDate_read() {
+			return date_read;
+		}
+
+
+
+		public void setDate_read(Date date_read) {
+			this.date_read = date_read;
+		}
+
+
+
+		public String getTitle() {
 	        return title;
 	    }
 	     
@@ -159,11 +217,11 @@ public class RSSItem {
 	        return rssItems;
 	    }
 
-		public String getId_item() {
+		public int getId_item() {
 			return id_item;
 		}
 
-		public void setId_item(String id_item) {
+		public void setId_item(int id_item) {
 			this.id_item = id_item;
 		}
 

@@ -10,6 +10,7 @@ import it.gov.mef.util.MefDaoFactory;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources.NotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -29,10 +30,11 @@ public class RSSDetailActivity extends Activity {
 	private String descrizione;
 	private String link;
 	private String data;
-	private String idItem ;
+	private int idItem ;
 	private int idUrl ;
 	private String guid  ;
 	private String category ;
+	private int idPulsante;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +45,10 @@ public class RSSDetailActivity extends Activity {
 		descrizione = getIntent().getStringExtra("descrizione");
 		link = getIntent().getStringExtra("link");
 		data = getIntent().getStringExtra("data");
-//		idPulsante = getIntent().getIntExtra("idPulsante", 0);
+		idPulsante = getIntent().getIntExtra("idPulsante", 0);
 		
 		
-		 idItem = getIntent().getStringExtra("data");
+		 idItem = getIntent().getIntExtra("idItemRSS", 0);
 		 idUrl = getIntent().getIntExtra("idUrl",0); ;
 		 guid  = getIntent().getStringExtra("guid");
 		 category = getIntent().getStringExtra("data");
@@ -85,6 +87,13 @@ public class RSSDetailActivity extends Activity {
 		TextView txtDescrizione = (TextView) findViewById(R.id.rssDetailDescrizione);
 		txtDescrizione.setText(Html.fromHtml(descrizione));
 		
+		MefDaoFactory db = new MefDaoFactory(this);
+		db.openDataBase(false);
+		db.updateDateItemRss(idItem, new Date());
+		db.closeDataBase();
+		db.close();
+		
+		
 
 	}
 
@@ -92,7 +101,7 @@ public class RSSDetailActivity extends Activity {
 	public void onBackPressed() {
 
 		Intent intent = new Intent(this, RSSList.class);
-		intent.putExtra("idPulsante", idUrl);
+		intent.putExtra("idPulsante", idPulsante);
 		startActivity(intent);
 
 	}
@@ -111,51 +120,56 @@ public class RSSDetailActivity extends Activity {
 		 * necessario filtrare per package ed eventualmente adattare i parametri
 		 * da passare
 		 */
-		List<Intent> targetedShareIntents = new ArrayList<Intent>();
-		Intent shareIntent1 = new Intent(android.content.Intent.ACTION_SEND);
-		shareIntent1.setType("text/plain");
-		List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(
-				shareIntent1, 0);
-		if (!resInfo.isEmpty()) {
-			for (ResolveInfo resolveInfo : resInfo) {
-				String packageName = resolveInfo.activityInfo.packageName;
-				Log.i("package", packageName);
-				Intent targetedShareIntent = new Intent(
-						android.content.Intent.ACTION_SEND);
-				targetedShareIntent.setType("text/plain");
-				targetedShareIntent.putExtra(
-						android.content.Intent.EXTRA_SUBJECT, titolo);
-				if (packageName.equals("com.facebook.katana")) {
+		try {
+			List<Intent> targetedShareIntents = new ArrayList<Intent>();
+			Intent shareIntent1 = new Intent(android.content.Intent.ACTION_SEND);
+			shareIntent1.setType("text/plain");
+			List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(
+					shareIntent1, 0);
+			if (!resInfo.isEmpty()) {
+				for (ResolveInfo resolveInfo : resInfo) {
+					String packageName = resolveInfo.activityInfo.packageName;
+					Log.i("package", packageName);
+					Intent targetedShareIntent = new Intent(
+							android.content.Intent.ACTION_SEND);
+					targetedShareIntent.setType("text/plain");
 					targetedShareIntent.putExtra(
-							android.content.Intent.EXTRA_TEXT, link);
-					targetedShareIntent.setPackage(packageName);
-					targetedShareIntents.add(targetedShareIntent);
+							android.content.Intent.EXTRA_SUBJECT, titolo);
+					if (packageName.equals("com.facebook.katana")) {
+						targetedShareIntent.putExtra(
+								android.content.Intent.EXTRA_TEXT, link);
+						targetedShareIntent.setPackage(packageName);
+						targetedShareIntents.add(targetedShareIntent);
 
-				} else if (packageName.equals("com.twitter.android")) {
-					targetedShareIntent.putExtra(
-							android.content.Intent.EXTRA_TEXT, link);
-					targetedShareIntent.setPackage(packageName);
-					targetedShareIntents.add(targetedShareIntent);
-				}  else if (packageName.equals("com.google.android.apps.plus")) {
-					targetedShareIntent.putExtra(
-							android.content.Intent.EXTRA_TEXT, link);
-					targetedShareIntent.setPackage(packageName);
-					targetedShareIntents.add(targetedShareIntent);
-				} else {
-					targetedShareIntent.putExtra(
-							android.content.Intent.EXTRA_TEXT, descrizione
-									+ link);
+					} else if (packageName.equals("com.twitter.android")) {
+						targetedShareIntent.putExtra(
+								android.content.Intent.EXTRA_TEXT, link);
+						targetedShareIntent.setPackage(packageName);
+						targetedShareIntents.add(targetedShareIntent);
+					}  else if (packageName.equals("com.google.android.apps.plus")) {
+						targetedShareIntent.putExtra(
+								android.content.Intent.EXTRA_TEXT, link);
+						targetedShareIntent.setPackage(packageName);
+						targetedShareIntents.add(targetedShareIntent);
+					} else {
+						targetedShareIntent.putExtra(
+								android.content.Intent.EXTRA_TEXT, descrizione
+										+ link);
+					}
+
 				}
 
+				Intent chooserIntent = Intent.createChooser(
+						targetedShareIntents.remove(0),
+						getResources().getString(R.string.condividi_con));
+				chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
+						targetedShareIntents.toArray(new Parcelable[] {}));
+
+				startActivity(chooserIntent);
 			}
-
-			Intent chooserIntent = Intent.createChooser(
-					targetedShareIntents.remove(0),
-					getResources().getString(R.string.condividi_con));
-			chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
-					targetedShareIntents.toArray(new Parcelable[] {}));
-
-			startActivity(chooserIntent);
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

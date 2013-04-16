@@ -78,7 +78,7 @@ public class ParsingRSS {
 						
 						 
 						
-						listRSS.add(new RSSItem(_title, _description, _pubDate,	_link, 0 , _guid, _category, idUrl));
+						listRSS.add(new RSSItem(_title, _description, _pubDate,	_link, 0 , _guid, _category, idUrl, null, new Date()));
 
 					}
 				}

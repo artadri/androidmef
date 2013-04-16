@@ -1,17 +1,18 @@
 package it.gov.mef.informamef;
 
-import it.gov.mef.util.MefDaoFactory;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -26,6 +27,8 @@ public class MainActivity extends Activity {
 	protected static final int FINISH_LOAD = 0;
 	protected static final int START_LOAD = 1;
 	protected static final int ABORT_LOAD = 2;
+	
+
 
 	/** Called when the activity is first created. */
 	@Override
@@ -37,27 +40,9 @@ public class MainActivity extends Activity {
 		
 		Intent intentdb = new Intent(this, TestDBActivity.class);
 		startActivity(intentdb);
-		
-//		Creo il db
-//		MefDaoFactory mdb = new MefDaoFactory(this); //.getWritableDatabase();
-//		
-//		mdb.insert(table, nullColumnHack, values)
-//		mdb.openDataBase(true);
 
-		
-//		Cursor cursor = mdb.fetchRSS();
-////		cursor.moveToFirst(); cursor.
-//		
-//		while(cursor.moveToNext())
-//			{
-//			Log.d("url", cursor.getString(cursor.getColumnIndex("url")));
-//			
-//			}
-//		
-//		cursor.close();
-//		mdb.closeDataBase();
-			  
-		
+
+
 		
 		
 		mHandler = new Handler() {
@@ -109,11 +94,66 @@ public class MainActivity extends Activity {
 					SplashScreen.sendMessage(msg);
 				}
 
+				
 				mHandler.sendEmptyMessage(FINISH_LOAD);
 
 			}
 
 		}.start();
 	}
+	
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Log.d("MEFHomeActivity", "onStart");
+	}
+
+	@Override
+	protected void onResume() {
+		
+		 super.onResume();
+		    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		    int minutes = prefs.getInt("syncFrequencyValues",5);
+		    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+		    Intent i = new Intent(this, NotificationService.class);
+		    PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
+		    am.cancel(pi);
+		    // by my own convention, minutes <= 0 means notifications are disabled
+		    if (minutes > 0) {
+		        am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+		            SystemClock.elapsedRealtime() + minutes*60*1000,
+		            minutes*60*1000, pi);
+		    }
+		
+		
+		Log.d("MEFMainActivity", "onResume");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.d("MEFMainActivity", "onPause");
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Log.d("MEFMainActivity", "onStop");
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		Log.d("MEFMainActivity", "onRestart");
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Log.d("MEFMainActivity", "onDestroy");
+	}
+
+	
 
 }

@@ -2,6 +2,7 @@ package it.gov.mef.informamef;
 
 import it.gov.mef.util.DateUtil;
 import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.MefConstants;
 import it.gov.mef.util.MefDaoFactory;
 import it.gov.mef.util.RSSItem;
 
@@ -10,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,7 +25,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -40,38 +44,48 @@ public class RSSList extends Activity {
 	private Context ctx;
 	private LinearLayout layout;
 	private int refreshList ;
+	private int idRSS ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rsslist);
+
 		
-//		
-//		
-////		Associo al pulsante home il ritorno alla home
-//		ImageButton imageHome = (ImageButton) findViewById(R.id.imageHome);
-//		imageHome.setOnClickListener(new OnClickListener() {
-//			 
-//			@Override
-//			public void onClick(View v) {
-// 
-//				Intent intent = new Intent( v.getContext(), HomeActivity.class );
-//				setContentView(R.layout.activity_home);
-//				startActivity(intent);
-//			}
-// 
-//		});
-//		
-//		Associo al pulsante home il ritorno alla home
+//		Associo al pulsante ri resfresh il ritorno alla home
 		ImageButton imageRefesh = (ImageButton) findViewById(R.id.imageRefresh);
 		imageRefesh.setVisibility(0);
 		imageRefesh.setOnClickListener(new OnClickListener() {
 			 
 			@Override
 			public void onClick(View v) {
- 
+// TODO Inserire effetto per l'aggiornamento dei dati da internet
 				Intent intent = new Intent( v.getContext(), RSSList.class );
 				intent.putExtra("idPulsante", refreshList);
+				MefDaoFactory db = new MefDaoFactory(v.getContext());
+				try {
+					
+					db.openDataBase(true);
+					int count = db.updateRSSItem(idRSS);
+					Log.d(this.toString(),count +"");
+							
+				} catch (Exception e) {
+					Log.e(this.toString(), e.toString());
+					if (db != null) {
+						db.close();
+						db.closeDataBase();
+					}
+				} finally {
+					if (db != null) {
+						db.close();
+						db.closeDataBase();
+					}	
+				}
+				
+			
+				
+							
+			
 				startActivity(intent);
 			}
  
@@ -89,10 +103,10 @@ public class RSSList extends Activity {
 
 			String feedUrl;
 			int idPulsante = getIntent().getIntExtra("idPulsante", 0);
+			idRSS = 1;
 			URL url;
 			HttpURLConnection conn = null;
 			refreshList = idPulsante;
-			
 			
 			
 			MefDaoFactory db = new MefDaoFactory(this);
@@ -104,23 +118,26 @@ public class RSSList extends Activity {
 			case R.id.homeImageButton1:
 				setTitle( getResources().getString(R.string.title_activity_rsslist_ico1)	);
 				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico1, false );
-				feedUrl = "http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002";
-				
+//				feedUrl = "http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002";
+				idRSS = 1;
 				break;
 			case R.id.homeImageButton2:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico2));
 				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico2, false );
-				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=4";
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=4";
+				idRSS = 2;
 				break;
 			case R.id.homeImageButton3:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico3));
 				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico3, false );
-				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=3";
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=3";
+				idRSS = 3;
 				break;
 			case R.id.homeImageButton4:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico4));
 				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico4, false );
-				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 4;
 				break;
 			default:
 				this.setTitle("");
@@ -128,63 +145,10 @@ public class RSSList extends Activity {
 				break;
 			}
 
-			if (feedUrl != "") {
-				url = new URL(feedUrl);
-				conn = (HttpURLConnection) url.openConnection();
-			}
-
-//			Spostato su ParsingRSS
-//			if (conn != null
-//					&& conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-//				InputStream is = conn.getInputStream();
-//
-//				DocumentBuilderFactory dbf = DocumentBuilderFactory
-//						.newInstance();
-//				DocumentBuilder db = dbf.newDocumentBuilder();
-//
-//				Document document = db.parse(is);
-//				Element element = document.getDocumentElement();
-//
-//				NodeList nodeList = element.getElementsByTagName("item");
-//
-//				if (nodeList.getLength() > 0) {
-//					for (int i = 0; i < nodeList.getLength(); i++) {
-//
-//						Element entry = (Element) nodeList.item(i);
-//						Element _titleE = (Element) entry.getElementsByTagName(
-//								"title").item(0);
-//						Element _descriptionE = (Element) entry
-//								.getElementsByTagName("description").item(0);
-//						Element _pubDateE = (Element) entry
-//								.getElementsByTagName("pubDate").item(0);
-//						Element _linkE = (Element) entry.getElementsByTagName(
-//								"link").item(0);
-//						String _title = _titleE.getFirstChild().getNodeValue();
-//						String _description = ((_descriptionE!=null && _descriptionE.getFirstChild() != null) ? _descriptionE.getFirstChild()
-//								.getNodeValue() : "");
-//
-//						Date _pubDate = null;
-//
-//						try {
-//							_pubDate = DateUtil.parseDate(_pubDateE
-//									.getFirstChild().getNodeValue());
-//						} catch (Exception e) {
-//							_pubDate = new Date();
-//
-//						}
-//
-//						String _link = _linkE.getFirstChild().getNodeValue();
-//						listRSS.add(new RSSItem(_title, _description, _pubDate,
-//								_link));
-//
-//					}
-//				}
-//
-//			}
 
 			
-			listRSS = db.getRSSList(idPulsante);
-			db.updateRSS(idPulsante, (new Date()).toString());
+			listRSS = db.getRSSList(idRSS);
+		
 			
 			db.closeDataBase();
 		} catch (Exception e) {
@@ -228,8 +192,8 @@ public class RSSList extends Activity {
 				detailRSS.putExtra("descrizione", descrizione);
 				detailRSS.putExtra("link", link);
 				detailRSS.putExtra("data", DateUtil.formatHTTPDate(data));
-//				detailRSS.putExtra("idPulsante", refreshList);
-				detailRSS.putExtra("idItem", idItem);
+				detailRSS.putExtra("idPulsante", refreshList);
+				detailRSS.putExtra("idItemRSS", idItem);
 				detailRSS.putExtra("idUrl", idUrl );
 				detailRSS.putExtra("guid", guid);
 				detailRSS.putExtra("category", category);
@@ -252,5 +216,63 @@ public class RSSList extends Activity {
 		getMenuInflater().inflate(R.menu.rsslist, menu);
 		return true;
 	}
+	
+	
+	 /**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+ 
+        switch (item.getItemId()) 
+        {
+        case R.id.action_settings:
+        	startActivity(new Intent(this, PrefsActivity.class));//start the PrefsActivity.java
+//          	startActivity(new Intent(this, TestDBActivity.class));//start the PrefsActivity.java
+          	return true;
+        case R.id.action_refresh_list:
+        	
+//        	MefDaoFactory db = new MefDaoFactory(this);
+//			try {
+//				
+//				db.openDataBase(true);
+//				
+//					
+//					db.updateRSSItem(idRSS);
+//					Log.d(this.toString(),"Aggiornato id=" + idRSS);
+//				
+//				
+//				
+//						
+//			} catch (Exception e) {
+//				Log.e(this.toString(), e.toString());
+//				if (db != null) {
+//					db.close();
+//					db.closeDataBase();
+//				}
+//			} finally {
+//				if (db != null) {
+//					db.close();
+//					db.closeDataBase();
+//				}	
+//			}
+//
+//			Intent intent = new Intent( this, RSSList.class );
+//			intent.putExtra("idPulsante", refreshList);
+//			
+//			
+//			startActivity(intent);
+		
+//        	Viene eseguito con il pulsante refresh
+        	
+          	return true;
+		
+		default:
+            return super.onOptionsItemSelected(item);
+        }
+    }    
+    
 
 }
