@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
@@ -6,7 +6,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:visibility="invisible" >
 
         <ImageButton
             android:id="@+id/homeImageButton1"
@@ -30,13 +31,14 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingRight="10dp"
-            android:text="[$read - $tot]" />
+             />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:visibility="invisible" >
 
         <ImageButton
             android:id="@+id/homeImageButton2"
@@ -60,7 +62,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingRight="10dp"
-            android:text="[$read - $tot]" />
+            android:text="" />
         
         
     </RelativeLayout>
@@ -68,7 +70,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:visibility="invisible">
 
         <ImageButton
             android:id="@+id/homeImageButton3"
@@ -92,14 +95,15 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingRight="10dp"
-            android:text="[$read - $tot]" />
+            android:text="" />
         
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:visibility="invisible" >
 
         <ImageButton
             android:id="@+id/homeImageButton4"
@@ -115,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/homeImageButton4"
-            android:text="@string/title_activity_rsslist_ico1" />
+            android:text="@string/title_activity_rsslist_ico4" />
 
         <TextView
             android:id="@+id/homeTextNumElem4"
@@ -124,7 +128,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingRight="10dp"
-            android:text="[$read - $tot]" />
+            android:text="" />
     </RelativeLayout>
 
     <ImageButton
@@ -142,5 +146,12 @@
         android:contentDescription="@string/homeImageButtonPodcast"
         android:src="@drawable/home_image_button_podcast"
         android:visibility="invisible" />
+    
+    <ListView
+       android:id="@+id/home_list"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:paddingTop="20sp" >
+    </ListView>
 
-</LinearLayout>
+</RelativeLayout>
