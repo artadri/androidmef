@@ -1,6 +1,7 @@
 package it.gov.mef.informamef;
 
 import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.UpdateRSS;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -16,52 +18,43 @@ import android.os.Build;
 
 public class ContactActivity extends Activity {
 
-	
-	
-	
-	 Button btnOK;
-	    EditText txtTo;
-	    EditText txtSubject;
-	    EditText txtMessage;
+	Button btnOK;
+	EditText txtTo;
+	EditText txtSubject;
+	EditText txtMessage;
 
-	    @Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.activity_contact);
-	        
-			// Show the Up button in the action bar.
-			setupActionBar();
-			
-			FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.actionBarTitle, false);
-			
-	        btnOK = (Button) findViewById(R.id.btnOK);
-	        txtTo = (EditText) findViewById(R.id.etTo);
-	        txtTo.requestFocus();
-	        txtSubject = (EditText) findViewById(R.id.etSubject);
-	        txtMessage = (EditText) findViewById(R.id.etMessage);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_contact);
+
+		// Show the Up button in the action bar.
+		setupActionBar();
+
+		FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,
+				R.id.imageBack, R.string.actionBarTitle, false);
+
+		btnOK = (Button) findViewById(R.id.btnOK);
+		txtTo = (EditText) findViewById(R.id.etTo);
+		txtTo.requestFocus();
+		txtSubject = (EditText) findViewById(R.id.etSubject);
+		txtMessage = (EditText) findViewById(R.id.etMessage);
 		btnOK.setOnClickListener(new OnClickListener() {
-	            public void onClick(View v) {
-	                String to = txtTo.getText().toString();
-	                String subject = txtSubject.getText().toString();
-	                String message = txtMessage.getText().toString();
-	                Intent mail = new Intent(Intent.ACTION_SEND);
-	                mail.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
-	                mail.putExtra(Intent.EXTRA_SUBJECT, subject);
-	                mail.putExtra(Intent.EXTRA_TEXT, message);
-	                mail.setType("message/rfc822");
-	                startActivity(Intent.createChooser(mail, "Send email via:"));
-	            }
-	        });
-		
-		
-		
-		
-		
-		
-		
-		
-	    }
-	    
+			public void onClick(View v) {
+				String to = txtTo.getText().toString();
+				String subject = txtSubject.getText().toString();
+				String message = txtMessage.getText().toString();
+				Intent mail = new Intent(Intent.ACTION_SEND);
+				mail.putExtra(Intent.EXTRA_EMAIL, new String[] { to });
+				mail.putExtra(Intent.EXTRA_SUBJECT, subject);
+				mail.putExtra(Intent.EXTRA_TEXT, message);
+				mail.setType("message/rfc822");
+				startActivity(Intent.createChooser(mail, "Send email via:"));
+			}
+		});
+
+	}
+
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */
@@ -81,19 +74,15 @@ public class ContactActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
+		case R.id.action_settings:
+			startActivity(new Intent(this, PrefsActivity.class));
+								
 			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 }
