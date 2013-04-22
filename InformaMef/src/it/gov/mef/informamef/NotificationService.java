@@ -2,6 +2,7 @@ package it.gov.mef.informamef;
 
 import it.gov.mef.util.MefDaoFactory;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -63,8 +64,8 @@ private WakeLock mWakeLock;
          */
         @Override
         protected Void doInBackground(Void... params) {
-            // do stuff!
-
+            
+        	Log.d("NOTIFICATION ACTIVITI", "Richiamata notitifca" + (new Date()).toString());
         	Context context = getApplicationContext();
         	MefDaoFactory db = new MefDaoFactory(context);
         	int count = 0;
@@ -80,7 +81,6 @@ private WakeLock mWakeLock;
 					Log.d(this.toString(),"Aggiornato id=" + elem.intValue());
 				}
 				
-				
 						
 			} catch (Exception e) {
 				Log.e(this.toString(), e.toString());
@@ -95,49 +95,56 @@ private WakeLock mWakeLock;
 				}	
 			}
         	
-    	    
-    	    Intent nIntent = new Intent();//Intent nIntent = new Intent(Intent.ACTION_MAIN);
-            nIntent.setClass(context,NotificationActivity.class);
-            
-            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
+			if (count > 0) {
+			
 
-    		// Titolo e testo della notifica
-    		notificationBuilder.setContentTitle("Titolo della mia notifica");
-    		notificationBuilder.setContentText("Testo della mia notifica");
+				Intent nIntent = new Intent();// Intent nIntent = new
+												// Intent(Intent.ACTION_MAIN);
+				nIntent.setClass(context, HomeActivity.class);
 
-    		// Testo che compare nella barra di stato non appena compare la notifica
-    		notificationBuilder.setTicker("Nuovi elementi ");
+				NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-    		// Data e ora della notifica
-    		notificationBuilder.setWhen(System.currentTimeMillis());
+				NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
+						context);
 
-    		// Icona della notifica
-    		notificationBuilder.setSmallIcon(R.drawable.ic_stat_name);
+				// Titolo e testo della notifica
+				notificationBuilder
+						.setContentTitle("InformaMEF nuovi contenuti");
+				notificationBuilder
+						.setContentText("Sono presenti nuovi contenuti visualizza la sezione"  );
 
-    		// Creiamo il pending intent che verrà lanciato quando la notifica
-    		// viene premuta
-    		Intent notificationIntent = new Intent(context, NotificationActivity.class);
-    		PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
-    				notificationIntent, 0);
+				// Testo che compare nella barra di stato non appena compare la
+				// notifica
+				notificationBuilder.setTicker("InformaMEF - Nuovi elementi ");
 
-    		notificationBuilder.setContentIntent(contentIntent);
+				// Data e ora della notifica
+				notificationBuilder.setWhen(System.currentTimeMillis());
 
-    		// Impostiamo il suono, le luci e la vibrazione di default
-    		notificationBuilder.setDefaults(Notification.DEFAULT_SOUND
-    				| Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE
-    				| Notification.FLAG_AUTO_CANCEL);
+				// Icona della notifica
+				notificationBuilder.setSmallIcon(R.drawable.ic_stat_name);
 
-    		
-    		mNotificationManager.cancel(1);
-    		
-    		mNotificationManager.notify(1,
-    				notificationBuilder.build());
-            
-        	
-        	Log.d(this.toString(), "doInBackground");
-        	
+				// Creiamo il pending intent che verrà lanciato quando la
+				// notifica
+				// viene premuta
+				Intent notificationIntent = new Intent(context,
+						HomeActivity.class);
+				PendingIntent contentIntent = PendingIntent.getActivity(
+						context, 0, notificationIntent, 0);
+
+				notificationBuilder.setContentIntent(contentIntent);
+
+				// Impostiamo il suono, le luci e la vibrazione di default
+				notificationBuilder.setDefaults(Notification.DEFAULT_SOUND
+						| Notification.DEFAULT_LIGHTS
+						| Notification.DEFAULT_VIBRATE
+						| Notification.FLAG_AUTO_CANCEL);
+
+				mNotificationManager.cancel(1);
+
+				mNotificationManager.notify(1, notificationBuilder.build());
+
+				Log.d(this.toString(), "doInBackground");
+			}
         	
             return null;
         }
@@ -158,6 +165,8 @@ private WakeLock mWakeLock;
         protected void onPostExecute(Void result) {
             // handle your data
             stopSelf();
+//            onDestroy();
+            
         }
     }
     
