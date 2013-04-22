@@ -444,4 +444,15 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 
 	}
 
+	public Date getRSSLastUpdate(int idUrl) {
+		Cursor mCount = mDb.rawQuery("SELECT " + RSSMetaData.DATE_LAST_UPDATE +" FROM item_rss where  "
+				+ RSSMetaData.ID_URL + " = '" + idUrl + "' ", null);
+		mCount.moveToFirst();
+		Date date = DateUtil.parseDateToDb(mCount.getString(0));
+
+		mCount.close();
+		
+		return date;
+	}
+
 }

@@ -38,8 +38,8 @@ public class MainActivity extends Activity {
 		_this = this;
 
 		
-		Intent intentdb = new Intent(this, TestDBActivity.class);
-		startActivity(intentdb);
+//		Intent intentdb = new Intent(this, TestDBActivity.class);
+//		startActivity(intentdb);
 
 
 

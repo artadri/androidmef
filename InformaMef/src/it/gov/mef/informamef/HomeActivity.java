@@ -1,15 +1,18 @@
 package it.gov.mef.informamef;
 
+import it.gov.mef.util.DateUtil;
 import it.gov.mef.util.MefConstants;
 import it.gov.mef.util.MefDaoFactory;
 import it.gov.mef.util.RSSHomeItem;
 import it.gov.mef.util.RSSItem;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +20,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class HomeActivity extends Activity implements OnClickListener {
 
@@ -31,6 +36,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 	ImageButton imageButton4;
 	ImageButton imageButtonContact;
 	ImageButton imageButtonPodcast;
+	private Context ctx;
 	
 	private ListView listViewHome;
 
@@ -39,91 +45,130 @@ public class HomeActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		// Associo i listener ai bottoni
-
-		// // visualizzazione messaggio
-		// Toast.makeText(this, "" +
-		// this.getResources().getConfiguration().locale.getDisplayName() ,
-		// Toast.LENGTH_SHORT)
-		// .show();
-		// startActivity(new Intent(this, NotificationActivity.class));
-
+		ctx = this;
 		MefDaoFactory db = new MefDaoFactory(this);
 		db.openDataBase(false);
 		db.getTotRSSItemNotRead(MefConstants.idRSS1);
-//		Date data_agg = db.getRSSLastUpdate(MefConstants.idRSS1);
-		TextView txt1 = (TextView) findViewById(R.id.homeTextNumElem1);
-		// String txtReplace = txt1.getText().toString();
-		// txtReplace = txtReplace.replace("$read",
-		// Integer.toString(db.getTotRSSItemNotRead(MefConstants.idRSS1)));
-		// txtReplace = txtReplace.replace("$tot",
-		// Integer.toString(db.getTotRSSItemByIdURL(MefConstants.idRSS1)));
-		txt1.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS1)
-				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS1)
-				+ " ]");
+		
+		
+		
+//		TextView txt1 = (TextView) findViewById(R.id.homeTextNumElem1);
+//		txt1.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS1)
+//				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS1)
+//				+ " ]");
+//
+//		imageButton1 = (ImageButton) findViewById(R.id.homeImageButton1);
+//		imageButton1.setOnClickListener(this);
+//
+//		TextView txt2 = (TextView) findViewById(R.id.homeTextNumElem2);
+//		txt2.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS2)
+//				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS2)
+//				+ " ]");
+//
+//		imageButton2 = (ImageButton) findViewById(R.id.homeImageButton2);
+//		imageButton2.setOnClickListener(this);
+//
+//		TextView txt3 = (TextView) findViewById(R.id.homeTextNumElem3);
+//		txt3.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS3)
+//				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS3)
+//				+ " ]");
+//
+//		imageButton3 = (ImageButton) findViewById(R.id.homeImageButton3);
+//		imageButton3.setOnClickListener(this);
+//
+//		TextView txt4 = (TextView) findViewById(R.id.homeTextNumElem4);
+//		txt4.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS4)
+//				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS4)
+//				+ " ]");
+//
+//		imageButton4 = (ImageButton) findViewById(R.id.homeImageButton4);
+//		imageButton4.setOnClickListener(this);
+//
+//		imageButtonContact = (ImageButton) findViewById(R.id.homeImageButtonContact);
+//		imageButtonContact.setOnClickListener(this);
+//
+//		imageButtonPodcast = (ImageButton) findViewById(R.id.homeImageButtonPodcast);
+//		imageButtonPodcast.setOnClickListener(this);
 
-		imageButton1 = (ImageButton) findViewById(R.id.homeImageButton1);
-		imageButton1.setOnClickListener(this);
-
-		TextView txt2 = (TextView) findViewById(R.id.homeTextNumElem2);
-//		String txtReplace2 = txt2.getText().toString();
-//		txtReplace2 = txtReplace2.replace("$read",
-//				Integer.toString(db.getTotRSSItemNotRead(MefConstants.idRSS2)));
-//		txtReplace2 = txtReplace2.replace("$tot",
-//				Integer.toString(db.getTotRSSItemByIdURL(MefConstants.idRSS2)));
-		txt2.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS2)
-				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS2)
-				+ " ]");
-
-		imageButton2 = (ImageButton) findViewById(R.id.homeImageButton2);
-		imageButton2.setOnClickListener(this);
-
-		TextView txt3 = (TextView) findViewById(R.id.homeTextNumElem3);
-//		String txtReplace3 = txt3.getText().toString();
-//		txtReplace3 = txtReplace3.replace("$read",
-//				Integer.toString(db.getTotRSSItemNotRead(MefConstants.idRSS3)));
-//		txtReplace3 = txtReplace3.replace("$tot",
-//				Integer.toString(db.getTotRSSItemByIdURL(MefConstants.idRSS3)));
-		txt3.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS3)
-				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS3)
-				+ " ]");
-
-		imageButton3 = (ImageButton) findViewById(R.id.homeImageButton3);
-		imageButton3.setOnClickListener(this);
-
-		TextView txt4 = (TextView) findViewById(R.id.homeTextNumElem4);
-//		String txtReplace4 = txt4.getText().toString();
-//		txtReplace4 = txtReplace4.replace("$read",
-//				Integer.toString(db.getTotRSSItemNotRead(MefConstants.idRSS4)));
-//		txtReplace4 = txtReplace4.replace("$tot",
-//				Integer.toString(db.getTotRSSItemByIdURL(MefConstants.idRSS4)));
-		txt4.setText("[ " + db.getTotRSSItemNotRead(MefConstants.idRSS4)
-				+ " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS4)
-				+ " ]");
-
-		imageButton4 = (ImageButton) findViewById(R.id.homeImageButton4);
-		imageButton4.setOnClickListener(this);
-
-		imageButtonContact = (ImageButton) findViewById(R.id.homeImageButtonContact);
-		imageButtonContact.setOnClickListener(this);
-
-		imageButtonPodcast = (ImageButton) findViewById(R.id.homeImageButtonPodcast);
-		imageButtonPodcast.setOnClickListener(this);
-
-		db.closeDataBase();
+		
 
 		
 		
 		List<RSSHomeItem> itemHomeList= new ArrayList<RSSHomeItem>();
-		
-		RSSHomeItem elemento = new RSSHomeItem(R.string.title_activity_rssdetail_ico1 + "" , "[]", R.drawable.home_imagebutton1 + "");
+		Date data_agg = db.getRSSLastUpdate(MefConstants.idRSS1);
+		String numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS1) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS1)
+				+ " ]";
+		RSSHomeItem elemento = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico1)  , numElem, R.drawable.home_imagebutton1 + "", data_agg);
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS2);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS2) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS2)
+				+ " ]";
+		RSSHomeItem elemento2 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico2) , numElem, R.drawable.home_imagebutton2 + "", data_agg);
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS3);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS3) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS3)
+				+ " ]";
+		RSSHomeItem elemento3 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico3) , numElem, R.drawable.home_imagebutton3 + "", data_agg);
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS4);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS4) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS4)
+				+ " ]";
+		RSSHomeItem elemento4 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico4) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
 
 		itemHomeList.add(elemento);
+		itemHomeList.add(elemento2);
+		itemHomeList.add(elemento3);
+		itemHomeList.add(elemento4);
 
 //		TODO da finire modificando il layout
 		listViewHome = (ListView) findViewById( R.id.home_list);
 		listViewHome.setAdapter( new RSSHomeListAdapter(this, R.layout.rss_home_list_adapter, itemHomeList ) );
         
+		
+		
+		
+//		Setto il listener alla lista
+		OnItemClickListener itemClickListener = new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1,
+					int position, long id) {
+				// AdapterView is the parent class of ListView
+				ListView lv = (ListView) arg0;
+
+				RSSHomeItem item = (RSSHomeItem) listViewHome.getItemAtPosition(position);
+				
+				Intent intent =  new Intent(ctx, RSSList.class);
+				
+//				TODO da sistemare 
+				switch (position) {
+				case 0:
+					intent.putExtra("idPulsante", R.id.homeImageButton1);
+					break;
+				case 1:
+					intent.putExtra("idPulsante", R.id.homeImageButton2);				
+					break;
+				case 2:
+					intent.putExtra("idPulsante", R.id.homeImageButton3);
+					break;
+				case 3:
+					intent.putExtra("idPulsante", R.id.homeImageButton4);
+					break;
+
+				default:
+					break;
+				}
+				
+			
+				startActivity(intent);
+
+			}
+
+		};
+
+		
+		
+		
+		
+		listViewHome.setOnItemClickListener(itemClickListener);
+		
+		db.closeDataBase();
 		
 	}
 
