@@ -18,20 +18,20 @@ public class BootReceiver extends BroadcastReceiver {
         // Note that a BroadcastReceiver is *NOT* a Context. Thus, we can't use
         // "this" whenever we need to pass a reference to the current context.
         // Thankfully, Android will supply a valid Context as the first parameter
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        int minutes = prefs.getInt("syncFrequencyValues",1);
-        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent i = new Intent(context, NotificationService.class);
-        PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
-        am.cancel(pi);
-        // by my own convention, minutes <= 0 means notifications are disabled
-        if (minutes > 0) {
-            am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + minutes*60*1000,
-                minutes*60*1000, pi);
-        }
-    
-    	Log.d("MEFBootCompletedReceiver", "onReceive");
-        throw new UnsupportedOperationException("Not yet implemented");
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+//        int minutes = prefs.getInt("syncFrequencyValues",1);
+//        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//        Intent i = new Intent(context, NotificationService.class);
+//        PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
+//        am.cancel(pi);
+//        // by my own convention, minutes <= 0 means notifications are disabled
+//        if (minutes > 0) {
+//            am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+//                SystemClock.elapsedRealtime() + minutes*60*1000,
+//                minutes*60*1000, pi);
+//        }
+//    
+//    	Log.d("MEFBootCompletedReceiver", "onReceive");
+//        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

@@ -5,6 +5,7 @@ import it.gov.mef.util.FormatActionBar;
 import it.gov.mef.util.MefConstants;
 import it.gov.mef.util.MefDaoFactory;
 import it.gov.mef.util.RSSItem;
+import it.gov.mef.util.UpdateRSS;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -115,27 +116,28 @@ public class RSSList extends Activity {
 			
 			// seleziono la URL da caricare
 			switch (idPulsante) {
-			case R.id.homeImageButton1:
+			case MefConstants.idRSS1:
 				setTitle( getResources().getString(R.string.title_activity_rsslist_ico1)	);
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico1, false );
+			
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico1, true );
 //				feedUrl = "http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002";
 				idRSS = 1;
 				break;
-			case R.id.homeImageButton2:
+			case MefConstants.idRSS2:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico2));
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico2, false );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico2, true );
 //				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=4";
 				idRSS = 2;
 				break;
-			case R.id.homeImageButton3:
+			case MefConstants.idRSS3:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico3));
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico3, false );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico3, true );
 //				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=3";
 				idRSS = 3;
 				break;
-			case R.id.homeImageButton4:
+			case MefConstants.idRSS4:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico4));
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageRefresh, R.string.title_activity_rssdetail_ico4, false );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico4, true );
 //				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
 				idRSS = 4;
 				break;
@@ -234,36 +236,11 @@ public class RSSList extends Activity {
           	return true;
         case R.id.action_refresh_list:
         	
-//        	MefDaoFactory db = new MefDaoFactory(this);
-//			try {
-//				
-//				db.openDataBase(true);
-//				
-//					
-//					db.updateRSSItem(idRSS);
-//					Log.d(this.toString(),"Aggiornato id=" + idRSS);
-//				
-//				
-//				
-//						
-//			} catch (Exception e) {
-//				Log.e(this.toString(), e.toString());
-//				if (db != null) {
-//					db.close();
-//					db.closeDataBase();
-//				}
-//			} finally {
-//				if (db != null) {
-//					db.close();
-//					db.closeDataBase();
-//				}	
-//			}
-//
-//			Intent intent = new Intent( this, RSSList.class );
-//			intent.putExtra("idPulsante", refreshList);
-//			
-//			
-//			startActivity(intent);
+        	new UpdateRSS().execute(ctx);
+        	Intent intent = new Intent( this, RSSList.class );
+			intent.putExtra("idPulsante", refreshList);
+			
+			startActivity(intent);
 		
 //        	Viene eseguito con il pulsante refresh
         	

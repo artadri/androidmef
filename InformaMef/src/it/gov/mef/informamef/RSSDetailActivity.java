@@ -56,13 +56,46 @@ public class RSSDetailActivity extends Activity {
 
 		FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,
 				R.id.imageBack, R.string.detailRSSTitle, true);
+		
+//		PULSANTI SHARE
+		ImageButton imageFacebook= (ImageButton) findViewById(R.id.detailRSSImageShareFacebook);
+		imageFacebook.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				shareIt(titolo, descrizione, R.id.detailRSSImageShareFacebook);
+			}
+
+		});
+		
+		
+		ImageButton imageTwitter= (ImageButton) findViewById(R.id.detailRSSImageShareTwitter);
+		imageTwitter.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				shareIt(titolo, descrizione, R.id.detailRSSImageShareTwitter);
+			}
+
+		});
+		
+		ImageButton imageGooleplus= (ImageButton) findViewById(R.id.detailRSSImageShareGplus);
+		imageGooleplus.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				shareIt(titolo, descrizione, R.id.detailRSSImageShareGplus);
+			}
+
+		});
+		
+		
 		ImageButton imageShare = (ImageButton) findViewById(R.id.detailRSSImageShare);
 		imageShare.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				shareIt(titolo, descrizione);
+				shareIt(titolo, descrizione, R.id.detailRSSImageShare);
 			}
 
 		});
@@ -113,7 +146,7 @@ public class RSSDetailActivity extends Activity {
 		return true;
 	}
 
-	private void shareIt(String titolo, String descrizione) {
+	private void shareIt(String titolo, String descrizione, int share) {
 
 		/**
 		 * TODO per far apparire solo alcune delle icone nella scelta è
@@ -126,45 +159,53 @@ public class RSSDetailActivity extends Activity {
 			shareIntent1.setType("text/plain");
 			List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(
 					shareIntent1, 0);
+			
+			
 			if (!resInfo.isEmpty()) {
+				
+				Intent targetedShareIntent = new Intent(android.content.Intent.ACTION_SEND);
+				targetedShareIntent.setType("text/plain");
+				targetedShareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, titolo);
+				
 				for (ResolveInfo resolveInfo : resInfo) {
 					String packageName = resolveInfo.activityInfo.packageName;
 					Log.i("package", packageName);
-					Intent targetedShareIntent = new Intent(
-							android.content.Intent.ACTION_SEND);
-					targetedShareIntent.setType("text/plain");
-					targetedShareIntent.putExtra(
-							android.content.Intent.EXTRA_SUBJECT, titolo);
-					if (packageName.equals("com.facebook.katana")) {
-						targetedShareIntent.putExtra(
-								android.content.Intent.EXTRA_TEXT, link);
+					
+					
+					
+					if (packageName.equals("com.facebook.katana") && R.id.detailRSSImageShareFacebook == share) {
+						targetedShareIntent.putExtra(android.content.Intent.EXTRA_TEXT, link);
 						targetedShareIntent.setPackage(packageName);
 						targetedShareIntents.add(targetedShareIntent);
 
-					} else if (packageName.equals("com.twitter.android")) {
+					} else if (packageName.equals("com.twitter.android")  && R.id.detailRSSImageShareTwitter == share) {
 						targetedShareIntent.putExtra(
 								android.content.Intent.EXTRA_TEXT, link);
 						targetedShareIntent.setPackage(packageName);
 						targetedShareIntents.add(targetedShareIntent);
-					}  else if (packageName.equals("com.google.android.apps.plus")) {
+					}  else if (packageName.equals("com.google.android.apps.plus")  && R.id.detailRSSImageShareGplus == share) {
 						targetedShareIntent.putExtra(
 								android.content.Intent.EXTRA_TEXT, link);
 						targetedShareIntent.setPackage(packageName);
 						targetedShareIntents.add(targetedShareIntent);
-					} else {
+					} else if (R.id.detailRSSImageShare == share && !(packageName.equals("com.facebook.katana") || packageName.equals("com.twitter.android") || packageName.equals("com.google.android.apps.plus"))  ) {
 						targetedShareIntent.putExtra(
 								android.content.Intent.EXTRA_TEXT, descrizione
 										+ link);
+						targetedShareIntent.setPackage(packageName);
+						targetedShareIntents.add(targetedShareIntent);
 					}
 
 				}
+				
+				
+		
 
 				Intent chooserIntent = Intent.createChooser(
 						targetedShareIntents.remove(0),
 						getResources().getString(R.string.condividi_con));
 				chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
 						targetedShareIntents.toArray(new Parcelable[] {}));
-
 				startActivity(chooserIntent);
 			}
 		} catch (NotFoundException e) {

@@ -43,7 +43,7 @@ public class RSSHomeListAdapter extends ArrayAdapter<RSSHomeItem> {
           txtName.setText(item.getNome());
           
           TextView dataAgg = (TextView) convertView.findViewById(R.id.ultimAgg);
-          dataAgg.setText("Ultimo Agg. " + DateUtil.formatHTTPDate(item.getUltimoAgg()));
+          dataAgg.setText("Ultimo Agg. " + item.getUltimoAgg().toLocaleString() );
           
           /* Take the TextView from layout and set the city's wiki link */
           TextView txtTotali = (TextView) convertView.findViewById(R.id.itemTotali);

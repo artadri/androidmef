@@ -5,6 +5,7 @@ import it.gov.mef.util.MefConstants;
 import it.gov.mef.util.MefDaoFactory;
 import it.gov.mef.util.RSSHomeItem;
 import it.gov.mef.util.RSSItem;
+import it.gov.mef.util.UpdateRSS;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,8 +48,8 @@ public class HomeActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_home);
 		ctx = this;
 		MefDaoFactory db = new MefDaoFactory(this);
-		db.openDataBase(false);
-		db.getTotRSSItemNotRead(MefConstants.idRSS1);
+		db.openDataBase(true);
+		
 		
 		
 		
@@ -91,8 +92,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 //		imageButtonPodcast.setOnClickListener(this);
 
 		
-
-		
+	
 		
 		List<RSSHomeItem> itemHomeList= new ArrayList<RSSHomeItem>();
 		Date data_agg = db.getRSSLastUpdate(MefConstants.idRSS1);
@@ -135,20 +135,21 @@ public class HomeActivity extends Activity implements OnClickListener {
 				RSSHomeItem item = (RSSHomeItem) listViewHome.getItemAtPosition(position);
 				
 				Intent intent =  new Intent(ctx, RSSList.class);
+				position+=1;
 				
 //				TODO da sistemare 
 				switch (position) {
-				case 0:
-					intent.putExtra("idPulsante", R.id.homeImageButton1);
+				case MefConstants.idRSS1:
+					intent.putExtra("idPulsante", MefConstants.idRSS1);
 					break;
-				case 1:
-					intent.putExtra("idPulsante", R.id.homeImageButton2);				
+				case MefConstants.idRSS2:
+					intent.putExtra("idPulsante", MefConstants.idRSS2);				
 					break;
-				case 2:
-					intent.putExtra("idPulsante", R.id.homeImageButton3);
+				case MefConstants.idRSS3:
+					intent.putExtra("idPulsante", MefConstants.idRSS3);
 					break;
-				case 3:
-					intent.putExtra("idPulsante", R.id.homeImageButton4);
+				case MefConstants.idRSS4:
+					intent.putExtra("idPulsante", MefConstants.idRSS4);
 					break;
 
 				default:
@@ -255,32 +256,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 			return true;
 		case R.id.action_refresh_list:
 
-			MefDaoFactory db = new MefDaoFactory(this);
-			try {
-
-				db.openDataBase(true);
-				List<Integer> feed = db.getRSSListURL();
-				Iterator<Integer> it = feed.iterator();
-				while (it.hasNext()) {
-					Integer elem = (Integer) it.next();
-
-					db.updateRSSItem(elem.intValue());
-					Log.d(this.toString(), "Aggiornato id=" + elem.intValue());
-				}
-
-			} catch (Exception e) {
-				Log.e(this.toString(), e.toString());
-				if (db != null) {
-					db.close();
-					db.closeDataBase();
-				}
-			} finally {
-				if (db != null) {
-					db.close();
-					db.closeDataBase();
-				}
-			}
-
+			new UpdateRSS().execute(ctx);
 			startActivity(new Intent(this, HomeActivity.class));
 
 			return true;

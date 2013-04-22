@@ -32,12 +32,12 @@ public class PrefsActivity extends PreferenceActivity {
 				.getDefaultSharedPreferences(PrefsActivity.this);
 		;
 		listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-			public void onSharedPreferenceChanged(SharedPreferences prefs,
+			public void onSharedPreferenceChanged(SharedPreferences prefs1,
 					String key) {
 				int flag = 1;
 
-				String language = prefs.getString("userLanguageValues", "it");
-				setLocale(language);
+				String localLanguage = prefs.getString("userLanguageValues", "it");
+				setLocale(localLanguage);
 				
 
 			}
@@ -84,7 +84,9 @@ public class PrefsActivity extends PreferenceActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Log.d("MEFPrefsActivity", "onDestroy");
+		 Intent refresh = new Intent(this, HomeActivity.class);
+	    startActivity(refresh);
+		Log.d(PrefsActivity.class.getName() + "onDestroy", "Richiamato metodo");
 	}
 	
 	
@@ -97,8 +99,7 @@ public class PrefsActivity extends PreferenceActivity {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        Intent refresh = new Intent(this, PrefsActivity.class);
-        startActivity(refresh);
+       
     }
 	
 	

@@ -30,7 +30,7 @@ public class FormatActionBar {
 		});
 
 		
-		if ( isBack ) {
+		if ( isBack && back != R.id.imageRefresh ) {
 
 			// Associo al pulsante back
 			ImageButton imageBack = (ImageButton) activity.findViewById(back);
@@ -43,6 +43,20 @@ public class FormatActionBar {
 				}
 
 			});
+		} else if (back == R.id.imageRefresh){
+			// Associo al pulsante back
+						ImageButton imageBack = (ImageButton) activity.findViewById(back);
+						imageBack.setVisibility(0);
+						imageBack.setOnClickListener(new OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								Intent intent = new Intent(v.getContext(), HomeActivity.class);
+								activity.setContentView(layoutHome);
+								activity.startActivity(intent);	}
+
+						});
+
 		}
 
 

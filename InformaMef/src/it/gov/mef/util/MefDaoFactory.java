@@ -28,23 +28,52 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 	private static final String DB_NAME = "informamef";// nome del db
 	private static final int DB_VERSION = 1; // numero di versione del nostro db
 
-	public MefDaoFactory(Context context) {
+	public MefDaoFactory(Context context)  {
 		super(context, DB_NAME, null, DB_VERSION);
-
+		mContext = context;
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase db) {
+	public void onCreate(SQLiteDatabase db) throws SQLException {
 		Log.d("DBHelper", "richiamato metodo oncreate");
+//		openDataBase();
 
-		db.execSQL(ITEM_RSS_TABLE_CREATE);
-		db.execSQL(RSS_TABLE_CREATE);
+			try {
+//				Creo il database vuoto
+//				openDataBase(true);
+				mDb = db;
+//				Creo le tabelle
+				execSQL(ITEM_RSS_TABLE_CREATE);
+				execSQL(RSS_TABLE_CREATE);
+//				Inserisco gli  RSS
+				insertRSS(MefConstants.idRSS1,"http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002",	 "Intranet", "", "");
+				insertRSS(MefConstants.idRSS2,"http://www.mef.gov.it/rss/rss.asp?t=4", "MEF", "", "");
+				insertRSS(MefConstants.idRSS3,"http://www.mef.gov.it/rss/rss.asp?t=3", "MEF", "", "");
+				insertRSS(MefConstants.idRSS4,"http://www.mef.gov.it/rss/rss.asp?t=8&c=200", "MEF", "", "");
 
+				
+				int count = updateRSSItem(MefConstants.idRSS1);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS2);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS3);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS4);
+				
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+		
+
+		
 	}
+	
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
+		// TODO da completare
 
 	}
 
@@ -57,19 +86,21 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 	 */
 	private void createDataBase() throws IOException {
 
-		boolean dbExist = checkDataBase();
-
-		if (dbExist) {
-			// do nothing - database already exist
-		} else {
-
-			// By calling this method an empty database will be created into
-			// the default system path
-			// of your application so we are gonna be able to overwrite that
-			// database with our database.
-			mDb = this.getWritableDatabase();
-
-		}
+		mDb = this.getWritableDatabase();
+//		
+//		boolean dbExist = checkDataBase();
+//
+//		if (dbExist) {
+//			// do nothing - database already exist
+//		} else {
+//
+//			// By calling this method an empty database will be created into
+//			// the default system path
+//			// of your application so we are gonna be able to overwrite that
+//			// database with our database.
+//			mDb = this.getWritableDatabase();
+//
+//		}
 	}
 
 	/**
@@ -83,10 +114,12 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		SQLiteDatabase checkDB = null;
 
 		try {
-			// TODO
-			String myPath = "" + DB_NAME;
-			checkDB = SQLiteDatabase.openDatabase(myPath, null,
+		
+			String myPath = (mContext.getDatabasePath(DB_NAME)!= null ? mContext.getDatabasePath(DB_NAME).getPath() :"");
+			if (!"".equals(myPath)){
+				checkDB = SQLiteDatabase.openDatabase(myPath, null,
 					SQLiteDatabase.OPEN_READONLY);
+			}
 
 		} catch (SQLiteException e) {
 

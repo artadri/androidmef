@@ -1,5 +1,6 @@
 package it.gov.mef.informamef;
 
+import it.gov.mef.util.MefDaoFactory;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -37,13 +38,7 @@ public class MainActivity extends Activity {
 
 		_this = this;
 
-		
-//		Intent intentdb = new Intent(this, TestDBActivity.class);
-//		startActivity(intentdb);
-
-
-
-		
+	
 		
 		mHandler = new Handler() {
 			@Override
@@ -106,15 +101,17 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		Log.d("MEFHomeActivity", "onStart");
+		Log.d(MainActivity.class.getName(), "onStart");
 	}
 
 	@Override
 	protected void onResume() {
 		
-		 super.onResume();
+			super.onResume();
 		    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		    int minutes = prefs.getInt("syncFrequencyValues",5);
+		    int minutes = Integer.parseInt(prefs.getString("prefSyncFrequency", "0"));
+		    
+		    
 		    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		    Intent i = new Intent(this, NotificationService.class);
 		    PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
@@ -127,31 +124,31 @@ public class MainActivity extends Activity {
 		    }
 		
 		
-		Log.d("MEFMainActivity", "onResume");
+		Log.d(MainActivity.class.getName(), "onResume");
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.d("MEFMainActivity", "onPause");
+		Log.d(MainActivity.class.getName(), "onPause");
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		Log.d("MEFMainActivity", "onStop");
+		Log.d(MainActivity.class.getName(), "onStop");
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		Log.d("MEFMainActivity", "onRestart");
+		Log.d(MainActivity.class.getName(), "onRestart");
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Log.d("MEFMainActivity", "onDestroy");
+		Log.d(MainActivity.class.getName(), "onDestroy");
 	}
 
 	
