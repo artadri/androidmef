@@ -8,8 +8,10 @@
         android:id="@+id/imageHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:contentDescription="immagine home"
-        android:src="@drawable/ic_home" />
+        android:padding="11dp"
+        android:src="@drawable/ico_home" />
 
     <TextView
         android:id="@+id/actionBarTitle"
@@ -35,7 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:contentDescription="immagine back"
-        android:src="@drawable/ic_refresh"
+        android:src="@drawable/ico_back"
+        android:background="@null"
+        android:padding="11dp"
         android:visibility="gone" />
 
 </RelativeLayout>

@@ -15,6 +15,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="Theme.Transparent" parent="android:Theme">
@@ -28,9 +29,16 @@
     </style>
     
     <style name="ActionBar" parent="AppBaseTheme">
-         <item name="android:textColor">#ffffff</item>
-        <item name="android:background">#123456</item>
+         <item name="android:textColor">#DAE2EC</item>
+        <item name="android:background">#183158</item>
         
     </style>
+    
+     <style name="ActionShare" parent="AppBaseTheme">
+         <item name="android:textColor">#ffffff</item>
+        <item name="android:background">#000000</item>
+        
+    </style>
+    
 
 </resources>

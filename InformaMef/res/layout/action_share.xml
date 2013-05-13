@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    style="@style/ActionShare">
+
+    <ImageButton
+        android:id="@+id/imageHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="immagine home"
+        android:src="@drawable/ico_home" />
+
+    <TextView
+        android:id="@+id/actionBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/imageHome"
+        android:text="@string/detailRSSTitle"
+        style="@style/ActionBar" />
+
+    <ImageButton
+        android:id="@+id/imageRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:contentDescription="immagine back"
+        android:src="@drawable/ic_refresh"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/imageBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:contentDescription="immagine back"
+        android:src="@drawable/ic_refresh"
+        android:visibility="gone" />
+
+</RelativeLayout>

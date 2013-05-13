@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">InformaMef</string>
+    <string name="app_name">News dal MEF</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_home">News dal MEF</string>
+    <string name="title_activity_main">News dal MEF</string>
     <string name="title_activity_rss_list">RssListActivity</string>
     <string name="title_activity_rsslist">RSSList</string>
     <string name="title_activity_rssdetail">Dettaglio</string>
@@ -14,24 +14,79 @@
     <string name="listRSSTitle">Lista RSS</string>
 
     <!-- Titoli pagina dettaglio rss -->
-    <string name="title_activity_rssdetail_ico1">Associata al pulsante 1</string>
-    <string name="title_activity_rssdetail_ico2">Associata al pulsante 2</string>
-    <string name="title_activity_rssdetail_ico3">Associata al pulsante 3</string>
-    <string name="title_activity_rssdetail_ico4">Associata al pulsante 4</string>
+    <string name="title_activity_rssdetail_ico1">MEF - Comunicati stampa</string>
+    <string name="title_activity_rssdetail_ico2">MEF - Interviste e Interventi</string>
+    <string name="title_activity_rssdetail_ico3">MEF - Ultimi documenti</string>
+    <string name="title_activity_rssdetail_ico4">MEF - Bandi di gara</string>
+    <string name="title_activity_rssdetail_ico5">MEF - Concorsi 1</string>
+    <string name="title_activity_rssdetail_ico6">DT - News</string>
+    <string name="title_activity_rssdetail_ico7">DT - Eventi</string>
+    <string name="title_activity_rssdetail_ico8">DT - Calendario</string>
+    <string name="title_activity_rssdetail_ico9">DT - Programmazione Trimestrale BOT</string>
+    <string name="title_activity_rssdetail_ico10">DT - Emissioni CTZ</string>
+    <string name="title_activity_rssdetail_ico11">DT - Emissioni BTP</string>
+    <string name="title_activity_rssdetail_ico12">DT - Emissioni Medio-Lungo Termine</string>
+    <string name="title_activity_rssdetail_ico13">DT - Titoli in Scadenza nei Prossimi 12 mesi</string>
+    <string name="title_activity_rssdetail_ico14">DAG - News</string>
+    <string name="title_activity_rssdetail_ico15">RGS - News</string>
+    <string name="title_activity_rssdetail_ico16">INTRANET - News</string>
+    <string name="title_activity_rssdetail_ico17">INTRANET - Circolari</string>
+    <string name="title_activity_rssdetail_ico18">INTRANET - LexNews</string>
+    
+    
+    
+    
+    
     <string name="detailRSSImageShare">Immagine sharing</string>
+    <string name="detailRSSImageShareFacebook">Immagine faceboook</string>
+    <string name="detailRSSImageShareTwitter">Immagine twitter</string>
+    <string name="detailRSSImageShareGplus">Immagine gplus</string>
     <string name="detailRSSImageInternet">Immagine internet</string>
 
+    
+    
     <!-- Titoli pagina lista rss -->
-    <string name="title_activity_rsslist_ico1">Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico2">Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico3">Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico4">Associata al pulsante 4</string>
-
+    <string name="title_activity_rsslist_ico1">MEF - Comunicati stampa</string>
+    <string name="title_activity_rsslist_ico2">MEF - Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico3">MEF - Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico4">MEF - Associata al pulsante 4</string>
+	<string name="title_activity_rsslist_ico5">MEF - Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico6">DT - Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico7">DT - Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico8">DT - Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico9">DT - Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico10">DT - Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico11">DT - Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico12">DT - Associata al pulsante 4</string>
+	<string name="title_activity_rsslist_ico13">DT - Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico14">DAG - Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico15">RGS - Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico16">INTRANET - Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico17">INTRANET - Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico18">INTRANET - Associata al pulsante 4</string>
+    
+    
     <!-- Bottoni -->
-    <string name="homeImageButton1">Titolo icona da cambiare</string>
-    <string name="homeImageButton2">Titolo icona da cambiare</string>
-    <string name="homeImageButton3">Titolo icona da cambiare</string>
-    <string name="homeImageButton4">Titolo icona da cambiare</string>
+    <string name="homeImageButton1">Titolo icona da cambiare 1</string>
+    <string name="homeImageButton2">Titolo icona da cambiare 2</string>
+    <string name="homeImageButton3">Titolo icona da cambiare 3</string>
+    <string name="homeImageButton4">Titolo icona da cambiare 4</string>
+    <string name="homeImageButton5">Titolo icona da cambiare 5</string>
+    <string name="homeImageButton6">Titolo icona da cambiare 6</string>
+    <string name="homeImageButton7">Titolo icona da cambiare 7</string>
+    <string name="homeImageButton8">Titolo icona da cambiare 8</string>
+    <string name="homeImageButton9">Titolo icona da cambiare 9</string>
+    <string name="homeImageButton10">Titolo icona da cambiare 10</string>
+    <string name="homeImageButton11">Titolo icona da cambiare 11</string>
+    <string name="homeImageButton12">Titolo icona da cambiare 12</string>
+    <string name="homeImageButton13">Titolo icona da cambiare 13</string>
+    <string name="homeImageButton14">Titolo icona da cambiare 14</string>
+    <string name="homeImageButton15">Titolo icona da cambiare 15</string>
+    <string name="homeImageButton16">Titolo icona da cambiare 16</string>
+    <string name="homeImageButton17">Titolo icona da cambiare 17</string>
+    <string name="homeImageButton18">Titolo icona da cambiare 18</string>
+    
+    
     <string name="homeImageButtonContact">Titolo icona da cambiare</string>
     <string name="homeImageButtonPodcast">Titolo icona da cambiare</string>
 
@@ -45,18 +100,19 @@
     <string name="title_activity_prefs">PrefsActivity</string>
 
     <!-- Preference -->
-    <string name="pref_user_profile">pref_user_profile</string>
-    <string name="pref_user_name_summary">pref_user_name_summary</string>
-    <string name="pref_user_name">pref_user_name</string>
-    <string name="pref_user_language_summary">pref_user_language_summary</string>
-    <string name="pref_user_language">pref_user_language</string>
-    <string name="pref_update_setting">pref_update_setting</string>
-    <string name="pref_send_report_summary">pref_send_report_summary</string>
-    <string name="pref_send_report">pref_send_report</string>
-    <string name="pref_sync_frequency_summary">pref_sync_frequency_summary</string>
-    <string name="pref_sync_frequency">pref_sync_frequency</string>
+    <string name="pref_user_profile">Profilo utente</string>
+    <string name="pref_user_name_summary">informazioni utente</string>
+    <string name="pref_user_name">Nome</string>
+    <string name="pref_user_language_summary">lingua</string>
+    <string name="pref_user_language">Lingua utente</string>
+    <string name="pref_update_setting">Aggiornamento</string>
+    <string name="pref_send_report_summary">report</string>
+    <string name="pref_send_report">invio report</string>
+    <string name="pref_sync_frequency_summary">Sincronizzazione</string>
+    <string name="pref_sync_frequency">frequenza di sincronizzazione</string>
     <string name="action_settings">Settings</string>
     <string name="action_refresh_list">Refresh</string>
+    <string name="action_contact">Contattaci</string>
     <string name="menu_settings">menu_settings</string>
     <string name="title_activity_podcast">PodcastActivity</string>
     <string name="title_activity_notification">NotificationActivity</string>

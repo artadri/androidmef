@@ -21,7 +21,6 @@
             android:summary="@string/pref_send_report_summary"
             android:title="@string/pref_send_report" >
         </CheckBoxPreference>
-
         <ListPreference
             android:entries="@array/syncFrequency"
             android:entryValues="@array/syncFrequencyValues"
