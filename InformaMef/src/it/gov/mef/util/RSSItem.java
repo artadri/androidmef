@@ -165,9 +165,9 @@ public class RSSItem {
 	        ArrayList<RSSItem> rssItems = new ArrayList<RSSItem>();
 	         
 	        try {
-	        	System.setProperty("http.proxyHost", "alpha01.tesoro.it");
+//	        	System.setProperty("http.proxyHost", "alpha01.tesoro.it");
 	        	
-	        	System.setProperty("http.proxyPort", "8080");
+//	        	System.setProperty("http.proxyPort", "8080");
 	             
 	            URL url = new URL(feedUrl);
 	           

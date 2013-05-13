@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import android.content.ClipData.Item;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -46,11 +47,31 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 				execSQL(ITEM_RSS_TABLE_CREATE);
 				execSQL(RSS_TABLE_CREATE);
 //				Inserisco gli  RSS
-				insertRSS(MefConstants.idRSS1,"http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002",	 "Intranet", "", "");
-				insertRSS(MefConstants.idRSS2,"http://www.mef.gov.it/rss/rss.asp?t=4", "MEF", "", "");
-				insertRSS(MefConstants.idRSS3,"http://www.mef.gov.it/rss/rss.asp?t=3", "MEF", "", "");
-				insertRSS(MefConstants.idRSS4,"http://www.mef.gov.it/rss/rss.asp?t=8&c=200", "MEF", "", "");
+				insertRSS(MefConstants.idRSS1,"http://www.mef.gov.it/rss/rss.asp?t=4", "MEF", "", "");
+				insertRSS(MefConstants.idRSS2,"http://www.mef.gov.it/rss/rss.asp?t=3", "MEF", "", "");
+				insertRSS(MefConstants.idRSS3,"http://www.mef.gov.it/rss/rss.asp?t=5", "MEF", "", "");
+				insertRSS(MefConstants.idRSS4,"http://www.mef.gov.it/rss/rss.asp?t=8&c=200",	 "MEF", "", "");
+				insertRSS(MefConstants.idRSS5,"http://www.mef.gov.it/rss/rss.asp?t=8&c=210", "MEF", "", "");
+				insertRSS(MefConstants.idRSS6,"http://www.dt.mef.gov.it/it/news/index.html?output=rss", "DT", "", "");
+				insertRSS(MefConstants.idRSS7,"http://www.dt.mef.gov.it/it/eventi/index.html?output=rss", "DT", "", "");
+				insertRSS(MefConstants.idRSS8,"http://www.dt.mef.gov.it/it/calendario/index.html?output=rss",	 "DT", "", "");
+				insertRSS(MefConstants.idRSS9,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/programma_trimestrale_emissione/index.html?output=rss", "DT", "", "");
+				insertRSS(MefConstants.idRSS10,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_ctz/index.html?output=rss", "DT", "", "");
+				insertRSS(MefConstants.idRSS11,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_btpei/index.html?output=rss", "DT", "", "");
+				insertRSS(MefConstants.idRSS12,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_medio_lungo_termine/index.html?output=rss",	 "DT", "", "");
+				insertRSS(MefConstants.idRSS13,"http://www.dt.mef.gov.it/it/debito_pubblico/dati_statistici/titoli_scadenza_prossimi_12_mesi/index.html?output=rss", "DT", "", "");
+				insertRSS(MefConstants.idRSS14,"http://www.dag.mef.gov.it/rss/rss.notizie.xml", "DAG", "", "");
+				insertRSS(MefConstants.idRSS15,"http://www.rgs.mef.gov.it/VERSIONE-I/RSS/rssRGS.xml", "RGS", "", "");
+				insertRSS(MefConstants.idRSS17,"https://intranetdag.tesoro.it/rss/rss.html?t=12002", "INTRANET", "", "");
+				insertRSS(MefConstants.idRSS16,"https://intranetdag.tesoro.it/rss/rss.html?t=12003", "INTRANET", "", "");
+				insertRSS(MefConstants.idRSS18,"https://intranetdag.tesoro.it/rss/rss.html?t=12004", "INTRANET", "", "");
 
+				
+				
+				
+				
+				
+				
 				
 				int count = updateRSSItem(MefConstants.idRSS1);
 				Log.d(this.toString(),count +"");
@@ -59,6 +80,36 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 				count += updateRSSItem(MefConstants.idRSS3);
 				Log.d(this.toString(),count +"");
 				count += updateRSSItem(MefConstants.idRSS4);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS5);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS6);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS7);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS8);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS9);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS10);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS11);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS12);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS13);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS14);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS15);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS16);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS17);
+				Log.d(this.toString(),count +"");
+				count += updateRSSItem(MefConstants.idRSS18);
+				Log.d(this.toString(),count +"");
+				
 				
 				
 			} catch (Exception e) {
@@ -342,16 +393,20 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 	public List<RSSItem> getRSSList(int rowId) {
 		// TODO Auto-generated method stub
 
-		Cursor cursor = mDb.query(RSSMetaData.RSS_ITEM_TABLE, null,
-				RSSMetaData.ID_URL + "=" + rowId, null, null, null, null);
+		Cursor cursor = mDb.rawQuery("SELECT * FROM item_rss WHERE id_url="+ rowId + 
+				" ORDER BY " + RSSMetaData.PUB_DATE + " DESC" ,null); 
+//				mDb.query(RSSMetaData.RSS_ITEM_TABLE, null, 
+//				RSSMetaData.ID_URL + "=" + rowId, null, null, null, null);
 		List<RSSItem> listRSS = new ArrayList<RSSItem>();
 
+		
+		
 		while (cursor.moveToNext()) {
-			Log.d("url",
-					DateUtil.parseDateToDb(
-							cursor.getString(cursor
-									.getColumnIndex(RSSMetaData.PUB_DATE)))
-							.toString());
+//			Log.d("url",
+//					DateUtil.parseDateToDb(
+//							cursor.getString(cursor
+//									.getColumnIndex(RSSMetaData.PUB_DATE)))
+//							.toString());
 
 			listRSS.add(new RSSItem(cursor.getString(cursor
 					.getColumnIndex(RSSMetaData.TITLE)), cursor
@@ -423,7 +478,7 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		int count = 0;
 		List<String> listLocalRSSGuid = getRSSListGuid(id);
 		String feed = getRSSUrlById(id);
-		
+		Log.d("################", feed);
 		ParsingRSS parseRSS = new ParsingRSS();
 		List<RSSItem> listRemoteRSS = parseRSS.parseUrlRSS(feed, id);
 		Iterator<RSSItem> it = listRemoteRSS.iterator();
@@ -433,16 +488,16 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		while (it.hasNext()) {
 			RSSItem rssItem = (RSSItem) it.next();
 			if (listLocalRSSGuid.size() > 0 && listLocalRSSGuid.contains(rssItem.getGuid()) ){
-				Log.d(this.toString(), "elemento già presente");
+//				Log.d(this.toString(), "elemento già presente - " + rssItem.getTitle());
 			} else {
-				Log.d(this.toString(), "elemento non presente");
+//				Log.d(this.toString(), "elemento non presente" + rssItem.getTitle());
 				insertRSSItem(rssItem);
 				count++;
 			}
 			
 		}
 		
-		
+		Log.d(this.toString(), "Elementi nuovi" + count);
 		
 		if (count > 0){
 //			Aggiorno la data di ultimo aggiornamento della lista
@@ -460,11 +515,13 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		List listRSS = new ArrayList();
 
 		while (cursor.moveToNext()) {
-			Log.d("url",
-					DateUtil.parseDateToDb(
-							cursor.getString(cursor
-									.getColumnIndex(RSSMetaData.PUB_DATE)))
-							.toString());
+//			Log.d("url",
+//					DateUtil.parseDateToDb(
+//							cursor.getString(cursor
+//									.getColumnIndex(RSSMetaData.PUB_DATE)))
+//							.toString());
+//			Log.d("MefDaoFactory",cursor.getString(cursor
+//					.getColumnIndex(RSSMetaData.GUID)));
 
 			listRSS.add(cursor.getString(cursor
 					.getColumnIndex(RSSMetaData.GUID)));
@@ -478,11 +535,15 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 	}
 
 	public Date getRSSLastUpdate(int idUrl) {
-		Cursor mCount = mDb.rawQuery("SELECT " + RSSMetaData.DATE_LAST_UPDATE +" FROM item_rss where  "
+		Cursor mCount = mDb.rawQuery("SELECT " + RSSMetaData.DATE_LAST_UPDATE +" FROM rss where  "
 				+ RSSMetaData.ID_URL + " = '" + idUrl + "' ", null);
-		mCount.moveToFirst();
-		Date date = DateUtil.parseDateToDb(mCount.getString(0));
-
+		
+		Date date = null;
+		if (!mCount.isAfterLast()){
+			mCount.moveToFirst();
+			date = DateUtil.parseDateToDb(mCount.getString(0));
+		 
+		}
 		mCount.close();
 		
 		return date;

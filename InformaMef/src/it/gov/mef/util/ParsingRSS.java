@@ -72,9 +72,23 @@ public class ParsingRSS {
 						}
 
 						String _link = _linkE.getFirstChild().getNodeValue();
-						String _category = _categoryE.getFirstChild().getNodeValue();
-						String _guid = _guidE.getFirstChild().getNodeValue();
+						String _category = "";
 						
+						try {
+							
+							_category =_categoryE.getFirstChild().getNodeValue();
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+						
+						
+						String _guid = "";
+
+						try {
+							_guid = _guidE.getFirstChild().getNodeValue();
+						} catch (Exception e) {
+							_guid = _link;
+						}
 						
 						 
 						

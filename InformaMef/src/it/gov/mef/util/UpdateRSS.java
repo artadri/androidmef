@@ -38,6 +38,7 @@ public class UpdateRSS extends AsyncTask<Context,String,String> {
 		try {
 
 			db.openDataBase(true);
+			
 			List<Integer> feed = db.getRSSListURL();
 			Iterator<Integer> it = feed.iterator();
 			while (it.hasNext()) {
