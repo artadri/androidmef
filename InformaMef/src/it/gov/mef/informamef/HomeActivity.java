@@ -49,7 +49,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-	
+//	TODO
 
 		ctx = this;
 		MefDaoFactory db = new MefDaoFactory(this);
