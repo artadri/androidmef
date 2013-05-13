@@ -1,5 +1,6 @@
 package it.gov.mef.informamef;
 
+import it.gov.mef.util.MefConstants;
 import it.gov.mef.util.MefDaoFactory;
 
 import java.util.Date;
@@ -64,7 +65,7 @@ private WakeLock mWakeLock;
          */
         @Override
         protected Void doInBackground(Void... params) {
-            
+//            TODO Inserire il controllo per specializzare la notifica
         	Log.d("NOTIFICATION ACTIVITI", "Richiamata notitifca" + (new Date()).toString());
         	Context context = getApplicationContext();
         	MefDaoFactory db = new MefDaoFactory(context);
@@ -139,9 +140,10 @@ private WakeLock mWakeLock;
 						| Notification.DEFAULT_VIBRATE
 						| Notification.FLAG_AUTO_CANCEL);
 
-				mNotificationManager.cancel(1);
+//				Cancello quella precedente se c'è
+				mNotificationManager.cancel(MefConstants.notifica);
 
-				mNotificationManager.notify(1, notificationBuilder.build());
+				mNotificationManager.notify(MefConstants.notifica, notificationBuilder.build());
 
 				Log.d(this.toString(), "doInBackground");
 			}

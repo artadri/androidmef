@@ -54,43 +54,43 @@ public class RSSList extends Activity {
 
 		
 //		Associo al pulsante ri resfresh il ritorno alla home
-		ImageButton imageRefesh = (ImageButton) findViewById(R.id.imageRefresh);
-		imageRefesh.setVisibility(0);
-		imageRefesh.setOnClickListener(new OnClickListener() {
+//		ImageButton imageRefesh = (ImageButton) findViewById(R.id.imageRefresh);
+//		imageRefesh.setVisibility(0);
+//		imageRefesh.setOnClickListener(new OnClickListener() {
 			 
-			@Override
-			public void onClick(View v) {
-// TODO Inserire effetto per l'aggiornamento dei dati da internet
-				Intent intent = new Intent( v.getContext(), RSSList.class );
-				intent.putExtra("idPulsante", refreshList);
-				MefDaoFactory db = new MefDaoFactory(v.getContext());
-				try {
-					
-					db.openDataBase(true);
-					int count = db.updateRSSItem(idRSS);
-					Log.d(this.toString(),count +"");
-							
-				} catch (Exception e) {
-					Log.e(this.toString(), e.toString());
-					if (db != null) {
-						db.close();
-						db.closeDataBase();
-					}
-				} finally {
-					if (db != null) {
-						db.close();
-						db.closeDataBase();
-					}	
-				}
-				
-			
-				
-							
-			
-				startActivity(intent);
-			}
- 
-		});
+//			@Override
+//			public void onClick(View v) {
+//// TODO Inserire effetto per l'aggiornamento dei dati da internet
+//				Intent intent = new Intent( v.getContext(), RSSList.class );
+//				intent.putExtra("idPulsante", refreshList);
+//				MefDaoFactory db = new MefDaoFactory(v.getContext());
+//				try {
+//					
+//					db.openDataBase(true);
+//					int count = db.updateRSSItem(idRSS);
+//					Log.d(this.toString(),count +"");
+//							
+//				} catch (Exception e) {
+//					Log.e(this.toString(), e.toString());
+//					if (db != null) {
+//						db.close();
+//						db.closeDataBase();
+//					}
+//				} finally {
+//					if (db != null) {
+//						db.close();
+//						db.closeDataBase();
+//					}	
+//				}
+//				
+//			
+//				
+//							
+//			
+//				startActivity(intent);
+//			}
+// 
+//		});
 		
 		
 		
@@ -99,8 +99,8 @@ public class RSSList extends Activity {
 		List<RSSItem> listRSS = new ArrayList<RSSItem>();
 		try {
 //			TODO da eliminare per il device reale
-			System.setProperty("http.proxyHost", "alpha01.tesoro.it");
-			System.setProperty("http.proxyPort", "8080");
+//			System.setProperty("http.proxyHost", "alpha01.tesoro.it");
+//			System.setProperty("http.proxyPort", "8080");
 
 			String feedUrl;
 			int idPulsante = getIntent().getIntExtra("idPulsante", 0);
@@ -118,28 +118,111 @@ public class RSSList extends Activity {
 			switch (idPulsante) {
 			case MefConstants.idRSS1:
 				setTitle( getResources().getString(R.string.title_activity_rsslist_ico1)	);
-			
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico1, true );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico1);
 //				feedUrl = "http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002";
 				idRSS = 1;
 				break;
 			case MefConstants.idRSS2:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico2));
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico2, true );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico2);
 //				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=4";
 				idRSS = 2;
 				break;
 			case MefConstants.idRSS3:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico3));
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico3, true );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico3);
 //				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=3";
 				idRSS = 3;
 				break;
 			case MefConstants.idRSS4:
 				setTitle(getResources().getString(R.string.title_activity_rsslist_ico4));
-				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome, R.id.imageBack, R.string.title_activity_rssdetail_ico4, true );
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico4);
 //				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
 				idRSS = 4;
+				break;
+			case MefConstants.idRSS5:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico5));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico5);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 5;
+				break;
+			case MefConstants.idRSS6:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico6));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico6);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 6;
+				break;
+			case MefConstants.idRSS7:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico7));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico7);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 7;
+				break;
+			case MefConstants.idRSS8:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico8));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico8);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 8;
+				break;
+			case MefConstants.idRSS9:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico9));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico9);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 9;
+				break;
+			case MefConstants.idRSS10:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico10));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico10);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 10;
+				break;
+			case MefConstants.idRSS11:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico11));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico11);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 11;
+				break;
+			case MefConstants.idRSS12:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico12));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico12);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 12;
+				break;
+			case MefConstants.idRSS13:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico13));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico13);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 13;
+				break;
+			case MefConstants.idRSS14:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico14));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico14);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 14;
+				break;
+			case MefConstants.idRSS15:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico15));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico15);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 15;
+				break;
+			case MefConstants.idRSS16:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico16));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico16);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 16;
+				break;
+			case MefConstants.idRSS17:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico17));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico17);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 17;
+				break;
+			case MefConstants.idRSS18:
+				setTitle(getResources().getString(R.string.title_activity_rsslist_ico18));
+				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico18);
+//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
+				idRSS = 18;
 				break;
 			default:
 				this.setTitle("");
@@ -235,17 +318,19 @@ public class RSSList extends Activity {
 //          	startActivity(new Intent(this, TestDBActivity.class));//start the PrefsActivity.java
           	return true;
         case R.id.action_refresh_list:
-        	
+//        	TODO Modificare affinchè si aggiorni solo la lista corrente e non tutto
         	new UpdateRSS().execute(ctx);
         	Intent intent = new Intent( this, RSSList.class );
 			intent.putExtra("idPulsante", refreshList);
 			
 			startActivity(intent);
-		
-//        	Viene eseguito con il pulsante refresh
-        	
+		        	
           	return true;
-		
+        case R.id.actionContact:
+
+			 Intent intentContact = new Intent(this, ContactActivity.class);
+			startActivity(intentContact);
+			return true;
 		default:
             return super.onOptionsItemSelected(item);
         }

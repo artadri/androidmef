@@ -6,6 +6,7 @@ import it.gov.mef.util.RSSHomeItem;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ public class RSSHomeListAdapter extends ArrayAdapter<RSSHomeItem> {
           super( ctx, resourceId, objects );
           resource = resourceId;
           inflater = LayoutInflater.from( ctx );
-    context=ctx;
+          context=ctx;
     }
 
     @Override
@@ -37,16 +38,25 @@ public class RSSHomeListAdapter extends ArrayAdapter<RSSHomeItem> {
 
           /* Extract the city's object to show */
           RSSHomeItem item = getItem( position );
+          
+
+          Typeface gothicB=Typeface.createFromAsset(context.getAssets(), "fonts/gothicb.ttf"); 
+          Typeface gothic=Typeface.createFromAsset(context.getAssets(), "fonts/gothic.ttf"); 
+//           Typeface.createFromAsset(getAssets(), "fonts/gothicb.ttf"); 
+          
 
           /* Take the TextView from layout and set the city's name */
           TextView txtName = (TextView) convertView.findViewById(R.id.itemName);
           txtName.setText(item.getNome());
+          txtName.setTypeface(gothicB);
           
           TextView dataAgg = (TextView) convertView.findViewById(R.id.ultimAgg);
-          dataAgg.setText("Ultimo Agg. " + item.getUltimoAgg().toLocaleString() );
+          dataAgg.setTypeface(gothic);
+          dataAgg.setText("Ultimo Agg. " + ((item.getUltimoAgg()!= null)? DateUtil.formatHTTPDate(item.getUltimoAgg()):"") );
           
           /* Take the TextView from layout and set the city's wiki link */
           TextView txtTotali = (TextView) convertView.findViewById(R.id.itemTotali);
+          txtTotali.setTypeface(gothicB);
           txtTotali.setText(item.getTotali());
 
           /* Take the ImageView from layout and set the city's image */

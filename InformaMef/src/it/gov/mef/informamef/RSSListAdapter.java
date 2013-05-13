@@ -9,6 +9,8 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +27,13 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 	String descrizione;
 	String link;
 	Date data;
+	Context ctx = null;
 
 	public RSSListAdapter(Context ctx, int resourceId, List<RSSItem> objects) {
 		super(ctx, resourceId, objects);
 		resource = resourceId;
 		inflater = LayoutInflater.from(ctx);
-		// this.ctx = ctx;
+		this.ctx = ctx;
 	}
 
 	@Override
@@ -41,27 +44,38 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 
 		RSSItem item = (RSSItem) getItem(position);
 		RSSItem itemPrec = null;
+		Typeface gothicB=Typeface.createFromAsset(ctx.getAssets(), "fonts/gothicb.ttf"); 
+  
 
 		/* Take the TextView from layout and set title */
 		TextView txtDate = (TextView) convertView
 				.findViewById(R.id.rssListAdapterData);
+		txtDate.setTypeface(gothicB);
+		
 		TextView txtTitle = (TextView) convertView.findViewById(R.id.rssListAdapterTitolo);
 		//txtDate.setBackgroundColor(Color.parseColor("#FFE2E5"));
-
+		txtTitle.setTypeface(gothicB);
+		
 		if (position == 0) {
 			txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
 		    txtDate.setBackgroundColor(Color.parseColor("#E4E4E4"));
-		    txtDate.setTextColor(Color.parseColor("#FFFFFF"));
+		    txtDate.setTextColor(Color.parseColor("#5090C0"));
 			txtTitle.setText(item.getTitle());
 		} else {
 			itemPrec = (RSSItem) getItem(position - 1);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-
+			
+			Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
+			
 			if (sdf.format(item.getPubDate()).equals(
 					sdf.format(itemPrec.getPubDate()))) {
+				
+				Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
+				
+				
 				    txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
 				    txtDate.setBackgroundColor(Color.parseColor("#E4E4E4"));
-				    txtDate.setTextColor(Color.parseColor("#FFFFFF"));
+				    txtDate.setTextColor(Color.parseColor("#5090C0"));
 				    
 			} else {
 				txtDate.setVisibility(View.GONE);
