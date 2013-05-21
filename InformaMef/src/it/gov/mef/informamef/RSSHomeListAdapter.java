@@ -61,10 +61,6 @@ public class RSSHomeListAdapter extends ArrayAdapter<RSSHomeItem> {
 
           /* Take the ImageView from layout and set the city's image */
           ImageView imageRSS = (ImageView) convertView.findViewById(R.id.ImageHomeAdapter);
-                    
-//          String uri = "drawable/" + item.getImage();
-//          int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
-
           Drawable image = context.getResources().getDrawable(Integer.parseInt(item.getImage()));
           
           imageRSS.setImageDrawable(image);
