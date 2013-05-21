@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 				case FINISH_LOAD:
 					setContentView(layout);
 					SplashScreen.sendMessage(SplashScreen.CLOSE_SPLASH);
-					setContentView(R.layout.activity_home);
+					setContentView(R.layout.activity_home_dip);
 
 					break;
 				case START_LOAD:
@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 			}
 		};
 		startSplash();
-		Intent intent = new Intent(this, HomeActivity.class);
+		Intent intent = new Intent(this, HomeDipActivity.class);
 		startActivity(intent);
 
 	}

@@ -88,7 +88,7 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 //				txtTitle.setBackgroundColor(Color.parseColor("#FFFFFF"));
 //			}
 
-			txtTitle.setText(item.getTitle());
+			txtTitle.setText(  item.getTitle());
 
 		}
 

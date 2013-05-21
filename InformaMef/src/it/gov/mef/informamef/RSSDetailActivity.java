@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import it.gov.mef.util.DateUtil;
 import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.FormatTitleBar;
 import it.gov.mef.util.MefDaoFactory;
+import it.gov.mef.util.NavigationBean;
+import it.gov.mef.util.RSSItem;
 import it.gov.mef.util.UpdateRSS;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources.NotFoundException;
@@ -40,12 +45,19 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 	private String guid  ;
 	private String category ;
 	private int idPulsante;
+	private Context ctx;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rssdetail);
-
+		ctx = this;
+		
+		MefDaoFactory db = new MefDaoFactory(this);
+		db.openDataBase(false);
+		List<RSSItem> listRSS = new ArrayList<RSSItem>();
+		
 		titolo = getIntent().getStringExtra("titolo");
 		descrizione = getIntent().getStringExtra("descrizione");
 		link = getIntent().getStringExtra("link");
@@ -58,9 +70,27 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 		guid  = getIntent().getStringExtra("guid");
 		category = getIntent().getStringExtra("data");
 		
+		
+		NavigationBean nav = (NavigationBean) getApplication();
+		listRSS = nav.getListRSS();
+		RSSItem itemRSS = listRSS.get(nav.getCurrentItemRSS());
+		nav.setItemRSS(itemRSS);
+		
+		titolo = itemRSS.getTitle(); // getIntent().getStringExtra("titolo");
+		descrizione =  itemRSS.getDescription(); //getIntent().getStringExtra("descrizione");
+		link = itemRSS.getLink(); //getIntent().getStringExtra("link");
+		data = DateUtil.formatHTTPDate(itemRSS.getDate());// getIntent().getStringExtra("data");
+		idPulsante = nav.getCurrentRSS();//getIntent().getIntExtra("idPulsante", 0);
+		
+		
+		idItem = itemRSS.getId_item(); //getIntent().getIntExtra("idItemRSS", 0);
+		idUrl = itemRSS.getIdUrl(); // getIntent().getIntExtra("idUrl",0); ;
+		guid  = itemRSS.getGuid(); //getIntent().getStringExtra("guid");
+		category = itemRSS.getCategory(); //getIntent().getStringExtra("data");
+		
+		
 
-		FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,
-				R.id.imageBack, R.string.detailRSSTitle, true);
+		FormatTitleBar.settingTitle(this, "Dettaglio Elemento" ); 
 		
         Typeface gothicB=Typeface.createFromAsset(getAssets(), "fonts/gothicb.ttf"); 
         Typeface gothic=Typeface.createFromAsset(getAssets(), "fonts/gothic.ttf"); 
@@ -76,13 +106,10 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 		txtDescrizione.setTypeface(gothic);
 		txtDescrizione.setText(Html.fromHtml(descrizione));
 		
-		MefDaoFactory db = new MefDaoFactory(this);
-		db.openDataBase(false);
+
 		db.updateDateItemRss(idItem, new Date());
 		db.closeDataBase();
 		db.close();
-		
-		
 		
 		
 		
@@ -130,6 +157,7 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 		
 		
 		ImageButton imageShare = (ImageButton) findViewById(R.id.detailRSSImageShare);
+		imageShare.setVisibility(View.VISIBLE);
 		imageShare.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -140,6 +168,7 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 		});
 
 		ImageButton imageInternet = (ImageButton) findViewById(R.id.detailRSSImageInternet);
+		imageInternet.setVisibility(View.VISIBLE);
 		imageInternet.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -159,18 +188,69 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 				String packageName = resolveInfo.activityInfo.packageName;
 				if (packageName.equals("com.facebook.katana") ) {
 				
-					imageFacebook.setVisibility(0);
+					imageFacebook.setVisibility(View.VISIBLE);
 				} else if (packageName.equals("com.twitter.android") ) {
 					
-					imageTwitter.setVisibility(0);
+					imageTwitter.setVisibility(View.VISIBLE);
 				}  else if (packageName.equals("com.google.android.apps.plus") ) {
 					
-					imageGooleplus.setVisibility(0);
+					imageGooleplus.setVisibility(View.VISIBLE);
 				}
 				
 				
 			}
 		}
+		
+		
+		
+		
+		ImageButton imageBack= (ImageButton) findViewById(R.id.imageBackNav);
+		imageBack.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent =  new Intent(ctx,  RSSDetailActivity.class);
+								
+				NavigationBean nav = (NavigationBean)getApplication();
+				int back = nav.getCurrentItemRSS()-1;
+				nav.setCurrentItemRSS(back);
+				startActivity(intent);
+				
+			}
+
+		});
+
+
+		ImageButton imageForward= (ImageButton) findViewById(R.id.imageForward);
+		imageForward.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent =  new Intent(ctx, RSSDetailActivity.class);
+				
+				NavigationBean nav = (NavigationBean)getApplication();
+				int forward = nav.getCurrentItemRSS() + 1;
+				nav.setCurrentItemRSS(forward);
+				startActivity(intent);
+			}
+
+		});
+		
+		
+		if (nav.getCurrentItemRSS() > 0 && nav.getCurrentItemRSS() <= nav.getMaxItemRSS()) {
+			imageBack.setVisibility(View.VISIBLE);
+	    } else {
+	    	imageBack.setVisibility(View.INVISIBLE);
+	    }
+		
+		if (nav.getCurrentItemRSS() < nav.getMaxItemRSS() && nav.getCurrentItemRSS() >= 0) {
+			imageForward.setVisibility(View.VISIBLE);
+		} else {
+			imageForward.setVisibility(View.INVISIBLE);
+		}
+
+		
 		
 		
 		
@@ -181,15 +261,20 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 	public void onBackPressed() {
 
 		Intent intent = new Intent(this, RSSList.class);
-		intent.putExtra("idPulsante", idPulsante);
+		NavigationBean nav = (NavigationBean) getApplication();
+		nav.setItemRSS(null);
+		nav.setCurrentItemRSS(0);
+		nav.setMaxItemRSS(0);
+		nav.setListRSS(null);
 		startActivity(intent);
 
+		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.rssdetail, menu);
+		getMenuInflater().inflate(R.menu.home, menu);
 		return true;
 	}
 	
@@ -201,17 +286,41 @@ public class RSSDetailActivity extends Activity implements OnTouchListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		switch (item.getItemId()) {
+
 		case R.id.action_settings:
 			startActivity(new Intent(this, PrefsActivity.class));// start the
 																	// PrefsActivity.java
 			// startActivity(new Intent(this, TestDBActivity.class));//start the
 			// PrefsActivity.java
 			return true;
-			case R.id.actionContact:
+		case R.id.action_refresh_list:
+
+//			TODO Deve aggiornare solo RSS corrente
+			Toast.makeText(this,
+					"E' stato avviato l'aggiornamento", Toast.LENGTH_SHORT)
+					.show();
+			NavigationBean nav = (NavigationBean)getApplication();
+			new UpdateRSS().execute(new Object [] {ctx, new Integer(-1), new Integer(nav.getCurrentRSS()) } );
+			
+//			startActivity(new Intent(this, HomeDipActivity.class));
+
+			return true;
+		case R.id.actionContact:
 
 			 Intent intent = new Intent(this, ContactActivity.class);
 			startActivity(intent);
 			return true;
+		case R.id.action_home:
+			Intent intentHome = new Intent(this, HomeDipActivity.class);
+			startActivity(intentHome);
+			return true;
+		case R.id.action_indietro:
+			onBackPressed();
+			return true;
+		case R.id.action_esci:
+			
+			return true;
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}

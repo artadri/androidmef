@@ -1,8 +1,11 @@
 package it.gov.mef.informamef;
 
 import it.gov.mef.util.DateUtil;
+import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.FormatTitleBar;
 import it.gov.mef.util.MefConstants;
 import it.gov.mef.util.MefDaoFactory;
+import it.gov.mef.util.NavigationBean;
 import it.gov.mef.util.RSSHomeItem;
 import it.gov.mef.util.RSSItem;
 import it.gov.mef.util.UpdateRSS;
@@ -26,12 +29,13 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class HomeActivity extends Activity implements OnClickListener {
+public class HomeActivity extends Activity {
 
 	// Definisco le img botton
 	ImageButton imageButton1;
@@ -49,15 +53,17 @@ public class HomeActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-//	TODO
 
+		
 		ctx = this;
+		
+		NavigationBean nav = (NavigationBean) getApplication();
+		
 		MefDaoFactory db = new MefDaoFactory(this);
 		db.openDataBase(true);
 		
 		
-		
-		
+
 
 
 //		TODO verifico se c'è la notifica 
@@ -70,113 +76,106 @@ public class HomeActivity extends Activity implements OnClickListener {
 	
 		
 		List<RSSHomeItem> itemHomeList= new ArrayList<RSSHomeItem>();
+
 		
+		int dipartimentoSelezionato = nav.getDipartimento();
+		
+		
+		Date data_agg = null;
+		String numElem = "";
+		
+		
+		if ( MefConstants.MEF == dipartimentoSelezionato){
+			
+
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_mef)); 
+			
+			
 //	MEF
-		Date data_agg = db.getRSSLastUpdate(MefConstants.idRSS1);
-		String numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS1) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS1)
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS1);
+		 numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS1) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS1)
 				+ " ]";
-		RSSHomeItem elemento = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico1)  , numElem, R.drawable.home_imagebutton1 + "", data_agg);
+		RSSHomeItem elemento = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico1)  , numElem, R.drawable.home_imagebutton1 + "", data_agg, MefConstants.idRSS1);
 		
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS2);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS2) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS2)
 				+ " ]";
-		RSSHomeItem elemento2 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico2) , numElem, R.drawable.home_imagebutton2 + "", data_agg);
+		RSSHomeItem elemento2 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico2) , numElem, R.drawable.home_imagebutton2 + "", data_agg, MefConstants.idRSS2);
 		
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS3);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS3) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS3)
 				+ " ]";
-		RSSHomeItem elemento3 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico3) , numElem, R.drawable.home_imagebutton3 + "", data_agg);
+		RSSHomeItem elemento3 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico3) , numElem, R.drawable.home_imagebutton3 + "", data_agg, MefConstants.idRSS3);
 		
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS4);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS4) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS4)
 				+ " ]";
-		RSSHomeItem elemento4 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico4) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
+		RSSHomeItem elemento4 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico4) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS4);
 
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS5);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS5) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS5)
 				+ " ]";
-		RSSHomeItem elemento5 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico5) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-// DT
+		RSSHomeItem elemento5 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico5) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS5);
 		
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS6);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS6) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS6)
-				+ " ]";
-		RSSHomeItem elemento6 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico6) , numElem, R.drawable.home_imagebutton3 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS7);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS7) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS7)
-				+ " ]";
-		RSSHomeItem elemento7 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico7) , numElem, R.drawable.home_imagebutton3 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS8);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS8) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS8)
-				+ " ]";
-		RSSHomeItem elemento8 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico8) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS9);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS9) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS9)
-				+ " ]";
-		RSSHomeItem elemento9 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico9) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS10);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS10) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS10)
-				+ " ]";
-		RSSHomeItem elemento10 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico10) , numElem, R.drawable.home_imagebutton3 + "", data_agg);
-		
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS11);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS11) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS11)
-				+ " ]";
-		RSSHomeItem elemento11 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico11) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS12);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS12) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS12)
-				+ " ]";
-		RSSHomeItem elemento12 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico12) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS13);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS13) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS13)
-				+ " ]";
-		RSSHomeItem elemento13 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico13) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-		
-// DAG
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS14);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS14) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS14)
-				+ " ]";
-		RSSHomeItem elemento14 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico14) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-		
-//	RGS
-		
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS15);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS15) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS15)
-				+ " ]";
-		RSSHomeItem elemento15 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico15) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-		
-//	INTRANET
-		
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS16);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS16) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS16)
-				+ " ]";
-		RSSHomeItem elemento16 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico16) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS17);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS17) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS17)
-				+ " ]";
-		RSSHomeItem elemento17 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico17) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-
-		data_agg = db.getRSSLastUpdate(MefConstants.idRSS18);
-		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS18) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS18)
-				+ " ]";
-		RSSHomeItem elemento18 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico18) , numElem, R.drawable.home_imagebutton4 + "", data_agg);
-				
-		
-		
-		
+//		Aggiungo gli elementi alla lista
 		itemHomeList.add(elemento);
 		itemHomeList.add(elemento2);
 		itemHomeList.add(elemento3);
 		itemHomeList.add(elemento4);
 		itemHomeList.add(elemento5);
+		
+		
+		
+		
+		}
+		
+		if (MefConstants.DT == dipartimentoSelezionato){
+			
+		
+// DT
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_dt)); 
+		
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS6);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS6) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS6)
+				+ " ]";
+		RSSHomeItem elemento6 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico6) , numElem, R.drawable.home_imagebutton3 + "", data_agg, MefConstants.idRSS6);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS7);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS7) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS7)
+				+ " ]";
+		RSSHomeItem elemento7 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico7) , numElem, R.drawable.home_imagebutton3 + "", data_agg, MefConstants.idRSS7);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS8);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS8) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS8)
+				+ " ]";
+		RSSHomeItem elemento8 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico8) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS8);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS9);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS9) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS9)
+				+ " ]";
+		RSSHomeItem elemento9 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico9) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS9);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS10);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS10) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS10)
+				+ " ]";
+		RSSHomeItem elemento10 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico10) , numElem, R.drawable.home_imagebutton3 + "", data_agg, MefConstants.idRSS10);
+		
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS11);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS11) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS11)
+				+ " ]";
+		RSSHomeItem elemento11 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico11) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS11);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS12);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS12) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS12)
+				+ " ]";
+		RSSHomeItem elemento12 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico12) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS12);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS13);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS13) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS13)
+				+ " ]";
+		RSSHomeItem elemento13 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico13) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS13);
+		
+//		Aggiungo gli elementi alla lista
 		itemHomeList.add(elemento6);
 		itemHomeList.add(elemento7);
 		itemHomeList.add(elemento8);
@@ -185,13 +184,68 @@ public class HomeActivity extends Activity implements OnClickListener {
 		itemHomeList.add(elemento11);
 		itemHomeList.add(elemento12);
 		itemHomeList.add(elemento13);
+		
+		
+		}
+		
+		if (MefConstants.DAG == dipartimentoSelezionato){
+			
+// DAG
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_dag)); 
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS14);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS14) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS14)
+				+ " ]";
+		RSSHomeItem elemento14 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico14) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS14);
+		
+//		Aggiungo gli elementi alla lista
+
 		itemHomeList.add(elemento14);
+		
+		}
+		
+		if (MefConstants.RGS == dipartimentoSelezionato){
+			
+//	RGS
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_rgs)); 
+		
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS15);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS15) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS15)
+				+ " ]";
+		RSSHomeItem elemento15 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico15) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS15);
+		
+//		Aggiungo gli elementi alla lista
 		itemHomeList.add(elemento15);
+		
+		}
+		
+		if (MefConstants.INTRANET_DAG == dipartimentoSelezionato){
+			
+//	INTRANET
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_intranetdag)); 
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS16);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS16) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS16)
+				+ " ]";
+		RSSHomeItem elemento16 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico16) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS16);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS17);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS17) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS17)
+				+ " ]";
+		RSSHomeItem elemento17 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico17) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS17);
+
+		data_agg = db.getRSSLastUpdate(MefConstants.idRSS18);
+		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS18) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS18)
+				+ " ]";
+		RSSHomeItem elemento18 = new RSSHomeItem(getString(R.string.title_activity_rssdetail_ico18) , numElem, R.drawable.home_imagebutton4 + "", data_agg, MefConstants.idRSS18);
+		
+//		Aggiungo gli elementi alla lista
 		itemHomeList.add(elemento16);
 		itemHomeList.add(elemento17);
 		itemHomeList.add(elemento18);
 		
-
+		}
+		
+		
+		nav.setItemHomeList(itemHomeList);
 		
 //		TODO da finire modificando il layout
 		listViewHome = (ListView) findViewById( R.id.home_list);
@@ -211,9 +265,15 @@ public class HomeActivity extends Activity implements OnClickListener {
 				ListView lv = (ListView) arg0;
 
 				RSSHomeItem item = (RSSHomeItem) listViewHome.getItemAtPosition(position);
-				
+			
 				Intent intent =  new Intent(ctx, RSSList.class);
-				position+=1;
+			
+				
+				NavigationBean nav = (NavigationBean)getApplication();
+				nav.setCurrentRSS(position);
+			
+				nav.setMaxRSS(listViewHome.getCount());
+				
 				
 //				TODO da sistemare 
 				switch (position) {
@@ -289,6 +349,60 @@ public class HomeActivity extends Activity implements OnClickListener {
 		listViewHome.setOnItemClickListener(itemClickListener);
 		
 		db.closeDataBase();
+		
+		
+		
+		
+		ImageButton imageBack= (ImageButton) findViewById(R.id.imageBackNav);
+		imageBack.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent =  new Intent(ctx,  HomeActivity.class);
+								
+				NavigationBean nav = (NavigationBean)getApplication();
+				int back = nav.getDipartimento() -1 ;
+				
+				
+					nav.setDipartimento(back);
+				
+				startActivity(intent);
+				
+			}
+
+		});
+
+
+		ImageButton imageForward= (ImageButton) findViewById(R.id.imageForward);
+		imageForward.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent =  new Intent(ctx, HomeActivity.class);
+				
+				NavigationBean nav = (NavigationBean)getApplication();
+				int forward = nav.getDipartimento();
+				nav.setDipartimento(forward+1);
+				startActivity(intent);
+			}
+
+		});
+		
+	
+		if (dipartimentoSelezionato > 1 && dipartimentoSelezionato <= 5 ) {
+			imageBack.setVisibility(View.VISIBLE);
+	    } else {
+	    	imageBack.setVisibility(View.INVISIBLE);
+	    }
+		
+		if (dipartimentoSelezionato < 5 && dipartimentoSelezionato >= 1) {
+			imageForward.setVisibility(View.VISIBLE);
+		} else {
+			imageForward.setVisibility(View.INVISIBLE);
+		}
+	
+		
 		
 	}
 
@@ -374,8 +488,13 @@ public class HomeActivity extends Activity implements OnClickListener {
 			// PrefsActivity.java
 			return true;
 		case R.id.action_refresh_list:
-
-			new UpdateRSS().execute(ctx);
+			Toast.makeText(HomeActivity.this,
+					"E' stato avviato l'aggiornamento dei contenuti del dipartimento", Toast.LENGTH_SHORT)
+					.show();
+			NavigationBean nav = (NavigationBean)getApplication();
+			
+			
+			new UpdateRSS().execute(new Object [] {ctx, new Integer(nav.getDipartimento()) , new Integer(-1)} );
 			startActivity(new Intent(this, HomeActivity.class));
 
 			return true;
@@ -384,35 +503,61 @@ public class HomeActivity extends Activity implements OnClickListener {
 			 Intent intent = new Intent(this, ContactActivity.class);
 			startActivity(intent);
 			return true;
+		case R.id.action_home:
+			Intent intentHome = new Intent(this, HomeDipActivity.class);
+			startActivity(intentHome);
+			return true;
+		case R.id.action_indietro:
+			onBackPressed();
+			return true;
+		case R.id.action_esci:
+			
+			return true;
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+		
+		
+		
+		
 	}
 
+//	@Override
+//	public void onClick(View v) {
+//
+//		Intent intent;
+//		switch (v.getId()) {
+//		case R.id.homeImageButtonContact:
+//
+//			intent = new Intent(this, ContactActivity.class);
+//			startActivity(intent);
+//			break;
+//		case R.id.homeImageButtonPodcast:
+//
+//			intent = new Intent(this, PodcastActivity.class);
+//			startActivity(intent);
+//			break;
+
+//		default:
+//			NavigationBean nav = (NavigationBean) getApplication();
+//			nav.setCurrentRSS(v.getId());
+//			intent = new Intent(this, RSSList.class);
+//			intent.putExtra("idPulsante", v.getId());
+//			startActivity(intent);
+//			break;
+//		}
+//
+//	}
+	
 	@Override
-	public void onClick(View v) {
-
-		Intent intent;
-		switch (v.getId()) {
-		case R.id.homeImageButtonContact:
-
-			intent = new Intent(this, ContactActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.homeImageButtonPodcast:
-
-			intent = new Intent(this, PodcastActivity.class);
-			startActivity(intent);
-			break;
-
-		default:
-			// Intent intent = new Intent(this, RSSListActivity.class);
-			intent = new Intent(this, RSSList.class);
-			intent.putExtra("idPulsante", v.getId());
-			startActivity(intent);
-			break;
-		}
+	public void onBackPressed() {
+		NavigationBean nav = (NavigationBean) getApplication();
+		nav.setCurrentRSS(0);
+		Intent intent = new Intent(this, HomeDipActivity.class);
+		startActivity(intent);
 
 	}
+
 
 }
