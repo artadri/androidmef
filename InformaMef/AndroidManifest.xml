@@ -16,17 +16,15 @@
 
     <application
         android:allowBackup="true"
+        android:name="it.gov.mef.util.NavigationBean"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" 
-        
-        >
+        android:theme="@style/AppTheme" >
 
         <!-- Main Activity -->
         <activity
             android:name="it.gov.mef.informamef.MainActivity"
             android:configChanges="keyboardHidden|orientation"
-
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -97,13 +95,18 @@
         </service>
 
         <receiver
-            android:name=".BootReceiver"
+            android:name="it.gov.mef.informamef.BootReceiver"
             android:enabled="true"
             android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="it.gov.mef.informamef.HomeDipActivity"
+            android:label="@string/title_activity_home_dip" >
+        </activity>
     </application>
 
-</manifest>
+</manifest>
