@@ -1,8 +1,16 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+     <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar" 
+        android:layout_gravity="top"
+        />
+    
+     <!-- 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -146,12 +154,22 @@
         android:contentDescription="@string/homeImageButtonPodcast"
         android:src="@drawable/home_image_button_podcast"
         android:visibility="invisible" />
-    
+    -->
+     <FrameLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
     <ListView
        android:id="@+id/home_list"
        android:layout_width="fill_parent"
        android:layout_height="fill_parent"
        android:paddingTop="20sp" >
-    </ListView>
-
-</RelativeLayout>
+    </ListView><include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="5sp"
+            layout="@layout/action_share1" />
+    </FrameLayout>
+     
+</LinearLayout>

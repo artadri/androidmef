@@ -1,65 +1,91 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  
-        style="@style/ActionShare"
+    style="@style/ActionShare"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/imageBackNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@null"
+        android:contentDescription="immagine back"
+        android:src="@drawable/ico_back"
+        
+         />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:gravity="center" >
 
         <ImageButton
             android:id="@+id/detailRSSImageShareFacebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:paddingLeft="4dp"
-            android:paddingTop="4dp"
-            android:paddingRight="4dp"
             android:contentDescription="@string/detailRSSImageShareFacebook"
-            android:src="@drawable/ico_facebook" 
-            android:visibility="gone"
-            />
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:src="@drawable/ico_facebook"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/detailRSSImageShareTwitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/detailRSSImageShareFacebook"
             android:background="@null"
-            android:padding="4dp"
-              android:layout_toRightOf="@+id/detailRSSImageShareFacebook"
             android:contentDescription="@string/detailRSSImageShareTwitter"
-            android:src="@drawable/ico_twitter" 
-             android:visibility="gone"
-            />
+            android:padding="4dp"
+            android:src="@drawable/ico_twitter"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/detailRSSImageShareGplus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/detailRSSImageShareTwitter"
             android:background="@null"
-            android:padding="4dp"
-              android:layout_toRightOf="@+id/detailRSSImageShareTwitter"
             android:contentDescription="@string/detailRSSImageShareGplus"
+            android:padding="4dp"
             android:src="@drawable/ico_gplus"
-            android:visibility="gone" 
-            />
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/detailRSSImageShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/detailRSSImageShareGplus"
             android:background="@null"
-            android:padding="4dp"
-              android:layout_toRightOf="@+id/detailRSSImageShareGplus"
             android:contentDescription="@string/detailRSSImageShare"
+            android:padding="4dp"
+            android:visibility="gone"
             android:src="@drawable/ico_share" />
 
         <ImageButton
             android:id="@+id/detailRSSImageInternet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:padding="4dp"
             android:layout_toRightOf="@+id/detailRSSImageShare"
+            android:background="@null"
             android:contentDescription="@string/detailRSSImageInternet"
+            android:padding="4dp"
+            android:visibility="gone"
             android:src="@drawable/ico_internet" />
     </RelativeLayout>
 
+    <ImageButton
+        android:id="@+id/imageForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:contentDescription="immagine forward"
+        android:src="@drawable/ico_back" 
+        
+        />
+
+</RelativeLayout>
