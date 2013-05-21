@@ -118,5 +118,16 @@
      <string name="title_home_rgs">RGS</string>
      <string name="title_home_intranetdag">Intranet DAG</string>
     
+     <string name="title_home_dip_mef">MEF</string>
+     <string name="descrizione_home_dip_mef">MEF</string>
+     <string name="title_home_dip_dag">DAG</string>
+     <string name="descrizione_home_dip_dag">Descrizione dag</string>
+     <string name="title_home_dip_dt">DT</string>
+     <string name="descrizione_home_dip_dt">descrizione dt</string>
+     <string name="title_home_dip_rgs">RGS</string>
+     <string name="descrizione_home_dip_rgs">descrizione RGS</string>
+     <string name="title_home_dip_intranetdag">Intranet DAG</string>
+    <string name="descrizione_home_dip_intranetdag">descrizione intranet dag</string>
+     
 
 </resources>
