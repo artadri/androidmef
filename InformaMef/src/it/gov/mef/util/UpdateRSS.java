@@ -9,13 +9,26 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class UpdateRSS extends AsyncTask<Context,String,String> {
+public class UpdateRSS extends AsyncTask<Object,String,String> {
 
 	@Override
-	protected String doInBackground(Context... arg0) {
+	protected String doInBackground(Object... arg0) {
 		
 		
-		Context ctx = arg0[0];
+		Context ctx = (Context)arg0[0];
+		int dip = (Integer) arg0[1];
+		int rss = (Integer) arg0[2];
+		
+		if (dip == -1 && rss == -1){
+//			aggiorno tutti i dipartimenti
+		} else if (dip >= 0 &&  rss == -1){
+//			aggiorno solo il singolo dipartimento
+		} else if (dip == -1 && rss >= 0){
+//			aggiorno solo il singolo RSS
+		}
+		
+		
+		
 		
 		// Prendiamo dal context il ConnectivityManager
 				ConnectivityManager connManager = (ConnectivityManager)ctx.getSystemService(Context.CONNECTIVITY_SERVICE);

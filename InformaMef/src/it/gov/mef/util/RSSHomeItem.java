@@ -7,14 +7,30 @@ public class RSSHomeItem {
 	private String totali;
 	private String image;
 	private Date ultimoAgg;
+	private int idRSS = 0;
 
-	public RSSHomeItem(String nome, String totali, String image,Date ultimoAgg ) {
+	public RSSHomeItem(String nome, String totali, String image,Date ultimoAgg, int idRSS ) {
 		super();
 		this.nome = nome;
 		this.totali = totali;
 		this.image = image;
 		this.ultimoAgg = ultimoAgg;
+		this.idRSS = idRSS;
 	}
+
+	
+	
+	public int getIdRSS() {
+		return idRSS;
+	}
+
+
+
+	public void setIdRSS(int idRSS) {
+		this.idRSS = idRSS;
+	}
+
+
 
 	public Date getUltimoAgg() {
 		return ultimoAgg;

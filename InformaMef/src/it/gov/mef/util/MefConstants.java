@@ -2,6 +2,12 @@ package it.gov.mef.util;
 
 public interface MefConstants {
 
+	public static final int MEF = 1;
+	public static final int DAG = 2;
+	public static final int DT = 3;
+	public static final int RGS = 4;
+	public static final int INTRANET_DAG = 5;
+	
 	public static final int idRSS1 = 1;
 	public static final int idRSS2 = 2;
 	public static final int idRSS3 = 3;
