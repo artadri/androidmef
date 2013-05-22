@@ -25,7 +25,9 @@
         <activity
             android:name="it.gov.mef.informamef.MainActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main" 
+            
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,7 +45,9 @@
         </activity>
         <activity
             android:name="it.gov.mef.informamef.HomeActivity"
-            android:label="@string/title_activity_home" >
+            android:label="@string/title_activity_home" 
+            
+            >
             <intent-filter>
                 <action android:name="it.gov.mef.informamef.HomeActivity" />
 
