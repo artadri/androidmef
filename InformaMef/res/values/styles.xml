@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -16,6 +16,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
+     
     </style>
 
     <style name="Theme.Transparent" parent="android:Theme">
@@ -29,15 +30,14 @@
     </style>
     
     <style name="ActionBar" parent="AppBaseTheme">
-         <item name="android:textColor">#DAE2EC</item>
-        <item name="android:background">#183158</item>
-        
+         <item name="android:textColor">#444445</item>
+        <item name="android:background">#DBD8CC</item>
     </style>
     
      <style name="ActionShare" parent="AppBaseTheme">
-         <item name="android:textColor">#ffffff</item>
+         <item name="android:textColor">#444445</item>
          
-        <item name="android:background">#90000000</item>
+        <item name="android:background">#95DBD8CC</item>
         
     </style>
     
