@@ -1,7 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+       android:background="@drawable/ic_background_gen_9"
+       >
 
      <include
         android:layout_width="fill_parent"
@@ -163,12 +165,17 @@
        android:id="@+id/home_list"
        android:layout_width="fill_parent"
        android:layout_height="fill_parent"
-       android:paddingTop="20sp" >
-    </ListView><include
+       android:paddingTop="20sp" 
+
+       >
+    
+    </ListView>
+    
+    <include
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="5sp"
+            android:layout_margin="1sp"
             layout="@layout/action_share1" />
     </FrameLayout>
      

@@ -1,7 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+       android:background="@drawable/ic_background_gen_9"
+       >
 
     <include
         android:layout_width="fill_parent"
@@ -16,14 +18,16 @@
             android:id="@+id/rss_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="5sp" >
+            android:paddingTop="5sp" 
+
+            >
         </ListView>
 
         <include
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="5sp"
+          
             layout="@layout/action_share1" />
     </FrameLayout>
 

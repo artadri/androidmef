@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:background="@null"
         android:contentDescription="immagine back"
-        android:src="@drawable/ico_back"
+        android:src="@drawable/ic_frec_sx"
         
          />
 
@@ -63,7 +63,7 @@
             android:contentDescription="@string/detailRSSImageShare"
             android:padding="4dp"
             android:visibility="gone"
-            android:src="@drawable/ico_share" />
+            android:src="@drawable/ic_condividi" />
 
         <ImageButton
             android:id="@+id/detailRSSImageInternet"
@@ -74,7 +74,7 @@
             android:contentDescription="@string/detailRSSImageInternet"
             android:padding="4dp"
             android:visibility="gone"
-            android:src="@drawable/ico_internet" />
+            android:src="@drawable/ic_web" />
     </RelativeLayout>
 
     <ImageButton
@@ -84,7 +84,7 @@
         android:layout_alignParentRight="true"
         android:background="@null"
         android:contentDescription="immagine forward"
-        android:src="@drawable/ico_back" 
+        android:src="@drawable/ic_frec_dx" 
         
         />
 
