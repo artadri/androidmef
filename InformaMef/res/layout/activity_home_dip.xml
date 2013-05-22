@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeDipActivity" 
+    
+    android:orientation="vertical"
+
+    >
+    
+    
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" > 
+    
+        <ListView
+            android:id="@+id/rss_dip_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="5sp"
+        />
+        
+        </FrameLayout>
+        
+    <!-- 
+    
+      android:divider="@drawable/list_item_divider"
+         android:divider="@null"
+            android:dividerHeight="1dp"
+      
+     <ImageButton
+     
+            android:id="@+id/homeImageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton1"
+            android:src="@drawable/ic_launcher" />
+      <ImageButton
+            android:id="@+id/homeImageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton1"
+            android:src="@drawable/ic_launcher" />
+       <ImageButton
+            android:id="@+id/homeImageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton1"
+            android:src="@drawable/ic_launcher" />
+        <ImageButton
+            android:id="@+id/homeImageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton1"
+            android:src="@drawable/ic_launcher" />
+         <ImageButton
+            android:id="@+id/homeImageButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/homeImageButton1"
+            android:src="@drawable/ic_launcher" />
+         
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEF" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DAG" />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INTRANET" />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DT" />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RGS" />
+     -->
+
+</LinearLayout>
