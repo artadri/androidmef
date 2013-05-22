@@ -348,12 +348,12 @@ public class RSSList extends Activity {
 
 //			TODO Deve aggiornare solo RSS corrente
 			Toast.makeText(this,
-					"E' stato avviato l'aggiornamento dei contenuti", Toast.LENGTH_SHORT)
+					"Sincronizzazione avviata", Toast.LENGTH_SHORT)
 					.show();
 			NavigationBean nav = (NavigationBean)getApplication();
-			new UpdateRSS().execute(new Object [] {ctx, new Integer(-1), new Integer(nav.getCurrentRSS()) } );
-			
-//			startActivity(new Intent(this, HomeActivity.class));
+			List<RSSHomeItem> itemHomeList = nav.getItemHomeList();
+			RSSHomeItem itemHome = itemHomeList.get(nav.getCurrentRSS());
+			new UpdateRSS().execute(new Object [] {ctx, new Integer(-1), new Integer(itemHome.getIdRSS()) } );
 
 			return true;
 		case R.id.actionContact:
@@ -369,8 +369,12 @@ public class RSSList extends Activity {
 			onBackPressed();
 			return true;
 		case R.id.action_esci:
-			
-			return true;
+			Intent intent1 = new Intent(Intent.ACTION_MAIN);
+			intent1.addCategory(Intent.CATEGORY_HOME);
+			intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent1);
+			return true; 
+
 			
 		default:
 			return super.onOptionsItemSelected(item);

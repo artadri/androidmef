@@ -489,7 +489,7 @@ public class HomeActivity extends Activity {
 			return true;
 		case R.id.action_refresh_list:
 			Toast.makeText(HomeActivity.this,
-					"E' stato avviato l'aggiornamento dei contenuti del dipartimento", Toast.LENGTH_SHORT)
+					"Sincronizzazione avviata", Toast.LENGTH_SHORT)
 					.show();
 			NavigationBean nav = (NavigationBean)getApplication();
 			
@@ -511,8 +511,12 @@ public class HomeActivity extends Activity {
 			onBackPressed();
 			return true;
 		case R.id.action_esci:
-			
-			return true;
+			Intent intent1 = new Intent(Intent.ACTION_MAIN);
+			intent1.addCategory(Intent.CATEGORY_HOME);
+			intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent1);
+			return true; 
+
 			
 		default:
 			return super.onOptionsItemSelected(item);

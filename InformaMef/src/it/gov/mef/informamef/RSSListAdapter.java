@@ -67,10 +67,10 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 			
 			Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
 			
-			if (sdf.format(item.getPubDate()).equals(
+			if (!sdf.format(item.getPubDate()).equals(
 					sdf.format(itemPrec.getPubDate()))) {
 				
-				Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
+//				Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
 				
 				
 				    txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
