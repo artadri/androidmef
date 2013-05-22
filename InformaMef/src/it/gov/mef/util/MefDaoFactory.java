@@ -47,24 +47,24 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 				execSQL(ITEM_RSS_TABLE_CREATE);
 				execSQL(RSS_TABLE_CREATE);
 //				Inserisco gli  RSS
-				insertRSS(MefConstants.idRSS1,"http://www.mef.gov.it/rss/rss.asp?t=4", "MEF", "", "");
-				insertRSS(MefConstants.idRSS2,"http://www.mef.gov.it/rss/rss.asp?t=3", "MEF", "", "");
-				insertRSS(MefConstants.idRSS3,"http://www.mef.gov.it/rss/rss.asp?t=5", "MEF", "", "");
-				insertRSS(MefConstants.idRSS4,"http://www.mef.gov.it/rss/rss.asp?t=8&c=200",	 "MEF", "", "");
-				insertRSS(MefConstants.idRSS5,"http://www.mef.gov.it/rss/rss.asp?t=8&c=210", "MEF", "", "");
-				insertRSS(MefConstants.idRSS6,"http://www.dt.mef.gov.it/it/news/index.html?output=rss", "DT", "", "");
-				insertRSS(MefConstants.idRSS7,"http://www.dt.mef.gov.it/it/eventi/index.html?output=rss", "DT", "", "");
-				insertRSS(MefConstants.idRSS8,"http://www.dt.mef.gov.it/it/calendario/index.html?output=rss",	 "DT", "", "");
-				insertRSS(MefConstants.idRSS9,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/programma_trimestrale_emissione/index.html?output=rss", "DT", "", "");
-				insertRSS(MefConstants.idRSS10,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_ctz/index.html?output=rss", "DT", "", "");
-				insertRSS(MefConstants.idRSS11,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_btpei/index.html?output=rss", "DT", "", "");
-				insertRSS(MefConstants.idRSS12,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_medio_lungo_termine/index.html?output=rss",	 "DT", "", "");
-				insertRSS(MefConstants.idRSS13,"http://www.dt.mef.gov.it/it/debito_pubblico/dati_statistici/titoli_scadenza_prossimi_12_mesi/index.html?output=rss", "DT", "", "");
-				insertRSS(MefConstants.idRSS14,"http://www.dag.mef.gov.it/rss/rss.notizie.xml", "DAG", "", "");
-				insertRSS(MefConstants.idRSS15,"http://www.rgs.mef.gov.it/VERSIONE-I/RSS/rssRGS.xml", "RGS", "", "");
-				insertRSS(MefConstants.idRSS17,"https://intranetdag.tesoro.it/rss/rss.html?t=12002", "INTRANET", "", "");
-				insertRSS(MefConstants.idRSS16,"https://intranetdag.tesoro.it/rss/rss.html?t=12003", "INTRANET", "", "");
-				insertRSS(MefConstants.idRSS18,"https://intranetdag.tesoro.it/rss/rss.html?t=12004", "INTRANET", "", "");
+				insertRSS(MefConstants.idRSS1,"http://www.mef.gov.it/rss/rss.asp?t=4", MefConstants.DESC_MEF, "", "");
+				insertRSS(MefConstants.idRSS2,"http://www.mef.gov.it/rss/rss.asp?t=3", MefConstants.DESC_MEF, "", "");
+				insertRSS(MefConstants.idRSS3,"http://www.mef.gov.it/rss/rss.asp?t=5", MefConstants.DESC_MEF, "", "");
+				insertRSS(MefConstants.idRSS4,"http://www.mef.gov.it/rss/rss.asp?t=8&c=200",	 MefConstants.DESC_MEF, "", "");
+				insertRSS(MefConstants.idRSS5,"http://www.mef.gov.it/rss/rss.asp?t=8&c=210", MefConstants.DESC_MEF, "", "");
+				insertRSS(MefConstants.idRSS6,"http://www.dt.mef.gov.it/it/news/index.html?output=rss", MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS7,"http://www.dt.mef.gov.it/it/eventi/index.html?output=rss", MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS8,"http://www.dt.mef.gov.it/it/calendario/index.html?output=rss",	 MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS9,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/programma_trimestrale_emissione/index.html?output=rss", MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS10,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_ctz/index.html?output=rss", MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS11,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_btpei/index.html?output=rss", MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS12,"http://www.dt.mef.gov.it/it/debito_pubblico/emissioni_titoli_di_stato_interni/comunicazioni_emissioni_medio_lungo_termine/index.html?output=rss",	 MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS13,"http://www.dt.mef.gov.it/it/debito_pubblico/dati_statistici/titoli_scadenza_prossimi_12_mesi/index.html?output=rss", MefConstants.DESC_DT, "", "");
+				insertRSS(MefConstants.idRSS14,"http://www.dag.mef.gov.it/rss/rss.notizie.xml", MefConstants.DESC_DAG, "", "");
+				insertRSS(MefConstants.idRSS15,"http://www.rgs.mef.gov.it/VERSIONE-I/RSS/rssRGS.xml", MefConstants.DESC_RGS, "", "");
+				insertRSS(MefConstants.idRSS17,"https://intranetdag.tesoro.it/rss/rss.html?t=12002", MefConstants.DESC_INTRANET_DAG, "", "");
+				insertRSS(MefConstants.idRSS16,"https://intranetdag.tesoro.it/rss/rss.html?t=12003", MefConstants.DESC_INTRANET_DAG, "", "");
+				insertRSS(MefConstants.idRSS18,"https://intranetdag.tesoro.it/rss/rss.html?t=12004", MefConstants.DESC_INTRANET_DAG, "", "");
 
 				
 				
@@ -373,6 +373,20 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		return feed;
 	}
 	
+	public int getRSSUrlId(int rowId) {
+		Cursor cursor = mDb.query(RSSMetaData.RSS_TABLE, null,
+				RSSMetaData.ID_URL + "=" + rowId, null, null, null, null);
+		int feed = 0;
+		if (cursor.moveToNext()) {
+			feed = cursor.getInt((cursor.getColumnIndex(RSSMetaData.ID_URL)));
+
+		}
+
+		cursor.close();
+
+		return feed;
+	}
+	
 	
 	
 	public List<Integer> getRSSListURL() {
@@ -390,11 +404,33 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		return feed;
 	}
 
+	
+	public List<Integer> getRSSListURLByDesc(String dip) {
+		Cursor cursor = mDb.query(RSSMetaData.RSS_TABLE, null,
+				RSSMetaData.DESC_URL_RSS + "=\"" + dip + "\"", null, null, null, null);
+		List<Integer> feed = new ArrayList<Integer>();
+		
+		while (cursor.moveToNext()) {
+			feed.add(cursor.getInt(cursor.getColumnIndex(RSSMetaData.ID_URL)));
+
+		}
+		
+		
+		cursor.close();
+
+		return feed;
+	}
+	
+	
+	
+	
+	
+	
 	public List<RSSItem> getRSSList(int rowId) {
 		// TODO Auto-generated method stub
 
 		Cursor cursor = mDb.rawQuery("SELECT * FROM item_rss WHERE id_url="+ rowId + 
-				" ORDER BY " + RSSMetaData.PUB_DATE + " DESC" ,null); 
+				" ORDER BY date(" + RSSMetaData.PUB_DATE + ") DESC" ,null); 
 //				mDb.query(RSSMetaData.RSS_ITEM_TABLE, null, 
 //				RSSMetaData.ID_URL + "=" + rowId, null, null, null, null);
 		List<RSSItem> listRSS = new ArrayList<RSSItem>();

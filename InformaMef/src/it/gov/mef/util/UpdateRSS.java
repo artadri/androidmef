@@ -1,5 +1,6 @@
 package it.gov.mef.util;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,13 +20,7 @@ public class UpdateRSS extends AsyncTask<Object,String,String> {
 		int dip = (Integer) arg0[1];
 		int rss = (Integer) arg0[2];
 		
-		if (dip == -1 && rss == -1){
-//			aggiorno tutti i dipartimenti
-		} else if (dip >= 0 &&  rss == -1){
-//			aggiorno solo il singolo dipartimento
-		} else if (dip == -1 && rss >= 0){
-//			aggiorno solo il singolo RSS
-		}
+		
 		
 		
 		
@@ -52,7 +47,45 @@ public class UpdateRSS extends AsyncTask<Object,String,String> {
 
 			db.openDataBase(true);
 			
-			List<Integer> feed = db.getRSSListURL();
+			List<Integer> feed = new ArrayList<Integer>();
+			
+			
+			if (dip == -1 && rss == -1){
+//				aggiorno tutti i dipartimenti
+				feed = db.getRSSListURL();
+			} else if (dip >= 0 &&  rss == -1){
+//				aggiorno solo il singolo dipartimento
+				
+				switch (dip) {
+				case MefConstants.MEF:
+					feed = db.getRSSListURLByDesc(MefConstants.DESC_MEF);
+					break;
+				case MefConstants.DAG:
+					feed = db.getRSSListURLByDesc(MefConstants.DESC_DAG);
+					break;
+				case MefConstants.DT:
+					feed = db.getRSSListURLByDesc(MefConstants.DESC_DT);
+					break;
+				case MefConstants.RGS:
+					feed = db.getRSSListURLByDesc(MefConstants.DESC_RGS);
+					break;
+				case MefConstants.INTRANET_DAG:
+					feed = db.getRSSListURLByDesc(MefConstants.DESC_INTRANET_DAG);
+					break;
+				default:
+					feed = db.getRSSListURLByDesc(MefConstants.DESC_MEF);
+					break;
+				}
+				
+			} else if (dip == -1 && rss >= 0){
+//				aggiorno solo il singolo RSS
+				Integer rssFeed = new Integer(db.getRSSUrlId(rss));
+				feed.add(rssFeed);
+			}
+			
+			
+			
+			
 			Iterator<Integer> it = feed.iterator();
 			while (it.hasNext()) {
 				Integer elem = (Integer) it.next();

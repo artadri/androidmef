@@ -8,6 +8,12 @@ public interface MefConstants {
 	public static final int RGS = 4;
 	public static final int INTRANET_DAG = 5;
 	
+	public static final String DESC_MEF = "MEF";
+	public static final String DESC_DAG = "DAG";
+	public static final String DESC_DT = "DT";
+	public static final String DESC_RGS = "RGS";
+	public static final String DESC_INTRANET_DAG = "INTRANET";
+	
 	public static final int idRSS1 = 1;
 	public static final int idRSS2 = 2;
 	public static final int idRSS3 = 3;
