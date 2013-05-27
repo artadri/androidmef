@@ -62,18 +62,7 @@ public class HomeActivity extends Activity {
 		MefDaoFactory db = new MefDaoFactory(this);
 		db.openDataBase(true);
 		
-		
 
-
-
-//		TODO verifico se c'è la notifica 
-		if (Context.NOTIFICATION_SERVICE!=null) {
-	        String ns = Context.NOTIFICATION_SERVICE;
-	        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
-	        nMgr.cancel(MefConstants.notifica);
-	    }
-		
-	
 		
 		List<RSSHomeItem> itemHomeList= new ArrayList<RSSHomeItem>();
 
@@ -88,7 +77,7 @@ public class HomeActivity extends Activity {
 		if ( MefConstants.MEF == dipartimentoSelezionato){
 			
 
-			FormatTitleBar.settingTitle(this, getString( R.string.title_home_mef)); 
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_mef), R.drawable.ic_logo_mef_9); 
 			
 			
 //	MEF
@@ -133,7 +122,7 @@ public class HomeActivity extends Activity {
 			
 		
 // DT
-			FormatTitleBar.settingTitle(this, getString( R.string.title_home_dt)); 
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_dt), R.drawable.ic_logo_dt_9); 
 		
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS6);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS6) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS6)
@@ -191,7 +180,7 @@ public class HomeActivity extends Activity {
 		if (MefConstants.DAG == dipartimentoSelezionato){
 			
 // DAG
-			FormatTitleBar.settingTitle(this, getString( R.string.title_home_dag)); 
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_dag), R.drawable.ic_logo_dag_9); 
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS14);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS14) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS14)
 				+ " ]";
@@ -206,7 +195,7 @@ public class HomeActivity extends Activity {
 		if (MefConstants.RGS == dipartimentoSelezionato){
 			
 //	RGS
-			FormatTitleBar.settingTitle(this, getString( R.string.title_home_rgs)); 
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_rgs), R.drawable.ic_logo_rgs_9); 
 		
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS15);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS15) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS15)
@@ -221,7 +210,7 @@ public class HomeActivity extends Activity {
 		if (MefConstants.INTRANET_DAG == dipartimentoSelezionato){
 			
 //	INTRANET
-			FormatTitleBar.settingTitle(this, getString( R.string.title_home_intranetdag)); 
+			FormatTitleBar.settingTitle(this, getString( R.string.title_home_intranetdag), R.drawable.ic_logo_intranetdag_9); 
 		data_agg = db.getRSSLastUpdate(MefConstants.idRSS16);
 		numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.idRSS16) + " - " + db.getTotRSSItemByIdURL(MefConstants.idRSS16)
 				+ " ]";

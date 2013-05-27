@@ -13,6 +13,7 @@ import it.gov.mef.util.RSSItem;
 import it.gov.mef.util.UpdateRSS;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -35,7 +36,18 @@ public class HomeDipActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_dip);
 		ctx = this;
-		FormatTitleBar.settingTitle(this, "Notizie dal MEF" ); 
+		
+		
+//		TODO verifico se c'è la notifica 
+		if (Context.NOTIFICATION_SERVICE!=null) {
+	        String ns = Context.NOTIFICATION_SERVICE;
+	        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
+	        nMgr.cancel(MefConstants.notifica);
+	    }
+		
+	
+		
+		FormatTitleBar.settingTitle(this, getString(R.string.app_name) ); 
 		
 		List<RSSHomeDipItem> listDip = new ArrayList<RSSHomeDipItem>();
 		
@@ -44,6 +56,9 @@ public class HomeDipActivity extends Activity {
 		RSSHomeDipItem elem2 = new RSSHomeDipItem(getString(R.string.title_home_dip_dt), getString(R.string.descrizione_home_dip_dt), R.drawable.ic_logo_dt_9, MefConstants.DT );
 		RSSHomeDipItem elem3 = new RSSHomeDipItem(getString(R.string.title_home_dip_rgs), getString(R.string.descrizione_home_dip_rgs), R.drawable.ic_logo_rgs_9, MefConstants.RGS );
 		RSSHomeDipItem elem4 = new RSSHomeDipItem(getString(R.string.title_home_dip_intranetdag), getString(R.string.descrizione_home_dip_intranetdag), R.drawable.ic_logo_intranetdag_9, MefConstants.INTRANET_DAG );
+		
+//		RSSHomeDipItem elem5 = new RSSHomeDipItem(getString(R.string.title_home_dip_finanze), getString(R.string.descrizione_home_dip_finanze), R.drawable.ic_logo_finanze_9, MefConstants.FINANZE );
+//		listDip.add(elem5);
 		
 		listDip.add(elem);
 		listDip.add(elem1);

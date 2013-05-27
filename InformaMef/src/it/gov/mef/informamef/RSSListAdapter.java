@@ -58,8 +58,8 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 		
 		if (position == 0) {
 			txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
-		    txtDate.setBackgroundColor(Color.parseColor("#30E4E4E4"));
-		    txtDate.setTextColor(Color.parseColor("#5090C0"));
+//		    txtDate.setBackgroundColor(Color.parseColor("#30E4E4E4"));
+//		    txtDate.setTextColor(Color.parseColor("#5090C0"));
 			txtTitle.setText(item.getTitle());
 		} else {
 			itemPrec = (RSSItem) getItem(position - 1);
@@ -74,8 +74,8 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 				
 				
 				    txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
-				    txtDate.setBackgroundColor(Color.parseColor("#30E4E4E4"));
-				    txtDate.setTextColor(Color.parseColor("#5090C0"));
+//				    txtDate.setBackgroundColor(Color.parseColor("#30E4E4E4"));
+//				    txtDate.setTextColor(Color.parseColor("#5090C0"));
 				    
 			} else {
 				txtDate.setVisibility(View.GONE);
