@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">News dal MEF</string>
+    <string name="app_name">Notizie dal MEF</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_home">News dal MEF</string>
@@ -14,24 +14,24 @@
     <string name="listRSSTitle">Lista RSS</string>
 
     <!-- Titoli pagina dettaglio rss -->
-    <string name="title_activity_rssdetail_ico1">MEF - Comunicati stampa</string>
-    <string name="title_activity_rssdetail_ico2">MEF - Interviste e Interventi</string>
-    <string name="title_activity_rssdetail_ico3">MEF - Ultimi documenti</string>
-    <string name="title_activity_rssdetail_ico4">MEF - Bandi di gara</string>
-    <string name="title_activity_rssdetail_ico5">MEF - Concorsi 1</string>
-    <string name="title_activity_rssdetail_ico6">DT - News</string>
-    <string name="title_activity_rssdetail_ico7">DT - Eventi</string>
-    <string name="title_activity_rssdetail_ico8">DT - Calendario</string>
-    <string name="title_activity_rssdetail_ico9">DT - Programmazione Trimestrale BOT</string>
-    <string name="title_activity_rssdetail_ico10">DT - Emissioni CTZ</string>
-    <string name="title_activity_rssdetail_ico11">DT - Emissioni BTP</string>
-    <string name="title_activity_rssdetail_ico12">DT - Emissioni Medio-Lungo Termine</string>
-    <string name="title_activity_rssdetail_ico13">DT - Titoli in Scadenza nei Prossimi 12 mesi</string>
-    <string name="title_activity_rssdetail_ico14">DAG - News</string>
-    <string name="title_activity_rssdetail_ico15">RGS - News</string>
-    <string name="title_activity_rssdetail_ico16">INTRANET - News</string>
-    <string name="title_activity_rssdetail_ico17">INTRANET - Circolari</string>
-    <string name="title_activity_rssdetail_ico18">INTRANET - LexNews</string>
+    <string name="title_activity_rssdetail_ico1">Comunicati stampa</string>
+    <string name="title_activity_rssdetail_ico2">Interviste e Interventi</string>
+    <string name="title_activity_rssdetail_ico3">Ultimi documenti</string>
+    <string name="title_activity_rssdetail_ico4">Bandi di gara</string>
+    <string name="title_activity_rssdetail_ico5">Concorsi 1</string>
+    <string name="title_activity_rssdetail_ico6">News</string>
+    <string name="title_activity_rssdetail_ico7">Eventi</string>
+    <string name="title_activity_rssdetail_ico8">Calendario</string>
+    <string name="title_activity_rssdetail_ico9">Programmazione Trimestrale BOT</string>
+    <string name="title_activity_rssdetail_ico10">Emissioni CTZ</string>
+    <string name="title_activity_rssdetail_ico11">Emissioni BTP</string>
+    <string name="title_activity_rssdetail_ico12">Emissioni Medio-Lungo Termine</string>
+    <string name="title_activity_rssdetail_ico13">Titoli in Scadenza nei Prossimi 12 mesi</string>
+    <string name="title_activity_rssdetail_ico14">News</string>
+    <string name="title_activity_rssdetail_ico15">News</string>
+    <string name="title_activity_rssdetail_ico16">News</string>
+    <string name="title_activity_rssdetail_ico17">Circolari</string>
+    <string name="title_activity_rssdetail_ico18">LexNews</string>
     <string name="detailRSSImageShare">Immagine sharing</string>
     <string name="detailRSSImageShareFacebook">Immagine faceboook</string>
     <string name="detailRSSImageShareTwitter">Immagine twitter</string>
@@ -39,24 +39,24 @@
     <string name="detailRSSImageInternet">Immagine internet</string>
 
     <!-- Titoli pagina lista rss -->
-    <string name="title_activity_rsslist_ico1">MEF - Comunicati stampa</string>
-    <string name="title_activity_rsslist_ico2">MEF - Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico3">MEF - Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico4">MEF - Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico5">MEF - Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico6">DT - Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico7">DT - Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico8">DT - Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico9">DT - Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico10">DT - Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico11">DT - Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico12">DT - Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico13">DT - Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico14">DAG - Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico15">RGS - Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico16">INTRANET - Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico17">INTRANET - Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico18">INTRANET - Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico1">Comunicati stampa</string>
+    <string name="title_activity_rsslist_ico2">Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico3">Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico4">Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico5">Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico6">Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico7">Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico8">Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico9">Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico10">Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico11">Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico12">Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico13">Associata al pulsante 1</string>
+    <string name="title_activity_rsslist_ico14">Associata al pulsante 2</string>
+    <string name="title_activity_rsslist_ico15">Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico16">Associata al pulsante 4</string>
+    <string name="title_activity_rsslist_ico17">Associata al pulsante 3</string>
+    <string name="title_activity_rsslist_ico18">Associata al pulsante 4</string>
 
     <!-- Bottoni -->
     <string name="homeImageButton1">Titolo icona da cambiare 1</string>
@@ -117,17 +117,21 @@
      <string name="title_home_dt">DT</string>
      <string name="title_home_rgs">RGS</string>
      <string name="title_home_intranetdag">Intranet DAG</string>
+     <string name="title_home_finanze">FINANZE</string>
     
      <string name="title_home_dip_mef">MEF</string>
-     <string name="descrizione_home_dip_mef">MEF</string>
+     <string name="descrizione_home_dip_mef">Ministero dell\'Economia e delle Finanze</string>
      <string name="title_home_dip_dag">DAG</string>
-     <string name="descrizione_home_dip_dag">Descrizione dag</string>
+     <string name="descrizione_home_dip_dag">Dipartimento dell\'Amministrazione Generale, del Personale e dei Servizi</string>
      <string name="title_home_dip_dt">DT</string>
-     <string name="descrizione_home_dip_dt">descrizione dt</string>
+     <string name="descrizione_home_dip_dt">Dipartimento del Tesoro</string>
      <string name="title_home_dip_rgs">RGS</string>
-     <string name="descrizione_home_dip_rgs">descrizione RGS</string>
+     <string name="descrizione_home_dip_rgs">Ragioneria Generale e dello Stato </string>
      <string name="title_home_dip_intranetdag">Intranet DAG</string>
-    <string name="descrizione_home_dip_intranetdag">descrizione intranet dag</string>
+    <string name="descrizione_home_dip_intranetdag">Dipartimento dell\'Amministrazione Generale, del Personale e dei Servizi</string>
+     
+    <string name="title_home_dip_finanze">Finanze</string>
+    <string name="descrizione_home_dip_finanze">Dipartimento delle Finanze</string>
      
 
 </resources>
