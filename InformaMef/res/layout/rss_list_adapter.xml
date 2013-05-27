@@ -12,6 +12,8 @@
             android:gravity="right"
             android:paddingRight="5sp"
             android:textStyle="italic" 
+            android:background="#30E4E4E4"
+            
             />
 
         <TextView
@@ -23,6 +25,19 @@
             android:paddingRight="2sp"
             android:paddingTop= "3sp"
             android:paddingBottom="3sp"
-            android:textSize="12sp" />
+            android:textSize="12sp" 
+           
+            />
+        
+       <ImageView
+        android:id="@+id/rssListAdapterLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bg_lista_9" 
+        android:padding="0sp"
+        android:background="@null"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        />
 
 </LinearLayout>

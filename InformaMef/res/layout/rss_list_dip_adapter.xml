@@ -2,49 +2,72 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
+    android:layout_margin="5sp"
+    android:orientation="vertical" >
 
-    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         android:orientation="horizontal"
+         android:padding="10sp"
+         android:gravity="top"
+          >
+
+        <ImageView
+            android:id="@+id/rssListDipAdapterLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:padding="0sp"
+            android:layout_gravity="center"
+            android:src="@null" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10sp"
+            android:layout_toRightOf="@+id/rssListDipAdapterLogo"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/rssListDipAdapterTitolo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:onClick="true"
+                android:paddingBottom="3sp"
+                android:paddingLeft="3sp"
+                android:paddingRight="2sp"
+                android:paddingTop="3sp"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/rssListDipAdapterDesc"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignLeft="@+id/rssListDipAdapterLogo"
+                android:layout_marginBottom="10sp"
+                android:gravity="left"
+                android:paddingLeft="0sp"
+                android:paddingRight="5sp"
+                android:textSize="8sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/rssListDipAdapterLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@null" 
-        android:padding="0sp"
-        android:background="@null"
-        android:adjustViewBounds="true"
-        />
-
-    <TextView
-        android:id="@+id/rssListDipAdapterDesc"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="right"
-        android:paddingLeft="0sp"
-        android:paddingRight="5sp"
-        android:textStyle="italic" 
-        android:layout_alignLeft="@+id/rssListDipAdapterLogo"
-        />
-
-    <TextView
-        android:id="@+id/rssListDipAdapterTitolo"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:onClick="true"
-        android:paddingBottom="3sp"
-        android:paddingLeft="3sp"
-        android:paddingRight="2sp"
-        android:paddingTop="3sp"
-        android:textSize="12sp" />
-    
-    <!-- 
-     <ImageView
         android:id="@+id/rssListDipAdapterLinea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher" />
-
-   -->
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:paddingBottom="5sp"
+        android:paddingTop="5sp"
+        android:src="@drawable/ic_bg_lista_9" 
+        />
 
 </RelativeLayout>

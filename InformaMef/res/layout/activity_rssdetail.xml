@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RSSDetailActivity" 
-       android:background="@drawable/ic_background_gen_9"
+       android:background="@drawable/ic_backgroundgen_9"
        >
 
     <include

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeDipActivity" 
-    
+    android:background="@drawable/ic_backgroundgen_9"
     android:orientation="vertical"
 
     >
@@ -23,7 +23,9 @@
             android:id="@+id/rss_dip_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="5sp"
+            android:padding="10sp"
+            android:divider="@null"
+            
         />
         
         </FrameLayout>
