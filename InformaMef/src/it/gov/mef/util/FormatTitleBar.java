@@ -6,9 +6,11 @@ import it.gov.mef.informamef.RSSList;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FormatTitleBar {
@@ -124,5 +126,22 @@ public class FormatTitleBar {
 		title.setText(titolo);
 
 	}
+	
+	public static void settingTitle(final Activity activity, String titolo, int id_logo) {
+
+		Typeface gothicB = Typeface.createFromAsset(activity.getAssets(),
+				"fonts/gothicb.ttf");
+		TextView title = (TextView) activity.findViewById(R.id.titleBar);
+		title.setTypeface(gothicB);
+		title.setText(titolo);
+		
+		
+		ImageView logo = (ImageView)activity.findViewById(R.id.imageLeft);
+		 Drawable drawable = activity.getResources().getDrawable(id_logo);
+	    logo.setImageDrawable(drawable);
+	    
+		
+	}
+	
 
 }

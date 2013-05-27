@@ -21,6 +21,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MefDaoFactory extends SQLiteOpenHelper {
 
@@ -66,49 +67,52 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 				insertRSS(MefConstants.idRSS16,"https://intranetdag.tesoro.it/rss/rss.html?t=12003", MefConstants.DESC_INTRANET_DAG, "", "");
 				insertRSS(MefConstants.idRSS18,"https://intranetdag.tesoro.it/rss/rss.html?t=12004", MefConstants.DESC_INTRANET_DAG, "", "");
 
+				insertRSS(MefConstants.idRSS19,"http://www.finanze.gov.it/rss/rss_index.htm", MefConstants.DESC_FINANZE, "", "");
+
+				
+				Log.d("MEFDAOFACTORY", "Sincronizzazione iniziata");
+
+				new UpdateRSS().execute(new Object [] {mContext, new Integer(-1), new Integer(-1) } );
+				
+				Log.d("MEFDAOFACTORY", "Sincronizzazione finita");
 				
 				
-				
-				
-				
-				
-				
-				int count = updateRSSItem(MefConstants.idRSS1);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS2);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS3);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS4);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS5);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS6);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS7);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS8);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS9);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS10);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS11);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS12);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS13);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS14);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS15);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS16);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS17);
-				Log.d(this.toString(),count +"");
-				count += updateRSSItem(MefConstants.idRSS18);
-				Log.d(this.toString(),count +"");
+//				int count = updateRSSItem(MefConstants.idRSS1);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS2);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS3);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS4);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS5);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS6);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS7);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS8);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS9);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS10);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS11);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS12);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS13);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS14);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS15);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS16);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS17);
+//				Log.d(this.toString(),count +"");
+//				count += updateRSSItem(MefConstants.idRSS18);
+//				Log.d(this.toString(),count +"");
 				
 				
 				
