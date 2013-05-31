@@ -37,7 +37,7 @@
      <style name="ActionShare" parent="AppBaseTheme">
          <item name="android:textColor">#444445</item>
          
-        <item name="android:background">#95DBD8CC</item>
+        <item name="android:background">#DBD8CC</item>
         
     </style>
     
