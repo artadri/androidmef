@@ -1,34 +1,38 @@
+<!--
+ELENCO FEED
+//-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" 
-       android:background="@drawable/ic_backgroundgen_9"
-       >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/ic_backgroundgen_9"
+
+        >
 
     <include
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <ListView
-            android:id="@+id/rss_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingTop="5sp" 
-			android:divider="@null"
-            >
-        </ListView>
-
-        <include
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-          
-            layout="@layout/action_share1" />
+            layout="@layout/title_bar"/>
+
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        <ListView
+                android:id="@+id/rss_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10sp"
+                android:divider="@null"
+                >
+        </ListView>
+        <include
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+
+                layout="@layout/action_share1"/>
+
     </FrameLayout>
 
 </LinearLayout>

@@ -1,35 +1,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeDipActivity" 
-    android:background="@drawable/ic_backgroundgen_9"
-    android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".HomeDipActivity"
+              android:background="@drawable/ic_backgroundgen_9"
+              android:orientation="vertical"
 
-    >
-    
-    
+        >
+
 
     <include
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/title_bar"/>
 
     <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" > 
-    
-        <ListView
-            android:id="@+id/rss_dip_list"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="10sp"
-            android:divider="@null"
-            
-        />
-        
-        </FrameLayout>
-        
+            android:layout_height="fill_parent">
+
+        <ListView
+                android:id="@+id/rss_dip_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10sp"
+                android:divider="@null"
+                >
+        </ListView>
+
+    </FrameLayout>
+
     <!-- 
     
       android:divider="@drawable/list_item_divider"

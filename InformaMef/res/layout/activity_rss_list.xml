@@ -1,22 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TestDBActivity" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".TestDBActivity">
 
     <ListView
-        android:id="@+id/rssListView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+            android:id="@+id/rssListView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+
+            />
 
     <TextView
-        android:id="@+id/rssItemView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:autoLink="web|email"
-        android:padding="10dp"
-        android:textSize="13sp"
-        android:textIsSelectable="true" >
+            android:id="@+id/rssItemView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:autoLink="web|email"
+            android:padding="10sp"
+            android:textSize="13sp"
+            android:textIsSelectable="true">
     </TextView>
 
 </RelativeLayout>

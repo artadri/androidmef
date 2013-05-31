@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:layout_centerInParent="true">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            android:paddingTop="9sp"
+            android:paddingBottom="9sp"
+            android:paddingRight="8sp"
+            android:paddingLeft="8sp"
+            android:gravity="top"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            >
 
         <TextView
-            android:id="@+id/rssListAdapterData"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingLeft="0sp" 
-            android:gravity="right"
-            android:paddingRight="5sp"
-            android:textStyle="italic" 
-            android:background="#30E4E4E4"
-            
-            />
+                android:id="@+id/rssListAdapterData"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textSize="11sp"
+                />
 
         <TextView
-            android:id="@+id/rssListAdapterTitolo"
+                android:id="@+id/rssListAdapterTitolo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:onClick="true"
+                android:textSize="15sp"
+                android:paddingLeft="10sp"
+                />
+    </LinearLayout>
+
+    <include
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:onClick="true"
-            android:paddingLeft="3sp"
-            android:paddingRight="2sp"
-            android:paddingTop= "3sp"
-            android:paddingBottom="3sp"
-            android:textSize="12sp" 
-           
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="0sp"
+            layout="@layout/list_adapter_bg_divider"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             />
-        
-       <ImageView
-        android:id="@+id/rssListAdapterLinea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bg_lista_9" 
-        android:padding="0sp"
-        android:background="@null"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        />
 
 </LinearLayout>

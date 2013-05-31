@@ -1,90 +1,97 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ActionShare"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+                style="@style/ActionShare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/actionShare"
+                >
 
     <ImageButton
-        android:id="@+id/imageBackNav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:background="@null"
-        android:contentDescription="immagine back"
-        android:src="@drawable/ic_frec_sx_9"
-         />
+            android:id="@+id/imageBackNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@null"
+            android:contentDescription="immagine back"
+            android:src="@drawable/ic_frec_sx_9"
+            />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center">
 
         <ImageButton
-            android:id="@+id/detailRSSImageShareFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:contentDescription="@string/detailRSSImageShareFacebook"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:paddingTop="4dp"
-            android:src="@drawable/bg_social_facebook_9"
-            android:visibility="gone" />
+                android:id="@+id/detailRSSImageShareFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="@string/detailRSSImageShareFacebook"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+
+                android:src="@drawable/bg_social_facebook_9"
+                android:visibility="gone"/>
 
         <ImageButton
-            android:id="@+id/detailRSSImageShareTwitter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/detailRSSImageShareFacebook"
-            android:background="@null"
-            android:contentDescription="@string/detailRSSImageShareTwitter"
-            android:padding="4dp"
-            android:src="@drawable/bg_social_tweet_9"
-            android:visibility="gone" />
+                android:id="@+id/detailRSSImageShareTwitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/detailRSSImageShareFacebook"
+                android:background="@null"
+                android:contentDescription="@string/detailRSSImageShareTwitter"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:src="@drawable/bg_social_tweet_9"
+                android:visibility="gone"/>
 
         <ImageButton
-            android:id="@+id/detailRSSImageShareGplus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/detailRSSImageShareTwitter"
-            android:background="@null"
-            android:contentDescription="@string/detailRSSImageShareGplus"
-            android:padding="4dp"
-            android:src="@drawable/bg_social_gplus_9"
-            android:visibility="gone" />
+                android:id="@+id/detailRSSImageShareGplus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/detailRSSImageShareTwitter"
+                android:background="@null"
+                android:contentDescription="@string/detailRSSImageShareGplus"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:src="@drawable/bg_social_gplus_9"
+                android:visibility="gone"/>
 
         <ImageButton
-            android:id="@+id/detailRSSImageShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/detailRSSImageShareGplus"
-            android:background="@null"
-            android:contentDescription="@string/detailRSSImageShare"
-            android:padding="4dp"
-            android:visibility="gone"
-            android:src="@drawable/ic_condividi_9" />
+                android:id="@+id/detailRSSImageShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/detailRSSImageShareGplus"
+                android:background="@null"
+                android:contentDescription="@string/detailRSSImageShare"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_condividi_9"/>
 
         <ImageButton
-            android:id="@+id/detailRSSImageInternet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/detailRSSImageShare"
-            android:background="@null"
-            android:contentDescription="@string/detailRSSImageInternet"
-            android:padding="4dp"
-            android:visibility="gone"
-            android:src="@drawable/bg_web_9" />
+                android:id="@+id/detailRSSImageInternet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/detailRSSImageShare"
+                android:background="@null"
+                android:contentDescription="@string/detailRSSImageInternet"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:visibility="gone"
+                android:src="@drawable/bg_web_9"/>
     </RelativeLayout>
 
     <ImageButton
-        android:id="@+id/imageForward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:background="@null"
-        android:contentDescription="immagine forward"
-        android:src="@drawable/ic_frec_dx_9" 
-        
-        />
+            android:id="@+id/imageForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:contentDescription="immagine forward"
+            android:src="@drawable/ic_frec_dx_9"
+
+            />
 
 </RelativeLayout>

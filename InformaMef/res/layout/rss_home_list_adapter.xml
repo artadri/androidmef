@@ -1,66 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+LISTA TIPOLOGIE FEED x DIPARTIMENTO
+//-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="fill_parent"
-   android:layout_height="80dip" >
-    
-    
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+        >
+
+
     <ImageView
-        android:id="@+id/ImageHomeAdapter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:paddingLeft="5dp"
-        android:src="@drawable/ic_launcher" />
+            android:id="@+id/ImageHomeAdapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_launcher"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            />
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/ImageHomeAdapter"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/itemName"
+            android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comunicato stampa" 
-            android:textColor="#2C2B3D"
-            />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/ImageHomeAdapter"
+            android:orientation="vertical"
+            >
 
         <TextView
-            android:id="@+id/ultimAgg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ultimo aggiornamento" 
-            android:textColor="#2C2B3D"
-            android:textStyle="italic"
-            android:textSize="8sp"
-            	
-            />
+                android:id="@+id/itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comunicato stampa"
+                android:textColor="#2C2B3D"
+                android:textSize="15sp"
+                />
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="1sp"
+                android:gravity="top"
+
+                >
+
+            <TextView
+                    android:id="@+id/itemTotali"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#2C2B3D"
+                    android:textStyle="italic"
+                    android:text="[ 0 - 20 ]"
+                    android:textSize="11sp"/>
+
+            <TextView
+                    android:id="@+id/ultimAgg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ultimo aggiornamento"
+                    android:textColor="#2C2B3D"
+                    android:textStyle="italic"
+                    android:textSize="10sp"
+                    android:layout_toRightOf="@id/itemTotali"
+                    android:layout_marginLeft="11sp"
+                    />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/itemTotali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:paddingRight="5dp"
-        android:text="[ 0 - 20 ]" />
-    
-     <ImageView
-        android:id="@+id/ritemAdapterLinea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_bg_lista_9" 
-        android:padding="0sp"
-        android:background="@null"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        />
-    
+    <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="4sp"
+            layout="@layout/list_adapter_bg_divider"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            />
 
 </RelativeLayout>
