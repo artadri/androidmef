@@ -13,7 +13,7 @@
             android:layout_alignParentLeft="true"
             android:background="@null"
             android:contentDescription="immagine back"
-            android:src="@drawable/ic_frec_sx_9"
+            android:src="@drawable/button_back"
             />
 
     <RelativeLayout
@@ -22,7 +22,7 @@
             android:layout_centerInParent="true"
             android:gravity="center">
 
-        <ImageButton
+    <ImageButton
                 android:id="@+id/detailRSSImageShareFacebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             android:layout_alignParentRight="true"
             android:background="@null"
             android:contentDescription="immagine forward"
-            android:src="@drawable/ic_frec_dx_9"
+            android:src="@drawable/button_forward"
 
             />
 
