@@ -1,6 +1,7 @@
 package it.gov.mef.informamef;
 
 import it.gov.mef.util.FormatActionBar;
+import it.gov.mef.util.FormatTitleBar;
 import it.gov.mef.util.UpdateRSS;
 import android.os.Bundle;
 import android.app.Activity;
@@ -29,10 +30,9 @@ public class ContactActivity extends Activity {
 		setContentView(R.layout.activity_contact);
 
 		// Show the Up button in the action bar.
-		setupActionBar();
+//		setupActionBar();
 
-		FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,
-				R.id.imageBack, R.string.actionBarTitle, false);
+		FormatTitleBar.settingTitle(this, getString(R.string.app_name) ); 
 
 		btnOK = (Button) findViewById(R.id.btnOK);
 		txtTo = (EditText) findViewById(R.id.etTo);

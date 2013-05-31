@@ -3,9 +3,12 @@ package it.gov.mef.informamef;
 import java.util.Locale;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,9 +31,9 @@ public class PrefsActivity extends PreferenceActivity {
 		ctx = this;
 		
 
-		prefs = PreferenceManager
-				.getDefaultSharedPreferences(PrefsActivity.this);
-		;
+		prefs = PreferenceManager.getDefaultSharedPreferences(PrefsActivity.this);
+		
+		
 		listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 			public void onSharedPreferenceChanged(SharedPreferences prefs1,
 					String key) {
@@ -39,7 +42,15 @@ public class PrefsActivity extends PreferenceActivity {
 				String localLanguage = prefs.getString("userLanguageValues", "it");
 				setLocale(localLanguage);
 				
+//				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//				startActivities(intent);
+				
 
+			}
+
+			private void startActivities(Intent intent) {
+				// TODO Auto-generated method stub
+				
 			}
 		};
 
@@ -66,6 +77,21 @@ public class PrefsActivity extends PreferenceActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
+		
+		 	int minutes = Integer.parseInt(prefs.getString("prefSyncFrequency", "0"));
+		    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+		    Intent i = new Intent(this, NotificationService.class);
+		    PendingIntent pi = PendingIntent.getService(this, 0, i, 0);
+		   
+		    am.cancel(pi);
+		    
+		    // by my own convention, minutes <= 0 means notifications are disabled
+		    if (minutes > 0) {
+		        am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+		            SystemClock.elapsedRealtime() + minutes*60*1000,
+		            minutes*60*1000, pi);
+		    }
+		    
 		Log.d("MEFPrefsActivity", "onPause");
 	}
 
@@ -84,7 +110,7 @@ public class PrefsActivity extends PreferenceActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		 Intent refresh = new Intent(this, HomeActivity.class);
+		 Intent refresh = new Intent(this, HomeDipActivity.class);
 	    startActivity(refresh);
 		Log.d(PrefsActivity.class.getName() + "onDestroy", "Richiamato metodo");
 	}

@@ -70,15 +70,93 @@ private WakeLock mWakeLock;
         	Context context = getApplicationContext();
         	MefDaoFactory db = new MefDaoFactory(context);
         	int count = 0;
-			try {
+        	StringBuffer strBuffer = new StringBuffer();
+			int countMef = 0;
+			int countDt = 0;
+			int countRgs = 0;
+			int countDag = 0;
+			int countIntranet = 0;
+			int countFinanze = 0;
+        	
+        	try {
 				
 				db.openDataBase(true);
 				List<Integer> feed = db.getRSSListURL();
 				Iterator<Integer> it = feed.iterator();
+						
+				
 				while (it.hasNext()) {
 					Integer elem = (Integer) it.next();
 					
 					count += db.updateRSSItem(elem.intValue());
+					
+					
+					switch (elem.intValue()) {
+							case MefConstants.MEF_ID_RSS1:
+								countMef ++;
+								break;
+							case MefConstants.MEF_ID_RSS2:
+								countMef ++;
+								break;
+							case MefConstants.MEF_ID_RSS3:
+								countMef ++;
+								break;
+							case MefConstants.MEF_ID_RSS4:
+								countMef ++;
+								break;
+							case MefConstants.MEF_ID_RSS5:
+								countMef ++;
+								break;
+							case MefConstants.DT_ID_RSS1:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS2:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS3:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS4:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS5:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS6:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS7:
+								countDt ++;
+								break;
+							case MefConstants.DT_ID_RSS8:
+								countDt ++;
+								break;
+							case MefConstants.DAG_ID_RSS1:
+								countDag ++;
+								break;
+							case MefConstants.RGS_ID_RSS1:
+								countRgs ++;
+								break;
+							case MefConstants.INTRANET_DAG_ID_RSS1:
+								countIntranet ++;
+								break;
+							case MefConstants.INTRANET_DAG_ID_RSS2:
+								countIntranet ++;
+								break;
+							case MefConstants.INTRANET_DAG_ID_RSS3:
+								countIntranet ++;
+								break;
+							case MefConstants.FINANZE_ID_RSS1:
+								countFinanze ++;
+								break;
+							default:
+		
+								break;
+					}
+					
+					
+					
+					
 					Log.d(this.toString(),"Aggiornato id=" + elem.intValue());
 				}
 				
@@ -98,11 +176,23 @@ private WakeLock mWakeLock;
         	
 			if (count > 0) {
 			
-
-				Intent nIntent = new Intent();// Intent nIntent = new
-												// Intent(Intent.ACTION_MAIN);
-				nIntent.setClass(context, HomeActivity.class);
-
+				strBuffer.append(getString(R.string.descrizione_notifica));
+				
+				if (countMef > 0)
+					strBuffer.append(getString(R.string.title_home_dip_mef));
+				if (countDag > 0)
+					strBuffer.append(getString(R.string.title_home_dip_dag));
+				if (countDt > 0)
+					strBuffer.append(getString(R.string.title_home_dip_dt));
+				if (countRgs > 0)
+					strBuffer.append(getString(R.string.title_home_dip_rgs));
+				if (countIntranet > 0)
+					strBuffer.append(getString(R.string.title_home_dip_intranetdag));
+				if (countFinanze > 0)
+					strBuffer.append(getString(R.string.title_home_dip_finanze));
+					
+				
+				
 				NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
 				NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
@@ -110,13 +200,13 @@ private WakeLock mWakeLock;
 
 				// Titolo e testo della notifica
 				notificationBuilder
-						.setContentTitle("InformaMEF nuovi contenuti");
+						.setContentTitle(getString(R.string.title_notifica));
 				notificationBuilder
-						.setContentText("Sono presenti nuovi contenuti visualizza la sezione"  );
+						.setContentText(strBuffer.toString());
 
 				// Testo che compare nella barra di stato non appena compare la
 				// notifica
-				notificationBuilder.setTicker("InformaMEF - Nuovi elementi ");
+				notificationBuilder.setTicker(getString(R.string.tiker_notifica));
 
 				// Data e ora della notifica
 				notificationBuilder.setWhen(System.currentTimeMillis());
@@ -128,7 +218,7 @@ private WakeLock mWakeLock;
 				// notifica
 				// viene premuta
 				Intent notificationIntent = new Intent(context,
-						HomeActivity.class);
+						HomeDipActivity.class);
 				PendingIntent contentIntent = PendingIntent.getActivity(
 						context, 0, notificationIntent, 0);
 

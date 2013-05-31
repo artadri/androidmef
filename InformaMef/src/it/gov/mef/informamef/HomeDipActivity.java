@@ -55,7 +55,8 @@ public class HomeDipActivity extends Activity {
 		RSSHomeDipItem elem1 = new RSSHomeDipItem(getString(R.string.title_home_dip_dag), getString(R.string.descrizione_home_dip_dag), R.drawable.ic_logo_dag_9, MefConstants.DAG );
 		RSSHomeDipItem elem2 = new RSSHomeDipItem(getString(R.string.title_home_dip_dt), getString(R.string.descrizione_home_dip_dt), R.drawable.ic_logo_dt_9, MefConstants.DT );
 		RSSHomeDipItem elem3 = new RSSHomeDipItem(getString(R.string.title_home_dip_rgs), getString(R.string.descrizione_home_dip_rgs), R.drawable.ic_logo_rgs_9, MefConstants.RGS );
-		RSSHomeDipItem elem4 = new RSSHomeDipItem(getString(R.string.title_home_dip_intranetdag), getString(R.string.descrizione_home_dip_intranetdag), R.drawable.ic_logo_intranetdag_9, MefConstants.INTRANET_DAG );
+		RSSHomeDipItem elem4 = new RSSHomeDipItem(getString(R.string.title_home_dip_finanze), getString(R.string.descrizione_home_dip_finanze), R.drawable.ic_logo_finanze_9, MefConstants.FINANZE);
+		RSSHomeDipItem elem5 = new RSSHomeDipItem(getString(R.string.title_home_dip_intranetdag), getString(R.string.descrizione_home_dip_intranetdag), R.drawable.ic_logo_intranetdag_9, MefConstants.INTRANET_DAG );
 		
 //		RSSHomeDipItem elem5 = new RSSHomeDipItem(getString(R.string.title_home_dip_finanze), getString(R.string.descrizione_home_dip_finanze), R.drawable.ic_logo_finanze_9, MefConstants.FINANZE );
 //		listDip.add(elem5);
@@ -65,6 +66,7 @@ public class HomeDipActivity extends Activity {
 		listDip.add(elem2);
 		listDip.add(elem3);
 		listDip.add(elem4);
+		listDip.add(elem5);
 		
 		listViewDip = (ListView) findViewById(R.id.rss_dip_list);
 		listViewDip.setAdapter(new RSSHomeDipListAdapter(ctx, R.layout.rss_list_dip_adapter, listDip));
@@ -97,6 +99,9 @@ public class HomeDipActivity extends Activity {
 				case MefConstants.INTRANET_DAG:
 					nav.setDipartimento(MefConstants.INTRANET_DAG);
 					break;
+				case MefConstants.FINANZE:
+					nav.setDipartimento(MefConstants.FINANZE);
+					break;
 				default:
 					nav.setDipartimento(MefConstants.MEF);
 					break;
@@ -112,82 +117,6 @@ public class HomeDipActivity extends Activity {
 
 		listViewDip.setOnItemClickListener(itemClickListener);
 		
-		
-//		Gestione della selezione del dipartimento
-        
-        
-//        ImageButton homeImageButton1= (ImageButton) findViewById(R.id.homeImageButton1);
-//        homeImageButton1.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				
-//				NavigationBean nav = (NavigationBean)getApplication();
-//				nav.setDipartimento(MefConstants.MEF);
-//				Intent intent = new Intent(ctx, HomeActivity.class);		
-//				startActivity(intent);
-//			}
-//
-//		});
-//        
-
-//        ImageButton homeImageButton2= (ImageButton) findViewById(R.id.homeImageButton2);
-//        homeImageButton2.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				
-//				NavigationBean nav = (NavigationBean)getApplication();
-//				nav.setDipartimento(MefConstants.DAG);
-//				Intent intent = new Intent(ctx, HomeActivity.class);		
-//				startActivity(intent);
-//			}
-//
-//		});
-//
-//        ImageButton homeImageButton3= (ImageButton) findViewById(R.id.homeImageButton3);
-//        homeImageButton3.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				
-//				NavigationBean nav = (NavigationBean)getApplication();
-//				nav.setDipartimento(MefConstants.DT);
-//				Intent intent = new Intent(ctx, HomeActivity.class);		
-//				startActivity(intent);
-//			}
-//
-//		});
-        
-
-//        ImageButton homeImageButton4= (ImageButton) findViewById(R.id.homeImageButton4);
-//        homeImageButton4.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				
-//				NavigationBean nav = (NavigationBean)getApplication();
-//				nav.setDipartimento(MefConstants.RGS);
-//				Intent intent = new Intent(ctx, HomeActivity.class);		
-//				startActivity(intent);
-//			}
-//
-//		});
-//
-//
-//        ImageButton homeImageButton5= (ImageButton) findViewById(R.id.homeImageButton5);
-//        homeImageButton5.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				
-//				NavigationBean nav = (NavigationBean)getApplication();
-//				nav.setDipartimento(MefConstants.INTRANET_DAG);
-//				Intent intent = new Intent(ctx, HomeActivity.class);		
-//				startActivity(intent);
-//			}
-//
-//		});
         
         
 	}

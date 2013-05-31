@@ -39,6 +39,7 @@ import android.widget.ImageButton;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,163 +48,187 @@ public class RSSList extends Activity {
 	private ListView listViewRSS;
 	private Context ctx;
 	private LinearLayout layout;
-	private int refreshList ;
-	private int idRSS ;
+	private int refreshList;
+	private int idRSS;
+	private String str_Title_activity_rsslist_ico = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rsslist);
 
-		
-
 		ctx = this;
 		List<RSSItem> listRSS = new ArrayList<RSSItem>();
 		try {
 
-			
-			String feedUrl;
-			int idPulsante = getIntent().getIntExtra("idPulsante", 0);
+//			String feedUrl;
+//			int idPulsante = 0; //getIntent().getIntExtra("idPulsante", 0);
 			idRSS = 1;
-			URL url;
-			HttpURLConnection conn = null;
-			refreshList = idPulsante;
-			
+//			URL url;
+//			HttpURLConnection conn = null;
+//			refreshList = idPulsante;
+
 			NavigationBean nav = (NavigationBean) getApplication();
 			List<RSSHomeItem> itemHomeList = nav.getItemHomeList();
 			RSSHomeItem itemHome = itemHomeList.get(nav.getCurrentRSS());
-			
-			FormatTitleBar.settingTitle(this, itemHome.getNome() ); 
-			
-			idPulsante = itemHome.getIdRSS();
-			idRSS =  itemHome.getIdRSS();
-			
+
+//			idPulsante = itemHome.getIdRSS();
+			idRSS = itemHome.getIdRSS();
+
 			MefDaoFactory db = new MefDaoFactory(this);
 			db.openDataBase(false);
-			
-			
+
 			// seleziono la URL da caricare
-			switch (idPulsante) {
-			case MefConstants.idRSS1:
-				setTitle( getResources().getString(R.string.title_activity_rsslist_ico1)	);
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico1);
-//				feedUrl = "http://intranetdag-prod.tesoro.it/rss/rss.html?t=12002";
-				idRSS = 1;
+			switch (idRSS) {
+			case MefConstants.MEF_ID_RSS1:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico1);
+				setTitle(str_Title_activity_rsslist_ico);
+
 				break;
-			case MefConstants.idRSS2:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico2));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico2);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=4";
-				idRSS = 2;
+			case MefConstants.MEF_ID_RSS2:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico2);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS3:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico3));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico3);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=3";
-				idRSS = 3;
+			case MefConstants.MEF_ID_RSS3:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico3);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS4:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico4));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico4);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 4;
+			case MefConstants.MEF_ID_RSS4:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico4);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS5:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico5));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico5);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 5;
+			case MefConstants.MEF_ID_RSS5:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico5);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS6:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico6));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico6);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 6;
+			case MefConstants.DT_ID_RSS1:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico6);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS7:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico7));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico7);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 7;
+			case MefConstants.DT_ID_RSS2:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico7);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS8:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico8));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico8);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 8;
+			case MefConstants.DT_ID_RSS3:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico8);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS9:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico9));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico9);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 9;
+			case MefConstants.DT_ID_RSS4:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico9);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS10:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico10));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico10);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 10;
+			case MefConstants.DT_ID_RSS5:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico10);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS11:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico11));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico11);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 11;
+			case MefConstants.DT_ID_RSS6:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico11);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS12:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico12));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico12);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 12;
+			case MefConstants.DT_ID_RSS7:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico12);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS13:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico13));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico13);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 13;
+			case MefConstants.DT_ID_RSS8:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico13);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS14:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico14));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico14);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 14;
+			case MefConstants.DAG_ID_RSS1:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico14);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS15:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico15));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico15);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 15;
+			case MefConstants.RGS_ID_RSS1:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico15);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS16:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico16));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico16);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 16;
+			case MefConstants.INTRANET_DAG_ID_RSS1:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico16);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS17:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico17));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico17);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 17;
+			case MefConstants.INTRANET_DAG_ID_RSS2:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico17);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
-			case MefConstants.idRSS18:
-				setTitle(getResources().getString(R.string.title_activity_rsslist_ico18));
-//				FormatActionBar.setting(this, R.layout.activity_home, R.id.imageHome,R.string.title_activity_rssdetail_ico18);
-//				feedUrl = "http://www.mef.gov.it/rss/rss.asp?t=8&c=200";
-				idRSS = 18;
+			case MefConstants.INTRANET_DAG_ID_RSS3:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico18);
+				setTitle(str_Title_activity_rsslist_ico);
+				break;
+			case MefConstants.FINANZE_ID_RSS1:
+				str_Title_activity_rsslist_ico = getResources().getString(
+						R.string.title_activity_rssdetail_ico19);
+				setTitle(str_Title_activity_rsslist_ico);
 				break;
 			default:
 				this.setTitle("");
-				feedUrl = "";
 				break;
 			}
 
-
 			listRSS = db.getRSSList(itemHome.getIdRSS());
 			nav.setListRSS(listRSS);
-//			listRSS = db.getRSSList(idRSS);
-		
-			
+			// listRSS = db.getRSSList(idRSS);
+
+			int dipartimentoSelezionato = nav.getDipartimento();
+			String bTitle = null;
+			int logo = 0;
+			switch (dipartimentoSelezionato) {
+			case MefConstants.MEF:
+				bTitle = getString(R.string.title_home_mef);
+				logo =  R.drawable.ic_logo_mef_9;
+				break;
+			case MefConstants.DAG:
+				bTitle = getString(R.string.title_home_dag);
+				logo =  R.drawable.ic_logo_dag_9;
+				break;
+			case MefConstants.RGS:
+				bTitle = getString(R.string.title_home_rgs);
+				logo =  R.drawable.ic_logo_rgs_9;
+				break;
+			case MefConstants.DT:
+				bTitle = getString(R.string.title_home_dt);
+				logo =  R.drawable.ic_logo_dt_9;
+				break;
+			case MefConstants.INTRANET_DAG:
+				bTitle = getString(R.string.title_home_intranetdag);
+				logo =  R.drawable.ic_logo_intranetdag_9;
+				break;
+			case MefConstants.FINANZE:
+				bTitle = getString(R.string.title_home_finanze);
+				logo =  R.drawable.ic_logo_finanze_9;
+				break;
+			default:
+				bTitle = "";
+				logo =  R.drawable.ic_logo_mef_9;
+				break;
+
+			}
+
+			if (str_Title_activity_rsslist_ico != null) {
+				FormatTitleBar.settingTitle(this, bTitle,
+						logo,
+						str_Title_activity_rsslist_ico);
+			} else {
+				FormatTitleBar.settingTitle(this, bTitle,
+						R.drawable.ic_logo_intranetdag_9);
+			}
+
 			db.closeDataBase();
 		} catch (Exception e) {
 
@@ -211,14 +236,9 @@ public class RSSList extends Activity {
 
 		}
 
-		
-
-		
-		
-		
 		listViewRSS = (ListView) findViewById(R.id.rss_list);
-		listViewRSS.setAdapter(new RSSListAdapter(ctx, R.layout.rss_list_adapter, listRSS));
-
+		listViewRSS.setAdapter(new RSSListAdapter(ctx,
+				R.layout.rss_list_adapter, listRSS));
 
 		OnItemClickListener itemClickListener = new OnItemClickListener() {
 			@Override
@@ -234,32 +254,23 @@ public class RSSList extends Activity {
 				String link = item.getLink();
 				Date data = item.getPubDate();
 				int idItem = item.getId_item();
-				int idUrl = item.getIdUrl() ;
-				String guid = item.getGuid() ;
+				int idUrl = item.getIdUrl();
+				String guid = item.getGuid();
 				String category = item.getCategory();
-				
 
-				// v.getResources()
+
 
 				Intent detailRSS = new Intent(ctx, RSSDetailActivity.class);
-				detailRSS.putExtra("titolo", titolo);
-				detailRSS.putExtra("descrizione", descrizione);
-				detailRSS.putExtra("link", link);
-				detailRSS.putExtra("data", DateUtil.formatHTTPDate(data));
-				detailRSS.putExtra("idPulsante", refreshList);
-				detailRSS.putExtra("idItemRSS", idItem);
-				detailRSS.putExtra("idUrl", idUrl );
-				detailRSS.putExtra("guid", guid);
-				detailRSS.putExtra("category", category);
-				
-				RSSItem itemRSS = new RSSItem(titolo, descrizione, data, link, idItem, guid, category, idUrl);
-				
+
+
+				RSSItem itemRSS = new RSSItem(titolo, descrizione, data, link,
+						idItem, guid, category, idUrl);
+
 				NavigationBean nav = (NavigationBean) getApplication();
 				nav.setItemRSS(itemRSS);
 				nav.setCurrentItemRSS(position);
 				nav.setMaxItemRSS(listViewRSS.getCount());
-		
-				
+
 				startActivity(detailRSS);
 
 			}
@@ -268,53 +279,62 @@ public class RSSList extends Activity {
 
 		// Setting the ItemClickEvent listener for the listview
 		listViewRSS.setOnItemClickListener(itemClickListener);
-		
-		ImageButton imageBack= (ImageButton) findViewById(R.id.imageBackNav);
+
+		ImageButton imageBack = (ImageButton) findViewById(R.id.imageBackNav);
 		imageBack.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				
-				Intent intent =  new Intent(ctx,  RSSList.class);
-								
-				NavigationBean nav = (NavigationBean)getApplication();
-				int back = nav.getCurrentRSS()-1;
+
+				Intent intent = new Intent(ctx, RSSList.class);
+
+				NavigationBean nav = (NavigationBean) getApplication();
+				int back = nav.getCurrentRSS() - 1;
 				nav.setCurrentRSS(back);
 				startActivity(intent);
-				
+
 			}
 
 		});
 
-
-		ImageButton imageForward= (ImageButton) findViewById(R.id.imageForward);
+		ImageButton imageForward = (ImageButton) findViewById(R.id.imageForward);
 		imageForward.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent =  new Intent(ctx, RSSList.class);
-				
-				NavigationBean nav = (NavigationBean)getApplication();
+				Intent intent = new Intent(ctx, RSSList.class);
+
+				NavigationBean nav = (NavigationBean) getApplication();
 				int forward = nav.getCurrentRSS() + 1;
 				nav.setCurrentRSS(forward);
 				startActivity(intent);
 			}
 
 		});
-		
-		NavigationBean nav = (NavigationBean)getApplication();
-		if (nav.getCurrentRSS() > 0 && nav.getCurrentRSS() <= nav.getMaxRSS() ) {
+
+		boolean notBack = false;
+		boolean notFw = false;
+		NavigationBean nav = (NavigationBean) getApplication();
+		if (nav.getCurrentRSS() > 0 && nav.getCurrentRSS() <= nav.getMaxRSS()) {
 			imageBack.setVisibility(View.VISIBLE);
-	    } else {
-	    	imageBack.setVisibility(View.INVISIBLE);
-	    }
-		
-		if (nav.getCurrentRSS() < nav.getMaxRSS() && nav.getCurrentRSS() >= 0) {
+		} else {
+			imageBack.setVisibility(View.INVISIBLE);
+			notBack= true;
+			
+		}
+
+		if (nav.getCurrentRSS() < nav.getMaxRSS()-1 && nav.getCurrentRSS() >= 0) {
 			imageForward.setVisibility(View.VISIBLE);
 		} else {
 			imageForward.setVisibility(View.INVISIBLE);
+			notFw = true;
 		}
-
+		
+		if(notBack && notFw){
+			RelativeLayout actionShare = (RelativeLayout)findViewById(R.id.actionShare);
+			actionShare.setVisibility(View.INVISIBLE);
+		}
+		
 		
 
 	}
@@ -325,40 +345,35 @@ public class RSSList extends Activity {
 		getMenuInflater().inflate(R.menu.home, menu);
 		return true;
 	}
-	
-	
-	 /**
-     * Event Handling for Individual menu item selected
-     * Identify single menu item by it's id
-     * */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
- 
-        switch (item.getItemId()) 
-        {
+
+	/**
+	 * Event Handling for Individual menu item selected Identify single menu
+	 * item by it's id
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
 
 		case R.id.action_settings:
 			startActivity(new Intent(this, PrefsActivity.class));// start the
-																	// PrefsActivity.java
-			// startActivity(new Intent(this, TestDBActivity.class));//start the
-			// PrefsActivity.java
+			
 			return true;
 		case R.id.action_refresh_list:
 
-//			TODO Deve aggiornare solo RSS corrente
-			Toast.makeText(this,
-					"Sincronizzazione avviata", Toast.LENGTH_SHORT)
+			// TODO Deve aggiornare solo RSS corrente
+			Toast.makeText(this, "Sincronizzazione avviata", Toast.LENGTH_SHORT)
 					.show();
-			NavigationBean nav = (NavigationBean)getApplication();
+			NavigationBean nav = (NavigationBean) getApplication();
 			List<RSSHomeItem> itemHomeList = nav.getItemHomeList();
 			RSSHomeItem itemHome = itemHomeList.get(nav.getCurrentRSS());
-			new UpdateRSS().execute(new Object [] {ctx, new Integer(-1), new Integer(itemHome.getIdRSS()) } );
+			new UpdateRSS().execute(new Object[] { ctx, new Integer(-1),
+					new Integer(itemHome.getIdRSS()) });
 
 			return true;
 		case R.id.actionContact:
 
-			 Intent intent = new Intent(this, ContactActivity.class);
+			Intent intent = new Intent(this, ContactActivity.class);
 			startActivity(intent);
 			return true;
 		case R.id.action_home:
@@ -373,15 +388,14 @@ public class RSSList extends Activity {
 			intent1.addCategory(Intent.CATEGORY_HOME);
 			intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent1);
-			return true; 
+			return true;
 
-			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-    }    
-    
-    @Override
+	}
+
+	@Override
 	public void onBackPressed() {
 		NavigationBean nav = (NavigationBean) getApplication();
 		nav.setCurrentRSS(0);
@@ -389,12 +403,10 @@ public class RSSList extends Activity {
 		nav.setCurrentItemRSS(0);
 		nav.setMaxItemRSS(0);
 		nav.setItemHomeList(null);
-		
+
 		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 
 	}
-
-    
 
 }

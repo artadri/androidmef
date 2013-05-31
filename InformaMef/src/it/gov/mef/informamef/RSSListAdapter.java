@@ -21,65 +21,65 @@ import android.widget.TextView;
 
 public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 
-	private int resource;
-	private LayoutInflater inflater;
-	String titolo;
-	String descrizione;
-	String link;
-	Date data;
-	Context ctx = null;
+    private int resource;
+    private LayoutInflater inflater;
+    String titolo;
+    String descrizione;
+    String link;
+    Date data;
+    Context ctx = null;
 
-	public RSSListAdapter(Context ctx, int resourceId, List<RSSItem> objects) {
-		super(ctx, resourceId, objects);
-		resource = resourceId;
-		inflater = LayoutInflater.from(ctx);
-		this.ctx = ctx;
-	}
+    public RSSListAdapter(Context ctx, int resourceId, List<RSSItem> objects) {
+        super(ctx, resourceId, objects);
+        resource = resourceId;
+        inflater = LayoutInflater.from(ctx);
+        this.ctx = ctx;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
 		/* create a new view of my layout and inflate it in the row */
-		convertView = (LinearLayout) inflater.inflate(resource, null);
+        convertView = (LinearLayout) inflater.inflate(resource, null);
 
-		RSSItem item = (RSSItem) getItem(position);
-		RSSItem itemPrec = null;
-		Typeface gothicB=Typeface.createFromAsset(ctx.getAssets(), "fonts/gothicb.ttf"); 
-  
+        RSSItem item = (RSSItem) getItem(position);
+        RSSItem itemPrec = null;
+        Typeface gothicB = Typeface.createFromAsset(ctx.getAssets(), "fonts/gothicb.ttf");
+        Typeface gothic  = Typeface.createFromAsset(ctx.getAssets(), "fonts/gothic.ttf");
 
 		/* Take the TextView from layout and set title */
-		TextView txtDate = (TextView) convertView
-				.findViewById(R.id.rssListAdapterData);
-		txtDate.setTypeface(gothicB);
-		
-		TextView txtTitle = (TextView) convertView.findViewById(R.id.rssListAdapterTitolo);
-		//txtDate.setBackgroundColor(Color.parseColor("#FFE2E5"));
-		txtTitle.setTypeface(gothicB);
-		
-		if (position == 0) {
-			txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
+        TextView txtDate = (TextView) convertView
+                .findViewById(R.id.rssListAdapterData);
+        txtDate.setTypeface(gothic);
+
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.rssListAdapterTitolo);
+        //txtDate.setBackgroundColor(Color.parseColor("#FFE2E5"));
+        txtTitle.setTypeface(gothicB);
+
+        if (position == 0) {
+            txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
 //		    txtDate.setBackgroundColor(Color.parseColor("#30E4E4E4"));
 //		    txtDate.setTextColor(Color.parseColor("#5090C0"));
-			txtTitle.setText(item.getTitle());
-		} else {
-			itemPrec = (RSSItem) getItem(position - 1);
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-			
-			Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
-			
-			if (!sdf.format(item.getPubDate()).equals(
-					sdf.format(itemPrec.getPubDate()))) {
-				
+            txtTitle.setText(item.getTitle());
+        } else {
+            itemPrec = (RSSItem) getItem(position - 1);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
+            Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " + sdf.format(itemPrec.getPubDate()));
+
+            if (!sdf.format(item.getPubDate()).equals(
+                    sdf.format(itemPrec.getPubDate()))) {
+
 //				Log.d("RSSLIADAPTER", sdf.format(item.getPubDate()) + " " +sdf.format(itemPrec.getPubDate()));
-				
-				
-				    txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
+
+
+                txtDate.setText(DateUtil.formatHTTPDate(item.getPubDate()));
 //				    txtDate.setBackgroundColor(Color.parseColor("#30E4E4E4"));
 //				    txtDate.setTextColor(Color.parseColor("#5090C0"));
-				    
-			} else {
-				txtDate.setVisibility(View.GONE);
-			}
+
+            } else {
+                txtDate.setVisibility(View.GONE);
+            }
 
 //			if (position % 2 == 0) {
 //				txtTitle.setBackgroundColor(Color.parseColor("#E4E4E4"));
@@ -87,25 +87,24 @@ public class RSSListAdapter extends ArrayAdapter<RSSItem> {
 //			} else {
 //				txtTitle.setBackgroundColor(Color.parseColor("#FFFFFF"));
 //			}
+            txtTitle.setText(item.getTitle());
 
-			txtTitle.setText(  item.getTitle());
+        }
 
-		}
-
-		// if (position % 2 == 0){
-		// convertView.setBackgroundColor(Color.parseColor("#E4E4E4"));
-		// txtTitle.setTextColor(Color.parseColor("#FFFFFF"));
-		// } else{
-		// convertView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-		// }
-		//
+        // if (position % 2 == 0){
+        // convertView.setBackgroundColor(Color.parseColor("#E4E4E4"));
+        // txtTitle.setTextColor(Color.parseColor("#FFFFFF"));
+        // } else{
+        // convertView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        // }
+        //
 
 		/* Take the TextView from layout and set the description */
-		// TextView txtDescription = (TextView)
-		// convertView.findViewById(R.id.rssDescrizione);
-		// txtDescription.setText(Html.fromHtml(item.getDescription()));
+        // TextView txtDescription = (TextView)
+        // convertView.findViewById(R.id.rssDescrizione);
+        // txtDescription.setText(Html.fromHtml(item.getDescription()));
 
-		return convertView;
-	}
+        return convertView;
+    }
 
 }
