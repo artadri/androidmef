@@ -14,11 +14,11 @@
     <string name="listRSSTitle">Lista RSS</string>
 
     <!-- Titoli pagina dettaglio rss -->
-    <string name="title_activity_rssdetail_ico1">Comunicati stampa</string>
+    <string name="title_activity_rssdetail_ico1">Comunicati Stampa</string>
     <string name="title_activity_rssdetail_ico2">Interviste e Interventi</string>
     <string name="title_activity_rssdetail_ico3">Ultimi documenti</string>
     <string name="title_activity_rssdetail_ico4">Bandi di gara</string>
-    <string name="title_activity_rssdetail_ico5">Concorsi 1</string>
+    <string name="title_activity_rssdetail_ico5">Concorsi</string>
     <string name="title_activity_rssdetail_ico6">News</string>
     <string name="title_activity_rssdetail_ico7">Eventi</string>
     <string name="title_activity_rssdetail_ico8">Calendario</string>
@@ -32,53 +32,17 @@
     <string name="title_activity_rssdetail_ico16">News</string>
     <string name="title_activity_rssdetail_ico17">Circolari</string>
     <string name="title_activity_rssdetail_ico18">LexNews</string>
+    <string name="title_activity_rssdetail_ico19">News</string>
     <string name="detailRSSImageShare">Immagine sharing</string>
     <string name="detailRSSImageShareFacebook">Immagine faceboook</string>
     <string name="detailRSSImageShareTwitter">Immagine twitter</string>
     <string name="detailRSSImageShareGplus">Immagine gplus</string>
     <string name="detailRSSImageInternet">Immagine internet</string>
 
-    <!-- Titoli pagina lista rss -->
-    <string name="title_activity_rsslist_ico1">Comunicati stampa</string>
-    <string name="title_activity_rsslist_ico2">Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico3">Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico4">Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico5">Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico6">Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico7">Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico8">Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico9">Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico10">Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico11">Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico12">Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico13">Associata al pulsante 1</string>
-    <string name="title_activity_rsslist_ico14">Associata al pulsante 2</string>
-    <string name="title_activity_rsslist_ico15">Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico16">Associata al pulsante 4</string>
-    <string name="title_activity_rsslist_ico17">Associata al pulsante 3</string>
-    <string name="title_activity_rsslist_ico18">Associata al pulsante 4</string>
+   
 
     <!-- Bottoni -->
-    <string name="homeImageButton1">Titolo icona da cambiare 1</string>
-    <string name="homeImageButton2">Titolo icona da cambiare 2</string>
-    <string name="homeImageButton3">Titolo icona da cambiare 3</string>
-    <string name="homeImageButton4">Titolo icona da cambiare 4</string>
-    <string name="homeImageButton5">Titolo icona da cambiare 5</string>
-    <string name="homeImageButton6">Titolo icona da cambiare 6</string>
-    <string name="homeImageButton7">Titolo icona da cambiare 7</string>
-    <string name="homeImageButton8">Titolo icona da cambiare 8</string>
-    <string name="homeImageButton9">Titolo icona da cambiare 9</string>
-    <string name="homeImageButton10">Titolo icona da cambiare 10</string>
-    <string name="homeImageButton11">Titolo icona da cambiare 11</string>
-    <string name="homeImageButton12">Titolo icona da cambiare 12</string>
-    <string name="homeImageButton13">Titolo icona da cambiare 13</string>
-    <string name="homeImageButton14">Titolo icona da cambiare 14</string>
-    <string name="homeImageButton15">Titolo icona da cambiare 15</string>
-    <string name="homeImageButton16">Titolo icona da cambiare 16</string>
-    <string name="homeImageButton17">Titolo icona da cambiare 17</string>
-    <string name="homeImageButton18">Titolo icona da cambiare 18</string>
-    <string name="homeImageButtonContact">Titolo icona da cambiare</string>
-    <string name="homeImageButtonPodcast">Titolo icona da cambiare</string>
+
 
     <!-- Activity contattaci -->
     <string name="title_activity_contact">ContactActivity</string>
@@ -132,6 +96,10 @@
      
     <string name="title_home_dip_finanze">Finanze</string>
     <string name="descrizione_home_dip_finanze">Dipartimento delle Finanze</string>
+    
+    <string name="title_notifica">News dal MEF - Nuovi elementi</string>
+    <string name="descrizione_notifica">Sono presenti nuovi contenuti visualizza la sezione</string>
+    <string name="tiker_notifica">News dal MEF</string>
      
 
 </resources>
