@@ -1,6 +1,7 @@
 package it.gov.mef.informamef;
 
 import it.gov.mef.util.MefDaoFactory;
+import it.gov.mef.util.NavigationBean;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -80,6 +81,23 @@ public class MainActivity extends Activity {
 				layout.setLayoutParams(layoutParams);
 				layout.setOrientation(LinearLayout.VERTICAL);
 
+				
+				
+//				TODO aggiungere aggiornamento dati al primo caricamento
+				MefDaoFactory db = new MefDaoFactory(_this);
+				db.openDataBase(true);
+				
+				int countItem = db.getCountRSSItem();
+				
+
+				if (countItem == 0){
+					Log.d("Main Activity", "nessun item caricato");
+				} else{
+					Log.d("Main Activity", "item caricati");
+				}
+				
+				
+				
 				for (int i = 0; i < 1000; i++) {
 
 					/* Necessario per far avanzare la progress bar */

@@ -191,31 +191,31 @@ public class RSSList extends Activity {
 			switch (dipartimentoSelezionato) {
 			case MefConstants.MEF:
 				bTitle = getString(R.string.title_home_mef);
-				logo =  R.drawable.ic_logo_mef_9;
+				logo =  R.drawable.ic_head_logo_mef_9;
 				break;
 			case MefConstants.DAG:
 				bTitle = getString(R.string.title_home_dag);
-				logo =  R.drawable.ic_logo_dag_9;
+				logo =  R.drawable.ic_head_logo_dag_9;
 				break;
 			case MefConstants.RGS:
 				bTitle = getString(R.string.title_home_rgs);
-				logo =  R.drawable.ic_logo_rgs_9;
+				logo =  R.drawable.ic_head_logo_rgs_9;
 				break;
 			case MefConstants.DT:
 				bTitle = getString(R.string.title_home_dt);
-				logo =  R.drawable.ic_logo_dt_9;
+				logo =  R.drawable.ic_head_logo_dt_9;
 				break;
 			case MefConstants.INTRANET_DAG:
 				bTitle = getString(R.string.title_home_intranetdag);
-				logo =  R.drawable.ic_logo_intranetdag_9;
+				logo =  R.drawable.ic_head_logo_intranetdag_9;
 				break;
 			case MefConstants.FINANZE:
 				bTitle = getString(R.string.title_home_finanze);
-				logo =  R.drawable.ic_logo_finanze_9;
+				logo =  R.drawable.ic_head_logo_finanze_9;
 				break;
 			default:
 				bTitle = "";
-				logo =  R.drawable.ic_logo_mef_9;
+				logo =  R.drawable.ic_head_logo_mef_9;
 				break;
 
 			}

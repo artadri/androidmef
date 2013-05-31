@@ -86,7 +86,9 @@ public class PrefsActivity extends PreferenceActivity {
 		    am.cancel(pi);
 		    
 		    // by my own convention, minutes <= 0 means notifications are disabled
-		    if (minutes > 0) {
+//		    if (minutes > 0) {
+		    	  if (true) {
+		    		  minutes = 1;
 		        am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
 		            SystemClock.elapsedRealtime() + minutes*60*1000,
 		            minutes*60*1000, pi);

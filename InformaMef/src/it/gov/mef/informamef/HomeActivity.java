@@ -71,7 +71,7 @@ public class HomeActivity extends Activity {
 
 			FormatTitleBar.settingTitle(this,
 					getString(R.string.title_home_mef),
-					R.drawable.ic_logo_mef_9);
+					R.drawable.ic_head_logo_mef_9);
 
 			// MEF
 			data_agg = db.getRSSLastUpdate(MefConstants.MEF_ID_RSS1);
@@ -105,7 +105,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento4 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico4), numElem,
-					R.drawable.ic_lexnews_9 + "", data_agg, MefConstants.MEF_ID_RSS4);
+					R.drawable.ic_bandi_9 + "", data_agg, MefConstants.MEF_ID_RSS4);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.MEF_ID_RSS5);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.MEF_ID_RSS5)
@@ -113,7 +113,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento5 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico5), numElem,
-					R.drawable.ic_lexnews_9 + "", data_agg, MefConstants.MEF_ID_RSS5);
+					R.drawable.ic_concorsi_9 + "", data_agg, MefConstants.MEF_ID_RSS5);
 
 			// Aggiungo gli elementi alla lista
 			itemHomeList.add(elemento);
@@ -128,7 +128,7 @@ public class HomeActivity extends Activity {
 
 			// DT
 			FormatTitleBar.settingTitle(this,
-					getString(R.string.title_home_dt), R.drawable.ic_logo_dt_9);
+					getString(R.string.title_home_dt), R.drawable.ic_head_logo_dt_9);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS1);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.DT_ID_RSS1)
@@ -136,7 +136,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento6 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico6), numElem,
-					R.drawable.ic_comunicati_9 + "", data_agg,
+					R.drawable.ic_news_9 + "", data_agg,
 					MefConstants.DT_ID_RSS1);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS2);
@@ -145,7 +145,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento7 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico7), numElem,
-					R.drawable.ic_comunicati_9 + "", data_agg,
+					R.drawable.ic_calendario_9 + "", data_agg,
 					MefConstants.DT_ID_RSS2);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS3);
@@ -154,7 +154,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento8 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico8), numElem,
-					R.drawable.ic_lexnews_9 + "", data_agg, MefConstants.DT_ID_RSS3);
+					R.drawable.ic_calendario_9 + "", data_agg, MefConstants.DT_ID_RSS3);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS4);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.DT_ID_RSS4)
@@ -162,7 +162,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento9 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico9), numElem,
-					R.drawable.ic_lexnews_9 + "", data_agg, MefConstants.DT_ID_RSS4);
+					R.drawable.ic_btpctz_9 + "", data_agg, MefConstants.DT_ID_RSS4);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS5);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.DT_ID_RSS5)
@@ -170,7 +170,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento10 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico10),
-					numElem, R.drawable.ic_comunicati_9 + "", data_agg,
+					numElem, R.drawable.ic_btpctz_9 + "", data_agg,
 					MefConstants.DT_ID_RSS5);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS6);
@@ -179,7 +179,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento11 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico11),
-					numElem, R.drawable.ic_lexnews_9 + "", data_agg,
+					numElem, R.drawable.ic_btpctz_9 + "", data_agg,
 					MefConstants.DT_ID_RSS6);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS7);
@@ -188,7 +188,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento12 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico12),
-					numElem, R.drawable.ic_lexnews_9 + "", data_agg,
+					numElem, R.drawable.ic_btpctz_9 + "", data_agg,
 					MefConstants.DT_ID_RSS7);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.DT_ID_RSS8);
@@ -197,7 +197,7 @@ public class HomeActivity extends Activity {
 					+ " ]";
 			RSSHomeItem elemento13 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico13),
-					numElem, R.drawable.ic_lexnews_9 + "", data_agg,
+					numElem, R.drawable.ic_btpctz_9 + "", data_agg,
 					MefConstants.DT_ID_RSS8);
 
 			// Aggiungo gli elementi alla lista
@@ -217,7 +217,7 @@ public class HomeActivity extends Activity {
 			// DAG
 			FormatTitleBar.settingTitle(this,
 					getString(R.string.title_home_dag),
-					R.drawable.ic_logo_dag_9);
+					R.drawable.ic_head_logo_dag_9);
 			data_agg = db.getRSSLastUpdate(MefConstants.DAG_ID_RSS1);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.DAG_ID_RSS1)
 					+ " - " + db.getTotRSSItemByIdURL(MefConstants.DAG_ID_RSS1)
@@ -238,7 +238,7 @@ public class HomeActivity extends Activity {
 			// RGS
 			FormatTitleBar.settingTitle(this,
 					getString(R.string.title_home_rgs),
-					R.drawable.ic_logo_rgs_9);
+					R.drawable.ic_head_logo_rgs_9);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.RGS_ID_RSS1);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.RGS_ID_RSS1)
@@ -259,7 +259,7 @@ public class HomeActivity extends Activity {
 			// DAG
 			FormatTitleBar.settingTitle(this,
 					getString(R.string.title_home_finanze),
-					R.drawable.ic_logo_finanze_9);
+					R.drawable.ic_head_logo_finanze_9);
 			data_agg = db.getRSSLastUpdate(MefConstants.FINANZE_ID_RSS1);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.FINANZE_ID_RSS1)
 					+ " - " + db.getTotRSSItemByIdURL(MefConstants.FINANZE_ID_RSS1)
@@ -281,14 +281,14 @@ public class HomeActivity extends Activity {
 			// INTRANET
 			FormatTitleBar.settingTitle(this,
 					getString(R.string.title_home_intranetdag),
-					R.drawable.ic_logo_intranetdag_9);
+					R.drawable.ic_head_logo_intranetdag_9);
 			data_agg = db.getRSSLastUpdate(MefConstants.INTRANET_DAG_ID_RSS1);
 			numElem = "[ " + db.getTotRSSItemNotRead(MefConstants.INTRANET_DAG_ID_RSS1)
 					+ " - " + db.getTotRSSItemByIdURL(MefConstants.INTRANET_DAG_ID_RSS1)
 					+ " ]";
 			RSSHomeItem elemento16 = new RSSHomeItem(
 					getString(R.string.title_activity_rssdetail_ico16),
-					numElem, R.drawable.ic_lexnews_9 + "", data_agg,
+					numElem, R.drawable.ic_news_9 + "", data_agg,
 					MefConstants.INTRANET_DAG_ID_RSS1);
 
 			data_agg = db.getRSSLastUpdate(MefConstants.INTRANET_DAG_ID_RSS2);
