@@ -581,4 +581,15 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		return date;
 	}
 
+	public int getCountRSSItem() {
+
+		Cursor mCount = mDb.rawQuery("SELECT count(1) FROM item_rss ", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+
+		mCount.close();
+		return count;
+
+	}
+	
 }
