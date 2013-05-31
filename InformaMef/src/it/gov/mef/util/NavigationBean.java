@@ -9,7 +9,7 @@ import android.app.Application;
 public class NavigationBean extends Application {
 
 	private int dipartimento = 1;
-	private int numDipartimenti = 5;
+	private int numDipartimenti = MefConstants.NUMERO_DIPARTIMENTI;
 	
 	private int currentRSS = 0;
 	private int maxRSS = 0;
