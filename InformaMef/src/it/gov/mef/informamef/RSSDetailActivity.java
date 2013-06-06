@@ -59,7 +59,7 @@ public class RSSDetailActivity extends Activity  {
     private static final int SWIPE_THRESHOLD_VELOCITY = 500;
     private GestureDetector gestureDetector;
     View.OnTouchListener gestureListener;
-
+    private String str_Title_activity_rsslist_ico = null;
     
 
     @Override
@@ -71,19 +71,6 @@ public class RSSDetailActivity extends Activity  {
         MefDaoFactory db = new MefDaoFactory(this);
         db.openDataBase(false);
         List<RSSItem> listRSS = new ArrayList<RSSItem>();
-
-//        titolo = getIntent().getStringExtra("titolo");
-//        descrizione = getIntent().getStringExtra("descrizione");
-//        link = getIntent().getStringExtra("link");
-//        data = getIntent().getStringExtra("data");
-//        idPulsante = getIntent().getIntExtra("idPulsante", 0);
-//
-//
-//        idItem = getIntent().getIntExtra("idItemRSS", 0);
-//        idUrl = getIntent().getIntExtra("idUrl", 0);
-//        guid = getIntent().getStringExtra("guid");
-//        category = getIntent().getStringExtra("data");
-
 
         NavigationBean nav = (NavigationBean) getApplication();
         listRSS = nav.getListRSS();
@@ -139,7 +126,106 @@ public class RSSDetailActivity extends Activity  {
 		}
 
 
-        FormatTitleBar.settingTitle(this, bTitle, logo, category);
+		// seleziono la URL da caricare
+		switch (idUrl) {
+		case MefConstants.MEF_ID_RSS1:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico1);
+			break;
+		case MefConstants.MEF_ID_RSS2:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico2);
+			break;
+		case MefConstants.MEF_ID_RSS3:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico3);
+			break;
+		case MefConstants.MEF_ID_RSS4:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico4);
+			break;
+		case MefConstants.MEF_ID_RSS5:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico5);
+			break;
+		case MefConstants.DT_ID_RSS1:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico6);
+		
+			break;
+		case MefConstants.DT_ID_RSS2:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico7);
+		
+			break;
+		case MefConstants.DT_ID_RSS3:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico8);
+		
+			break;
+		case MefConstants.DT_ID_RSS4:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico9);
+			
+			break;
+		case MefConstants.DT_ID_RSS5:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico10);
+		
+			break;
+		case MefConstants.DT_ID_RSS6:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico11);
+			
+			break;
+		case MefConstants.DT_ID_RSS7:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico12);
+		
+			break;
+		case MefConstants.DT_ID_RSS8:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico13);
+			
+			break;
+		case MefConstants.DAG_ID_RSS1:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico14);
+			
+			break;
+		case MefConstants.RGS_ID_RSS1:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico15);
+			
+			break;
+		case MefConstants.INTRANET_DAG_ID_RSS1:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico16);
+			
+			break;
+		case MefConstants.INTRANET_DAG_ID_RSS2:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico17);
+			
+			break;
+		case MefConstants.INTRANET_DAG_ID_RSS3:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico18);
+			
+			break;
+		case MefConstants.FINANZE_ID_RSS1:
+			str_Title_activity_rsslist_ico = getResources().getString(
+					R.string.title_activity_rssdetail_ico19);
+			
+			break;
+		default:
+			this.setTitle("");
+			break;
+		}
+		
+		
+
+        FormatTitleBar.settingTitle(this, bTitle, logo, str_Title_activity_rsslist_ico);
 
 
 
@@ -171,6 +257,7 @@ public class RSSDetailActivity extends Activity  {
         List<Intent> targetedShareIntents = new ArrayList<Intent>();
         Intent shareIntent1 = new Intent(android.content.Intent.ACTION_SEND);
         shareIntent1.setType("text/plain");
+        shareIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(
                 shareIntent1, 0);
 
@@ -262,6 +349,8 @@ public class RSSDetailActivity extends Activity  {
                 int back = nav.getCurrentItemRSS() - 1;
                 nav.setCurrentItemRSS(back);
                 startActivity(intent);
+//                overridePendingTransition(R.anim.slide_out_right,R.anim.slide_in_left);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
             }
 
@@ -279,6 +368,8 @@ public class RSSDetailActivity extends Activity  {
                 int forward = nav.getCurrentItemRSS() + 1;
                 nav.setCurrentItemRSS(forward);
                 startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
             }
 
         });
@@ -324,6 +415,7 @@ public class RSSDetailActivity extends Activity  {
         nav.setMaxItemRSS(0);
         nav.setListRSS(null);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }
 
@@ -344,7 +436,9 @@ public class RSSDetailActivity extends Activity  {
         switch (item.getItemId()) {
 
             case R.id.action_settings:
-                startActivity(new Intent(this, PrefsActivity.class));// start the
+                startActivity(new Intent(this, PrefsActivity.class));
+                overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
+                // start the
                 // PrefsActivity.java
                 // startActivity(new Intent(this, TestDBActivity.class));//start the
                 // PrefsActivity.java
@@ -358,7 +452,9 @@ public class RSSDetailActivity extends Activity  {
                 NavigationBean nav = (NavigationBean) getApplication();
                 List<RSSHomeItem> itemHomeList = nav.getItemHomeList();
                 RSSHomeItem itemHome = itemHomeList.get(nav.getCurrentRSS());
-                new UpdateRSS().execute(new Object[]{ctx, new Integer(-1), new Integer(itemHome.getIdRSS())});
+                UpdateRSS updateRSS = new UpdateRSS(this);
+                updateRSS.execute(new Object[]{ctx, new Integer(-1), new Integer(itemHome.getIdRSS())});
+//                new UpdateRSS().execute(new Object[]{ctx, new Integer(-1), new Integer(itemHome.getIdRSS())});
 
 //			startActivity(new Intent(this, HomeDipActivity.class));
 
@@ -367,10 +463,12 @@ public class RSSDetailActivity extends Activity  {
 
                 Intent intent = new Intent(this, ContactActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
                 return true;
             case R.id.action_home:
                 Intent intentHome = new Intent(this, HomeDipActivity.class);
                 startActivity(intentHome);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 return true;
             case R.id.action_indietro:
                 onBackPressed();
@@ -380,6 +478,7 @@ public class RSSDetailActivity extends Activity  {
                 intent1.addCategory(Intent.CATEGORY_HOME);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 return true;
 
 
@@ -477,6 +576,7 @@ public class RSSDetailActivity extends Activity  {
 			                int forward = nav.getCurrentItemRSS() + 1;
 			                nav.setCurrentItemRSS(forward);
 			                startActivity(intent);
+			                overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
 				        } 
 					 
 
@@ -491,6 +591,7 @@ public class RSSDetailActivity extends Activity  {
 			                int back = nav.getCurrentItemRSS() - 1;
 			                nav.setCurrentItemRSS(back);
 			                startActivity(intent);
+			                overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
 				        }
 					 
 					

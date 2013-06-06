@@ -29,6 +29,7 @@ public class SplashScreen extends Activity {
 		setContentView(R.layout.activity_splash_screen);
 
 		mBar = (ProgressBar) findViewById(R.id.splash_bar);
+		
 
 		mHandler = new Handler() {
 			@Override

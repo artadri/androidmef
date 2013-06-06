@@ -144,8 +144,10 @@ public class HomeDipActivity extends Activity {
 			Toast.makeText(this,
 					"Sincronizzazione avviata", Toast.LENGTH_SHORT)
 					.show();
-			new UpdateRSS().execute(new Object [] {ctx, new Integer(-1), new Integer(-1) } );
-			startActivity(new Intent(this, HomeActivity.class));
+			
+			  UpdateRSS updateRSS = new UpdateRSS(this);
+              updateRSS.execute(new Object [] {ctx, new Integer(-1), new Integer(-1) } );
+			startActivity(new Intent(this, HomeDipActivity.class));
 
 			return true;
 		case R.id.actionContact:
@@ -175,5 +177,15 @@ public class HomeDipActivity extends Activity {
 		
 		
 	}
+	
+	@Override
+	public void onBackPressed() {
+		Intent intent1 = new Intent(Intent.ACTION_MAIN);
+		intent1.addCategory(Intent.CATEGORY_HOME);
+		intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent1);
+
+	}
+	
 	
 }

@@ -47,8 +47,8 @@ public class RSSList extends Activity {
 
 	private ListView listViewRSS;
 	private Context ctx;
-	private LinearLayout layout;
-	private int refreshList;
+//	private LinearLayout layout;
+//	private int refreshList;
 	private int idRSS;
 	private String str_Title_activity_rsslist_ico = null;
 
@@ -61,18 +61,12 @@ public class RSSList extends Activity {
 		List<RSSItem> listRSS = new ArrayList<RSSItem>();
 		try {
 
-//			String feedUrl;
-//			int idPulsante = 0; //getIntent().getIntExtra("idPulsante", 0);
-			idRSS = 1;
-//			URL url;
-//			HttpURLConnection conn = null;
-//			refreshList = idPulsante;
 
 			NavigationBean nav = (NavigationBean) getApplication();
 			List<RSSHomeItem> itemHomeList = nav.getItemHomeList();
 			RSSHomeItem itemHome = itemHomeList.get(nav.getCurrentRSS());
 
-//			idPulsante = itemHome.getIdRSS();
+
 			idRSS = itemHome.getIdRSS();
 
 			MefDaoFactory db = new MefDaoFactory(this);
@@ -367,7 +361,9 @@ public class RSSList extends Activity {
 			NavigationBean nav = (NavigationBean) getApplication();
 			List<RSSHomeItem> itemHomeList = nav.getItemHomeList();
 			RSSHomeItem itemHome = itemHomeList.get(nav.getCurrentRSS());
-			new UpdateRSS().execute(new Object[] { ctx, new Integer(-1),
+
+			  UpdateRSS updateRSS = new UpdateRSS(this);
+            updateRSS.execute(new Object[] { ctx, new Integer(-1),
 					new Integer(itemHome.getIdRSS()) });
 
 			return true;

@@ -5,6 +5,7 @@ import it.gov.mef.util.NavigationBean;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -84,17 +85,17 @@ public class MainActivity extends Activity {
 				
 				
 //				TODO aggiungere aggiornamento dati al primo caricamento
-				MefDaoFactory db = new MefDaoFactory(_this);
-				db.openDataBase(true);
-				
-				int countItem = db.getCountRSSItem();
-				
-
-				if (countItem == 0){
-					Log.d("Main Activity", "nessun item caricato");
-				} else{
-					Log.d("Main Activity", "item caricati");
-				}
+//				MefDaoFactory db = new MefDaoFactory(_this);
+//				db.openDataBase(true);
+//				
+//				int countItem = db.getCountRSSItem();
+//				
+//
+//				if (countItem == 0){
+//					Log.d("Main Activity", "nessun item caricato");
+//				} else{
+//					Log.d("Main Activity", "item caricati");
+//				}
 				
 				
 				

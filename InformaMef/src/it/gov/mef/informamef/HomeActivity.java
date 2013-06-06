@@ -464,9 +464,11 @@ public class HomeActivity extends Activity {
 			Toast.makeText(HomeActivity.this, "Sincronizzazione avviata",
 					Toast.LENGTH_SHORT).show();
 			NavigationBean nav = (NavigationBean) getApplication();
-
-			new UpdateRSS().execute(new Object[] { ctx,
-					new Integer(nav.getDipartimento()), new Integer(-1) });
+			
+			  UpdateRSS updateRSS = new UpdateRSS(this);
+              updateRSS.execute(new Object[] { ctx,
+					new Integer(nav.getDipartimento()), new Integer(-1)  });
+			
 			startActivity(new Intent(this, HomeActivity.class));
 
 			return true;

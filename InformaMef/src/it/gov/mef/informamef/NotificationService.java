@@ -90,70 +90,70 @@ private WakeLock mWakeLock;
 					
 					count += db.updateRSSItem(elem.intValue());
 					
-					
-					switch (elem.intValue()) {
-							case MefConstants.MEF_ID_RSS1:
-								countMef ++;
-								break;
-							case MefConstants.MEF_ID_RSS2:
-								countMef ++;
-								break;
-							case MefConstants.MEF_ID_RSS3:
-								countMef ++;
-								break;
-							case MefConstants.MEF_ID_RSS4:
-								countMef ++;
-								break;
-							case MefConstants.MEF_ID_RSS5:
-								countMef ++;
-								break;
-							case MefConstants.DT_ID_RSS1:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS2:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS3:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS4:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS5:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS6:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS7:
-								countDt ++;
-								break;
-							case MefConstants.DT_ID_RSS8:
-								countDt ++;
-								break;
-							case MefConstants.DAG_ID_RSS1:
-								countDag ++;
-								break;
-							case MefConstants.RGS_ID_RSS1:
-								countRgs ++;
-								break;
-							case MefConstants.INTRANET_DAG_ID_RSS1:
-								countIntranet ++;
-								break;
-							case MefConstants.INTRANET_DAG_ID_RSS2:
-								countIntranet ++;
-								break;
-							case MefConstants.INTRANET_DAG_ID_RSS3:
-								countIntranet ++;
-								break;
-							case MefConstants.FINANZE_ID_RSS1:
-								countFinanze ++;
-								break;
-							default:
-		
-								break;
+					if (count > 0 ){
+						switch (elem.intValue()) {
+								case MefConstants.MEF_ID_RSS1:
+									countMef ++;
+									break;
+								case MefConstants.MEF_ID_RSS2:
+									countMef ++;
+									break;
+								case MefConstants.MEF_ID_RSS3:
+									countMef ++;
+									break;
+								case MefConstants.MEF_ID_RSS4:
+									countMef ++;
+									break;
+								case MefConstants.MEF_ID_RSS5:
+									countMef ++;
+									break;
+								case MefConstants.DT_ID_RSS1:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS2:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS3:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS4:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS5:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS6:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS7:
+									countDt ++;
+									break;
+								case MefConstants.DT_ID_RSS8:
+									countDt ++;
+									break;
+								case MefConstants.DAG_ID_RSS1:
+									countDag ++;
+									break;
+								case MefConstants.RGS_ID_RSS1:
+									countRgs ++;
+									break;
+								case MefConstants.INTRANET_DAG_ID_RSS1:
+									countIntranet ++;
+									break;
+								case MefConstants.INTRANET_DAG_ID_RSS2:
+									countIntranet ++;
+									break;
+								case MefConstants.INTRANET_DAG_ID_RSS3:
+									countIntranet ++;
+									break;
+								case MefConstants.FINANZE_ID_RSS1:
+									countFinanze ++;
+									break;
+								default:
+			
+									break;
+						}
 					}
-					
 					
 					
 					
@@ -174,7 +174,8 @@ private WakeLock mWakeLock;
 				}	
 			}
         	
-			if (count > 0) {
+        	
+        	if (count > 0) {
 			
 				strBuffer.append(getString(R.string.descrizione_notifica));
 				
