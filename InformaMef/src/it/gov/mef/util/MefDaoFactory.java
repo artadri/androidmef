@@ -244,8 +244,8 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 
 		if (itemRSS != null) {
 			insertRSSItem(itemRSS.getIdUrl(), itemRSS.getGuid(),
-					itemRSS.getTitle(), itemRSS.getDescription(), itemRSS
-							.getPubDate().toString(), itemRSS.getLink(),
+					itemRSS.getTitle(), itemRSS.getDescription(), DateUtil.formatDateToDb(itemRSS
+							.getPubDate()), itemRSS.getLink(),
 					itemRSS.getCategory(),
 					(itemRSS.getDate_read() != null ? itemRSS.getDate_read()
 							.toString() : null),
@@ -428,8 +428,10 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 		Cursor cursor = mDb.rawQuery("SELECT * FROM item_rss WHERE id_url="
 				+ rowId + " ORDER BY date(" + RSSMetaData.PUB_DATE + ") DESC",
 				null);
-		// mDb.query(RSSMetaData.RSS_ITEM_TABLE, null,
-		// RSSMetaData.ID_URL + "=" + rowId, null, null, null, null);
+
+		
+		
+		
 		List<RSSItem> listRSS = new ArrayList<RSSItem>();
 
 		while (cursor.moveToNext()) {
@@ -452,6 +454,9 @@ public class MefDaoFactory extends SQLiteOpenHelper {
 							.getColumnIndex(RSSMetaData.CATEGORY)),
 					cursor.getInt((cursor.getColumnIndex(RSSMetaData.ID_URL)))));
 
+			Log.d("MEFDAOFACTORI - DATA", cursor.getString(cursor
+					.getColumnIndex(RSSMetaData.PUB_DATE)));
+			
 		}
 
 		cursor.close();

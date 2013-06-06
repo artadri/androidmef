@@ -150,6 +150,20 @@ public class DateUtil {
     //Tue%2C+27+Mar+2007+22%3A55%3A48+GMT
   }
   
+  
+ public static String formatDateToDb(Date date) {
+	  
+	  if (date == null)
+		  return "";
+	  
+	  
+	  SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMdd", Locale.ITALIAN);
+	 
+	  return sdf.format(date);
+	  
+  }
+ 
+  
   public static Date parseDateToDb(String dateString) {
       Date pubDate = null;
       try {

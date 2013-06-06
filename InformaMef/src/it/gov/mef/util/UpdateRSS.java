@@ -1,27 +1,54 @@
 package it.gov.mef.util;
 
+import it.gov.mef.informamef.R;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 public class UpdateRSS extends AsyncTask<Object,String,String> {
+
+	private Context ctx = null;
+	Activity activity = null;
+	ProgressBar prgBar = null;
+	
+	
+	
+	
+	
+
+
+	public UpdateRSS() {
+		super();
+		
+	}
+	
+	public UpdateRSS(Activity activity) {
+		super();
+		this.activity = activity;
+		
+	}
+	
+
 
 	@Override
 	protected String doInBackground(Object... arg0) {
 		
 		
-		Context ctx = (Context)arg0[0];
+		ctx = (Context)arg0[0];
 		int dip = (Integer) arg0[1];
 		int rss = (Integer) arg0[2];
-		
-		
-		
 		
 		
 		
@@ -108,6 +135,43 @@ public class UpdateRSS extends AsyncTask<Object,String,String> {
 		}
 		
 		return null;
+	}
+
+
+	@Override
+	protected void onCancelled() {
+		super.onCancelled();
+		Log.d("UpdateRSS", "onCancelled");
+		prgBar.setVisibility(View.GONE);
+	}
+
+//	@Override
+//	protected void onCancelled(String result) {
+//		super.onCancelled(result);
+//		Log.d("UpdateRSS", "onCancelled(String result)");
+//	}
+
+	@Override
+	protected void onPostExecute(String result) {
+		super.onPostExecute(result);
+		Log.d("UpdateRSS", "onPostExecute");
+		prgBar.setVisibility(View.GONE);
+	}
+
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+		Log.d("UpdateRSS", "onPreExecute");
+		    
+		prgBar =	(ProgressBar)activity.findViewById(R.id.download_bar);
+		prgBar.setVisibility(View.VISIBLE);
+			
+	}
+
+	@Override
+	protected void onProgressUpdate(String... values) {
+		super.onProgressUpdate(values);
+		Log.d("UpdateRSS", "onProgressUpdate");
 	}
 
 
