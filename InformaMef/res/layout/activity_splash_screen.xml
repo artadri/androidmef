@@ -10,11 +10,13 @@
 
 
     <ProgressBar android:id="@+id/splash_bar"
-                 style="@android:style/Widget.ProgressBar.Horizontal"
+                 style="@android:style/Widget.ProgressBar.Large"
                  android:max="100"
                  android:paddingTop="5dp"
-                 android:layout_width="150dp"
+                 android:layout_width="wrap_content"
                  android:layout_height="wrap_content"/>
+    
+
 
 </LinearLayout>
 

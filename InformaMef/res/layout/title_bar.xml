@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:layout_toRightOf="@+id/imageLeft"
             android:layout_centerInParent="true"
-
+			android:id="@+id/linearTitle"
             >
 
 
@@ -47,4 +47,16 @@
     </LinearLayout>
 
 
+        <ProgressBar
+            android:id="@+id/download_bar"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:paddingTop="5dp"
+            android:visibility="gone" 
+            android:layout_alignParentRight="true"
+            />
+
+     
 </RelativeLayout>
